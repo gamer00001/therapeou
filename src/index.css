@@ -1,13 +1,27 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Inter" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: "Inter", sans-serif !important;
+}
+
+.css-1sra7t5-MuiTypography-root {
+  font-family: "Inter", sans-serif !important;
+}
+
+.css-ahj2mt-MuiTypography-root {
+  font-family: "Inter", sans-serif !important;
+}
+
+.css-1ff8729-MuiInputBase-root-MuiFilledInput-root {
+  background-color: #fff !important;
+  border-bottom: #e0e0e0 !important;
+}
+
+.css-1e09ahn-MuiNativeSelect-select-MuiInputBase-input-MuiFilledInput-input {
+  height: 50px;
 }

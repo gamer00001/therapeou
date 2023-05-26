@@ -1,0 +1,48 @@
+.footerContainer {
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.footerLogo {
+  width: 316px;
+  /* height: 70px; */
+}
+
+.socialsLogo {
+  width: 24px;
+  height: 24px;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+
+  column-gap: 70px;
+  align-items: center;
+  text-align: start;
+
+  padding-top: 50px !important;
+}
+
+.listTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  line-height: 22px;
+  color: #000000;
+  padding-bottom: 15px;
+}
+
+.listSubtitle {
+  font-family: "Inter" !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 22px;
+  color: #565656;
+}
+
+.socialLinks {
+  padding-left: 50px;
+}

@@ -1,0 +1,26 @@
+.socialButtonContainer {
+  width: 225px;
+  height: 67px;
+  background: #ffffff;
+  border: 1px solid #e4d9d9;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.socialIcon {
+  width: 39px;
+  height: 37px;
+}
+
+.socialMethodText {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+}

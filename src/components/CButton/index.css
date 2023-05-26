@@ -1,0 +1,34 @@
+.default-btn-styles {
+  width: 234px;
+  height: 54px;
+  background: #3c5671;
+  border: 1px solid #204ea5;
+  border-radius: 6px;
+  text-transform: none !important;
+}
+
+.submit-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 10px;
+
+  width: 99px;
+  height: 36px;
+
+  background: #3c5671 !important;
+  border: 1px solid #3c5671 !important;
+  border-radius: 6px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+
+  font-family: "Inter" !important;
+  font-size: 20px !important;
+  line-height: 19px;
+  text-align: center;
+
+  color: #ffffff;
+}

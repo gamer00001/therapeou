@@ -1,0 +1,65 @@
+.getInTouchContainer {
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.innerContainer {
+  width: 1141px;
+  background: #e8f1fb;
+  border-radius: 26px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.textTitle {
+  font-family: "Inter !important";
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 36px !important;
+  line-height: 55px;
+  text-align: center;
+  color: #000000;
+}
+
+.textSubtitle {
+  font-family: "Inter" !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 30px !important;
+  line-height: 55px;
+  text-align: center;
+  color: #000000;
+}
+
+.inputField {
+  width: 281.17px;
+  height: 54px;
+  background: #ffffff;
+  border-radius: 8px;
+  border-bottom: none !important;
+  padding-left: 10px;
+}
+
+.inputField::before {
+  border-bottom: none !important;
+}
+
+.firstInputRow {
+  display: flex;
+  justify-content: end;
+  padding-right: 20px;
+}
+
+.inputFieldTextArea {
+  width: 575.82px;
+  height: 90px;
+  background: #ffffff;
+  border-radius: 8px;
+  border-bottom: none !important;
+  padding-left: 10px !important;
+  overflow: auto;
+}
+
+.inputFieldTextArea::before {
+  border-bottom: none !important;
+}
