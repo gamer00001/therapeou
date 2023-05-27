@@ -322,7 +322,7 @@ const Home = () => {
                     avatar={<Avatar aria-label="recipe" src={item.image} />}
                     title={item.title}
                     subheader={item.subTitle}
-                    style={{ paddingTop: i == 1 ? 0 : "" }}
+                    style={{ paddingTop: i === 1 ? 0 : "" }}
                   />
                 </Card>
               </Grid>

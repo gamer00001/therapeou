@@ -1,0 +1,39 @@
+.container {
+  background-color: #d8e6f5;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 60px;
+}
+
+.title {
+  font-family: "Inter !important";
+  font-style: normal;
+  font-weight: 700 !important;
+  font-size: 30px !important;
+  line-height: 36px;
+  color: #494848;
+
+  padding-bottom: 20px;
+}
+
+.horizontalLine {
+  width: 805px;
+  height: 8px;
+  background: rgba(100, 100, 100, 0.22);
+  border-radius: 4px;
+  margin-bottom: 50px;
+}
+
+.pointsBlock {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.leftListing {
+  font-family: "Inter" !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px !important;
+  line-height: 50px;
+  color: #494848;
+}

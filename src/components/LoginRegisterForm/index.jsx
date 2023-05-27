@@ -16,7 +16,7 @@ const LoginRegisterForm = ({
   return (
     <Grid container justifyContent="center">
       <Grid item xs={4} className={styles.loginContainer}>
-        <img src={Img} className={styles.imgBackStyles} />
+        <img src={Img} className={styles.imgBackStyles} alt="login" />
       </Grid>
       <Grid item xs={8}>
         <Grid

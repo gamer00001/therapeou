@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid, Input, MenuItem, TextField, Typography } from "@mui/material";
+import { Grid, Input, TextField, Typography } from "@mui/material";
 import styles from "./style.module.css";
 import CButton from "../../components/CButton";
 import { ContactInfo } from "../../constants/GetInTouch";
+// import MapImg from "../../assets/map-view.png";
 
 const list = [
   {
@@ -26,12 +27,15 @@ const list = [
 const GetInTouch = () => {
   return (
     <>
-      <Grid container>
+      <Grid
+        container
+        //   style={{ paddingBottom: "100px" }}
+      >
         <Grid item xs={9}>
           <Grid
             container
             className={styles.container}
-            style={{ paddingTop: "200px" }}
+            style={{ paddingTop: "100px" }}
           >
             <Grid item>
               <Typography component="h3" className={styles.title}>
@@ -121,7 +125,7 @@ const GetInTouch = () => {
               return (
                 <Grid item className={styles.contactBox}>
                   <div>
-                    <img src={item.logo} />
+                    <img src={item.logo} alt={item.logo} />
                   </div>
                   <div>
                     <div>{item.title}</div>
@@ -133,6 +137,12 @@ const GetInTouch = () => {
               );
             })}
           </Grid>
+
+          {/* <Grid container>
+            <Grid item className={styles.mapView}>
+              <img src={MapImg} alt="map-view" />
+            </Grid>
+          </Grid> */}
         </Grid>
 
         <Grid item xs={3} className={styles.getInTouchRightSide}></Grid>

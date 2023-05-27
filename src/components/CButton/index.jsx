@@ -14,11 +14,12 @@ const CButton = ({
   customClassName = "",
   customContainerStyles = {},
   disabled = false,
+  borderRadius,
 }) => {
   const getStyles = (type) => {
     switch (type.toLowerCase()) {
-      case "hire":
-        return "hire-btn";
+      case "decline":
+        return "decline-btn";
       case "submit":
         return "submit-btn";
       case "offer":
@@ -34,6 +35,7 @@ const CButton = ({
       style={{
         width: width ?? "",
         height: height ?? "",
+        borderRadius: borderRadius ?? "",
         ...customStyles,
       }}
       className={`${getStyles(type)} ${customClassName}`}
