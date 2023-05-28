@@ -3,7 +3,7 @@ import { Grid, Input, TextField, Typography } from "@mui/material";
 import styles from "./style.module.css";
 import CButton from "../../components/CButton";
 import { ContactInfo } from "../../constants/GetInTouch";
-// import MapImg from "../../assets/map-view.png";
+import MapImg from "../../assets/map-view.png";
 
 const list = [
   {
@@ -138,11 +138,11 @@ const GetInTouch = () => {
             })}
           </Grid>
 
-          {/* <Grid container>
+          <Grid container>
             <Grid item className={styles.mapView}>
               <img src={MapImg} alt="map-view" />
             </Grid>
-          </Grid> */}
+          </Grid>
         </Grid>
 
         <Grid item xs={3} className={styles.getInTouchRightSide}></Grid>

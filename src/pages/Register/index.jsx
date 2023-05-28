@@ -9,6 +9,7 @@ const Register = () => {
       actionText="Create Account"
       redirectText="Log In"
       fields={RegisterFields}
+      redirectRoute="login"
     />
   );
 };

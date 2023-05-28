@@ -4,7 +4,7 @@
 }
 
 .footerLogo {
-  width: 316px;
+  width: 60px;
   /* height: 70px; */
 }
 
@@ -44,5 +44,22 @@
 }
 
 .socialLinks {
-  padding-left: 50px;
+  padding-left: 10px;
+}
+
+.socialsSpacing {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.footerLogoContainer {
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.logoName {
+  font-size: 24px;
+  font-weight: 500;
+  color: #3c5671;
 }

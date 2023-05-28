@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/logo1.png";
 import FacebookIcon from "../../assets/facebook.png";
 import InstagramIcon from "../../assets/instagram.png";
 
@@ -9,15 +9,12 @@ import { FooterLinks } from "../../constants/Home";
 
 const Footer = () => {
   return (
-    <Grid
-      className={styles.footerContainer}
-      container
-      //   rowSpacing={5}
-      //   columnSpacing={6}
-      //   gap={40}
-    >
+    <Grid className={styles.footerContainer} container>
       <Grid item xs={4} md={4} lg={4}>
-        <img src={Logo} className={styles.footerLogo} alt="logo" />
+        <Typography className={styles.footerLogoContainer} component="div">
+          <img src={Logo} className={styles.footerLogo} alt="logo" />
+          <span className={styles.logoName}>Therapeou</span>
+        </Typography>
         <Typography className={styles.socialLinks} component="div">
           <img
             alt="facebook"
@@ -27,7 +24,7 @@ const Footer = () => {
           <img
             alt="facebook"
             src={InstagramIcon}
-            className={styles.socialsLogo}
+            className={`${styles.socialsLogo} ${styles.socialsSpacing}`}
           />
         </Typography>
       </Grid>

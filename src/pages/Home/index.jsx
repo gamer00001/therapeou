@@ -18,11 +18,11 @@ import {
 import Footer from "../../components/Footer";
 
 import CButton from "../../components/CButton";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
 
 const Home = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div>
       <>
@@ -60,7 +60,7 @@ const Home = () => {
                       borderColor: "#3C5671",
                       color: "#3C5671",
                     }}
-                    onClick={() => history.push("/login")}
+                    onClick={() => navigate("/login")}
                   >
                     Sign In
                   </Button>
@@ -73,14 +73,7 @@ const Home = () => {
                       background: "#3C5671",
                       borderColor: "#3C5671",
                     }}
-                    onClick={() =>
-                      history.push({
-                        pathname: "/register",
-                        state: {
-                          redirectRoute: `${history.location.pathname}`,
-                        },
-                      })
-                    }
+                    onClick={() => navigate("/register")}
                   >
                     Sign Up
                   </Button>

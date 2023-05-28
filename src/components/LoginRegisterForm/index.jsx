@@ -1,18 +1,24 @@
 import React from "react";
 import { Grid, Input, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./style.module.css";
+
 import fbSocial from "../../assets/fb-social.png";
 import googleSocial from "../../assets/google-social.png";
+import Img from "../../assets/login-img.png";
+
 import CButton from "../CButton";
 import SocialLinkButton from "../../components/SocialLinkButton";
-import Img from "../../assets/login-img.png";
 
 const LoginRegisterForm = ({
   title = "Create Account",
   actionText = "Login",
   redirectText = "Login",
   fields = [],
+  redirectRoute = "login",
 }) => {
+  const navigate = useNavigate();
   return (
     <Grid container justifyContent="center">
       <Grid item xs={4} className={styles.loginContainer}>
@@ -80,7 +86,12 @@ const LoginRegisterForm = ({
         >
           <Grid item className={styles.lastSubtitle}>
             <span>Already have an account? </span>
-            <span className={styles.underline}>{redirectText}</span>
+            <span
+              className={styles.underline}
+              onClick={() => navigate(`/${redirectRoute}`)}
+            >
+              {redirectText}
+            </span>
           </Grid>
         </Grid>
       </Grid>
