@@ -1,0 +1,87 @@
+// @import "../../../public/static/styles/scrolls.scss";
+// @import "~bootstrap/dist/css/bootstrap.css";
+// @import "~react-toastify/dist/ReactToastify.css";
+
+@mixin verticalScroll() {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.25rem;
+    background: #969393;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
+  }
+}
+
+body {
+  margin: 0px !important;
+}
+
+p {
+  display: block !important;
+  margin-block-start: 1em !important;
+  margin-block-end: 1em !important;
+  margin-inline-start: 0px !important;
+  margin-inline-end: 0px !important;
+}
+
+.adminContainer {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(24, minmax(4vw, 1fr));
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header header header header header header header header header header header header header header header header header header header header header header"
+    "sidebar sidebar sidebar sidebar main main main main main main main main main main main main main main main main main main main main"
+    "sidebar sidebar sidebar sidebar footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer";
+
+  & .childContent {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #3c5671;
+
+    & .childWrapper {
+      margin: 25px 10px;
+
+      width: 97%;
+      height: 100%;
+      background-color: #faf8f8;
+      display: flex;
+      justify-content: center;
+      border-radius: 30px;
+      @include verticalScroll();
+
+      & .child {
+        width: 95%;
+        margin: 15px 0 15px 0;
+      }
+    }
+  }
+
+  & .footer {
+    grid-area: footer;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & p {
+      margin: 0;
+      font-size: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 1450px) {
+  .hover svg {
+    width: 25px;
+    height: 25px;
+  }
+}

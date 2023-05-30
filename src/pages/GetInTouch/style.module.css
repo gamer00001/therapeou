@@ -5,10 +5,10 @@
 
 .getInTouchRightSide {
   background-color: #3c5671;
-  height: 100vh;
-  /* width: 100%; */
-  /* flex-basis: 444px !important; */
-  /* flex: 1; */
+  /* height: 100vh; */
+  width: 100%;
+  flex-basis: 444px !important;
+  flex: 1;
 }
 
 .title {
@@ -92,4 +92,9 @@
   position: absolute;
   top: 25px;
   right: 120px;
+}
+
+.mapImage {
+  width: 450px;
+  height: 100%;
 }

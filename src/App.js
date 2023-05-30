@@ -6,11 +6,13 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import GetInTouch from "./pages/GetInTouch";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import Overview from "./pages/Overview";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/admin/overview" exact element={<Overview />} />
         <Route
           path="/terms-conditions"
           exact

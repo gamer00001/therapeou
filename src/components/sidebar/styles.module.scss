@@ -1,0 +1,137 @@
+// @import "../../public/static/styles/scrolls.scss";
+// @import "../../public/static/styles/font.scss";
+
+@mixin verticalScroll() {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.25rem;
+    background: #969393;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
+  }
+}
+
+.sideBar {
+  grid-area: sidebar;
+  width: inherit;
+  // height: 85vh;
+  scrollbar-width: thin; /* Firefox */
+  font-size: 14px;
+  background-color: #3c5671;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px;
+  align-items: center;
+  // overflow-x: auto;
+  @include verticalScroll();
+
+  & .cellWrap {
+    width: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+
+    // background-color: #fff;
+
+    & a {
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: #c7c7c762;
+    }
+
+    & .cell {
+      width: 100%;
+      max-height: 59px;
+      height: auto;
+      margin: 2px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      cursor: pointer;
+
+      &:hover {
+        // background-color: #c7c7c762;
+
+        & .icon .hover {
+          display: inherit;
+        }
+
+        & .icon .noHover {
+          display: none;
+        }
+
+        & .sideTitle {
+          & p {
+            color: #fff;
+          }
+        }
+      }
+
+      & .icon {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & .hover {
+          display: none;
+        }
+
+        & .no-hover {
+          display: inherit;
+        }
+      }
+      & .sideTitle {
+        // width: 61%;
+        height: 100%;
+        font-weight: 600;
+        color: #cac9c9;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height */
+        color: #ffffff;
+      }
+    }
+    & .cellActive {
+      background-color: #f31c23 !important;
+      box-shadow: 0px 8px 30px 0px #c7c7c762;
+
+      & .icon .hover {
+        display: inherit;
+      }
+
+      & .icon .no-hover {
+        display: none;
+      }
+
+      & .side-title {
+        & p {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1450px) {
+  .sideBar .cellWrap .cell .sideTitle {
+    font-size: 18px;
+    align-items: center;
+  }
+}

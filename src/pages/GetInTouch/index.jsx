@@ -1,41 +1,19 @@
 import React from "react";
-import { Grid, Input, TextField, Typography } from "@mui/material";
+import { Grid, Input, Typography } from "@mui/material";
 import styles from "./style.module.css";
 import CButton from "../../components/CButton";
 import { ContactInfo } from "../../constants/GetInTouch";
-import MapImg from "../../assets/map-view.png";
-
-const list = [
-  {
-    value: "USD",
-    label: "$",
-  },
-  {
-    value: "EUR",
-    label: "€",
-  },
-  {
-    value: "BTC",
-    label: "฿",
-  },
-  {
-    value: "JPY",
-    label: "¥",
-  },
-];
+// import MapImg from "../../assets/map-view.png";
 
 const GetInTouch = () => {
   return (
     <>
-      <Grid
-        container
-        //   style={{ paddingBottom: "100px" }}
-      >
+      <Grid container style={{ height: "100vh" }}>
         <Grid item xs={9}>
           <Grid
             container
             className={styles.container}
-            style={{ paddingTop: "100px" }}
+            style={{ paddingTop: "100px", width: "100vh" }}
           >
             <Grid item>
               <Typography component="h3" className={styles.title}>
@@ -76,7 +54,11 @@ const GetInTouch = () => {
             style={{ paddingTop: "20px" }}
           >
             <Grid item>
-              <Input placeholder="Phone Number" className={styles.inputField} />
+              <Input
+                type="number"
+                placeholder="Phone Number"
+                className={styles.inputField}
+              />
             </Grid>
           </Grid>
 
@@ -86,22 +68,10 @@ const GetInTouch = () => {
             style={{ paddingTop: "20px" }}
           >
             <Grid item>
-              <TextField
-                select
-                SelectProps={{
-                  native: true,
-                }}
-                prefix="How did you find us?"
-                // defaultValue="How did you find us?"
-                variant="standard"
-                className={styles.dropdown}
-              >
-                {list.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
+              <Input
+                placeholder="How did you find us?"
+                className={styles.inputField}
+              />
             </Grid>
           </Grid>
 
@@ -119,7 +89,7 @@ const GetInTouch = () => {
             container
             className={styles.container}
             spacing={8}
-            style={{ paddingTop: "60px" }}
+            style={{ paddingTop: "60px", paddingBottom: "60px" }}
           >
             {ContactInfo.map((item) => {
               return (
@@ -138,11 +108,11 @@ const GetInTouch = () => {
             })}
           </Grid>
 
-          <Grid container>
+          {/* <Grid container>
             <Grid item className={styles.mapView}>
-              <img src={MapImg} alt="map-view" />
+              <img className={styles.mapImage} src={MapImg} alt="map-view" />
             </Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
 
         <Grid item xs={3} className={styles.getInTouchRightSide}></Grid>
