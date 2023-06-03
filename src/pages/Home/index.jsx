@@ -45,7 +45,7 @@ const Home = () => {
                       pointerEvents: "auto",
                     }}
                   >
-                    <MenuLink name={item} />
+                    <MenuLink name={item.name} link={item.route} />
                   </Grid>
                 ))}
               </Grid>

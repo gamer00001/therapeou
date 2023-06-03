@@ -17,6 +17,7 @@ const LoginRegisterForm = ({
   redirectText = "Login",
   fields = [],
   redirectRoute = "login",
+  actionHandler,
 }) => {
   const navigate = useNavigate();
   return (
@@ -75,6 +76,7 @@ const LoginRegisterForm = ({
               type="Submit"
               width="462px"
               height="67px"
+              onClick={actionHandler}
             />
           </Grid>
         </Grid>

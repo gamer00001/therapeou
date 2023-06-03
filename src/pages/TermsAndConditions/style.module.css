@@ -1,8 +1,9 @@
 .container {
   background-color: #d8e6f5;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
   padding-top: 60px;
+  padding-bottom: 50px;
 }
 
 .title {
@@ -27,13 +28,14 @@
 .pointsBlock {
   height: 400px;
   overflow-y: scroll;
+  padding-left: 15px;
 }
 
 .leftListing {
   font-family: "Inter" !important;
   font-style: normal;
   font-weight: 500;
-  font-size: 26px !important;
+  font-size: 22px !important;
   line-height: 50px;
   color: #494848;
 }

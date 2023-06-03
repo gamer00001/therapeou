@@ -50,13 +50,16 @@ p {
 
     & .childWrapper {
       margin: 25px 10px;
+      overflow-y: scroll;
 
       width: 97%;
       height: 100%;
       background-color: #faf8f8;
       display: flex;
       justify-content: center;
-      border-radius: 30px;
+      border-bottom-left-radius: 30px;
+      border-top-left-radius: 30px;
+
       @include verticalScroll();
 
       & .child {

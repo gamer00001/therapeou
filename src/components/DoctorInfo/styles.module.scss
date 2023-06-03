@@ -1,0 +1,44 @@
+.doctorInfoContainer {
+  //   width: 715.19px;
+  position: relative;
+  height: 250px;
+  background: linear-gradient(
+    66.15deg,
+    #e4f1ff -5.25%,
+    #87bffa 35.43%,
+    #3c5671 98.77%
+  );
+  border-radius: 16.3861px;
+  margin-right: 20px;
+  padding: 20px;
+
+  .title {
+    font-family: "Poppins" !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 37px;
+    // display: flex;
+    // align-items: center;
+    color: #000000;
+  }
+
+  .doctorName {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 38px;
+    color: #000000;
+  }
+
+  .statsTop {
+    padding-top: 30px;
+  }
+
+  .doctorImage {
+    position: absolute;
+    right: -30px;
+    bottom: 0px;
+  }
+}

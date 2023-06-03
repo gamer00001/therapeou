@@ -1,0 +1,36 @@
+.upcomingContainer {
+  //   width: 334.26px;
+  height: 55.71px;
+  background: #f0f9fd;
+  border-radius: 10.2413px;
+  margin: 10px;
+
+  display: flex;
+  align-items: center;
+
+  .logoImg {
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 15px;
+  }
+
+  .appointmentTitle {
+    font-family: "Poppins" !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    // line-height: 25px;
+    color: #23262f;
+  }
+
+  .appointmentSubtitle {
+    font-family: "Poppins" !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 18px;
+
+    color: rgba(13, 13, 13, 0.6);
+  }
+}

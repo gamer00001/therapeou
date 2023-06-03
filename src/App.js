@@ -7,12 +7,31 @@ import Login from "./pages/Login";
 import GetInTouch from "./pages/GetInTouch";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Overview from "./pages/Overview";
+import AppointmentsPage from "./pages/Appointments";
+import Settings from "./pages/Settings";
+import LearningCourses from "./pages/LearningCourses";
 
 function App() {
   return (
     <>
       <Routes>
+        {/* Admin Routes */}
         <Route path="/admin/overview" exact element={<Overview />} />
+
+        <Route
+          path="/admin/appointments"
+          exact
+          element={<AppointmentsPage />}
+        />
+
+        <Route
+          path="/admin/learning-courses"
+          exact
+          element={<LearningCourses />}
+        />
+
+        <Route path="/admin/settings" exact element={<Settings />} />
+        {/* Public Routes */}
         <Route
           path="/terms-conditions"
           exact

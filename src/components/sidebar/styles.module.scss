@@ -17,26 +17,54 @@
   }
 }
 
+.siteLogo {
+  cursor: pointer;
+}
+
 .sideBar {
   grid-area: sidebar;
   width: inherit;
   // height: 85vh;
   scrollbar-width: thin; /* Firefox */
-  font-size: 14px;
+  font-size: 14px !important;
   background-color: #3c5671;
   display: flex;
   flex-direction: column;
-  padding: 0px 16px;
+  padding: 0px 10px;
   align-items: center;
   // overflow-x: auto;
+  cursor: pointer;
   @include verticalScroll();
 
+  & .cellActive {
+    background-color: rgba(0, 0, 255, 0.15);
+
+    // box-shadow: 0px 8px 30px 0px #c7c7c762;
+
+    & .icon .hover {
+      display: inherit;
+    }
+
+    & .icon .no-hover {
+      display: none;
+    }
+
+    & .side-title {
+      & p {
+        color: #fff;
+      }
+    }
+  }
+
   & .cellWrap {
-    width: 94%;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     border-radius: 15px;
+
+    padding-left: 15px;
+    margin-bottom: 10px;
 
     // background-color: #fff;
 
@@ -78,8 +106,9 @@
       }
 
       & .icon {
-        width: 30%;
+        // width: 30%;
         height: 100%;
+        padding-right: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -103,14 +132,15 @@
         font-family: "Poppins";
         font-style: normal;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 24px;
         /* identical to box height */
         color: #ffffff;
       }
     }
     & .cellActive {
-      background-color: #f31c23 !important;
+      background-color: rgba(0, 0, 255, 0.15);
+
       box-shadow: 0px 8px 30px 0px #c7c7c762;
 
       & .icon .hover {

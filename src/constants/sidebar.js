@@ -1,32 +1,32 @@
+import SettingsIcon from "../assets/settings-side-icon.png";
+
+import OverviewIcon from "../assets/overview-side-icon.png";
+import AppointmentIcon from "../assets/appointment-side-icon.png";
+import LearningIcon from "../assets/learning-side-icon.png";
+
 const panelSideBar = () => ({
   admin: [
     {
-      text: "Dashboard",
-      //   icon: (fill, width, height) => (
-      //     <DashboardIcon width={width} height={height} fill={fill} />
-      //   ),
-      path: "/admin/dashboard",
+      text: "Overview",
+      icon: (fill, width, height) => <img src={OverviewIcon} alt="icon" />,
+      path: "/admin/overview",
     },
     {
-      text: "Properties",
-      //   icon: (fill, width, height) => (
-      //     <PropertyIcon width={width} height={height} fill={fill} />
-      //   ),
-      path: "/admin/property",
-    },
-    {
-      text: "Appointments",
-      //   icon: (fill, width, height) => (
-      //     <AppointmentSidebarIcon width={width} height={height} fill={fill} />
-      //   ),
+      text: "My Appointments",
+      icon: (fill, width, height) => <img src={AppointmentIcon} alt="icon" />,
+
       path: "/admin/appointments",
     },
     {
-      text: "All Users",
-      //   icon: (fill, width, height) => (
-      //     <UsersIcon width={width} height={height} fill={fill} />
-      //   ),
-      path: "/admin/users",
+      text: "Learning Materials",
+      icon: (fill, width, height) => <img src={LearningIcon} alt="icon" />,
+
+      path: "/admin/learning-courses",
+    },
+    {
+      text: "Settings",
+      icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
+      path: "/admin/settings",
     },
   ],
 });
