@@ -107,12 +107,6 @@ const GetInTouch = () => {
               );
             })}
           </Grid>
-
-          {/* <Grid container>
-            <Grid item className={styles.mapView}>
-              <img className={styles.mapImage} src={MapImg} alt="map-view" />
-            </Grid>
-          </Grid> */}
         </Grid>
 
         <Grid item xs={3} className={styles.getInTouchRightSide}></Grid>

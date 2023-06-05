@@ -7,7 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
   return (
     <LoginRegisterForm
-      title="Sign In"
+      title="Welcome Back"
       actionText="Sign in"
       redirectText="Sign Up"
       fields={LoginFields}

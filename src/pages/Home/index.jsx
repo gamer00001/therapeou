@@ -323,7 +323,7 @@ const Home = () => {
           </Grid>
         </Container>
 
-        <Container
+        {/* <Container
           maxWidth={false}
           style={{
             backgroundColor: "#f8f8f8",
@@ -337,7 +337,7 @@ const Home = () => {
           <Grid container style={{ marginTop: "50px" }}>
             <GetInTouch />
           </Grid>
-        </Container>
+        </Container> */}
 
         <Container
           maxWidth={false}

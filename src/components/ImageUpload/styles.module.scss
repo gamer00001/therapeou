@@ -1,0 +1,45 @@
+.profile {
+  position: relative;
+  display: inline-block;
+}
+
+.profileImage {
+  display: block;
+  width: 150px; /* Adjust the width and height according to your image size */
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover; /* Maintain aspect ratio of the image */
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and transparency */
+  z-index: 1;
+  opacity: 0; /* Initially hide the overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.overlay i {
+  margin-top: -12px; /* Adjust the margin to vertically center the icon */
+}
+
+.profile:hover .overlay {
+  opacity: 1; /* Show the overlay on hover */
+}

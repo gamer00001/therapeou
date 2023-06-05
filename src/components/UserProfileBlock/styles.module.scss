@@ -1,0 +1,32 @@
+.logoContainer {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding-top: 60px;
+}
+
+.userName {
+  font-family: "Poppins" !important;
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 36px !important;
+  line-height: 0px;
+  display: flex;
+  align-items: center;
+  color: #121212 !important;
+}
+
+.userType {
+  font-family: "Poppins" !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  line-height: 30px;
+  color: #979ca5;
+  text-align: center;
+}
+
+.underLine {
+  margin-top: 30px;
+  border: 1px solid #979ca5 !important;
+}

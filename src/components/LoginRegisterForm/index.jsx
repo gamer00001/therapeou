@@ -6,7 +6,8 @@ import styles from "./style.module.css";
 
 import fbSocial from "../../assets/fb-social.png";
 import googleSocial from "../../assets/google-social.png";
-import Img from "../../assets/login-img.png";
+import LoginImg from "../../assets/login-img.png";
+import SignupImg from "../../assets/signup-img.png";
 
 import CButton from "../CButton";
 import SocialLinkButton from "../../components/SocialLinkButton";
@@ -18,12 +19,17 @@ const LoginRegisterForm = ({
   fields = [],
   redirectRoute = "login",
   actionHandler,
+  formType = "Login",
 }) => {
   const navigate = useNavigate();
   return (
     <Grid container justifyContent="center">
       <Grid item xs={4} className={styles.loginContainer}>
-        <img src={Img} className={styles.imgBackStyles} alt="login" />
+        <img
+          src={formType === "Sign Up" ? LoginImg : SignupImg}
+          className={styles.imgBackStyles}
+          alt="login"
+        />
       </Grid>
       <Grid item xs={8}>
         <Grid
@@ -36,7 +42,7 @@ const LoginRegisterForm = ({
           </Typography>
         </Grid>
 
-        <Grid container spacing={3} justifyContent="center">
+        {/* <Grid container spacing={3} justifyContent="center">
           <Grid item>
             <SocialLinkButton icon={googleSocial} text="Sign up with Google" />
           </Grid>
@@ -44,15 +50,15 @@ const LoginRegisterForm = ({
           <Grid item>
             <SocialLinkButton icon={fbSocial} text="Sign up with Facebook" />
           </Grid>
-        </Grid>
+        </Grid> */}
 
-        <Grid container justifyContent="center" style={{ padding: "60px 0px" }}>
+        {/* <Grid container justifyContent="center" style={{ padding: "60px 0px" }}>
           <Grid item>
             <Typography component="h4" className={styles.orText}>
               -OR-
             </Typography>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         {fields.map((item, index) => {
           return (

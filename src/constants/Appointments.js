@@ -1,6 +1,4 @@
-import React from "react";
-
-import Logo from "../assets/user-logo.png";
+import Logo from "../assets/aboutUs.png";
 
 export const AppointmentListMock = [
   {
@@ -45,5 +43,36 @@ export const AppointmentColors = [
   {
     textColor: "#F62088",
     backgroundColor: "rgba(246, 32, 136, 0.15)",
+  },
+];
+
+export const AppointmentsOrderInfo = [
+  {
+    orderId: "67687698",
+    orderDate: "June 24, 2022, 10:00 PM -  3:00 PM",
+    profileLogo: Logo,
+    name: "John Wick",
+    rating: 4.8,
+  },
+  {
+    orderId: "67687698",
+    orderDate: "June 24, 2022, 10:00 PM -  3:00 PM",
+    profileLogo: Logo,
+    name: "Tony Stark",
+    rating: 4.2,
+  },
+  {
+    orderId: "67687698",
+    orderDate: "June 24, 2022, 10:00 PM -  3:00 PM",
+    profileLogo: Logo,
+    name: "Micheal Clark",
+    rating: 3.7,
+  },
+  {
+    orderId: "67687698",
+    orderDate: "June 24, 2022, 10:00 PM -  3:00 PM",
+    profileLogo: Logo,
+    name: "John Smith",
+    rating: 3.3,
   },
 ];

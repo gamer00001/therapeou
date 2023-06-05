@@ -1,0 +1,65 @@
+.changePasswordContainer {
+  width: 448px;
+  //   height: 62px;
+  position: relative;
+
+  font-family: "Poppins" !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px !important;
+  line-height: 24px;
+  /* identical to box height */
+  text-align: start;
+  color: #000000;
+
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.profileFields {
+  width: 362px;
+  height: 62px;
+  padding-left: 20px;
+
+  background: #f8f8f8;
+  border-bottom: none !important;
+  border: 1px solid #f0f0f0 !important;
+}
+
+.profileFields::before {
+  border-bottom: none !important;
+}
+
+.changeTitle {
+  position: absolute;
+  top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  left: 20px;
+}
+
+.dropdownIcon {
+  position: absolute;
+  right: 15px;
+  top: 28px;
+  cursor: pointer;
+}
+
+.dropdownUpIcon {
+  position: absolute;
+  right: 35px;
+  cursor: pointer;
+}
+
+.btnBlock {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}

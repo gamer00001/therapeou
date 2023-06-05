@@ -25,3 +25,22 @@ code {
 .css-1e09ahn-MuiNativeSelect-select-MuiInputBase-input-MuiFilledInput-input {
   height: 50px;
 }
+.w-100 {
+  width: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.font-bold {
+  font-weight: 600 !important;
+}

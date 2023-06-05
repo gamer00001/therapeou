@@ -10,6 +10,7 @@ const Register = () => {
       redirectText="Log In"
       fields={RegisterFields}
       redirectRoute="login"
+      formType="Sign Up"
     />
   );
 };

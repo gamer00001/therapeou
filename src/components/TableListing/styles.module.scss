@@ -1,0 +1,43 @@
+.columnName {
+  font-family: Poppins !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px !important;
+  line-height: 30px;
+  /* identical to box height */
+
+  color: #94918a !important;
+}
+
+.columnValue {
+  font-family: Poppins !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px !important;
+  line-height: 26px;
+  color: #121212 !important;
+}
+
+.ratingImg {
+  display: flex !important;
+  align-items: center;
+  margin-top: 15px;
+  color: #ffc000 !important;
+  font-weight: 600 !important;
+}
+
+.viewBtn {
+  font-family: "Poppins" !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px !important;
+  line-height: 26px;
+  text-decoration-line: underline;
+  color: #3a526e !important;
+  width: 80px;
+}
+
+.ratingIcon {
+  width: 20px;
+  height: 20px;
+}

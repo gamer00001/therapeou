@@ -1,8 +1,115 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
+import { Grid, Input, Typography } from "@mui/material";
+import ImageUpload from "../../components/ImageUpload";
+import styles from "./styles.module.scss";
+import { RegisterFields } from "../../constants/LoginRegister";
+import CButton from "../../components/CButton";
+import ChangePassword from "../../components/ChangePassword";
+
+const INITIAL_STATE = {
+  profileImage: null,
+};
 
 const Settings = () => {
-  return <AdminLayoutView>Settings</AdminLayoutView>;
+  const [state, setState] = useState(INITIAL_STATE);
+
+  const inputReference = useRef(null);
+
+  const fileUploadAction = () => inputReference.current.click();
+
+  const fileUploadInputChange = (e) => {
+    let formData = new FormData();
+    let file = e.target?.files[0];
+    formData.append("images", file);
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        setState({
+          ...state,
+          profileImage: reader.result,
+        });
+      });
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  return (
+    <AdminLayoutView>
+      <Grid container>
+        <Grid item className="w-100">
+          <Grid container justifyContent="center">
+            <Grid item xs={12} className={"d-flex justify-center"}>
+              <ImageUpload
+                state={state}
+                inputReference={inputReference}
+                fileUploadAction={fileUploadAction}
+                fileUploadInputChange={fileUploadInputChange}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container justifyContent="center">
+            <Grid item xs={12} className={styles.imageContainer}>
+              <Typography component="div" className={styles.imageSubtitle}>
+                <span className={styles.requiredText}>*</span> The uploaded
+                image must be <br />
+                500px wide and 500px long
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            justifyContent="center"
+            style={{ paddingTop: "30px" }}
+          >
+            <Grid item xs={6} className="flex-column">
+              {RegisterFields.map((item, index) => {
+                return (
+                  <Grid
+                    container
+                    justifyContent="center"
+                    style={{ paddingTop: index === 0 ? "" : "40px" }}
+                  >
+                    <Grid item>
+                      <Input
+                        placeholder={item.placeholder}
+                        className={styles.profileFields}
+                      />
+                    </Grid>
+                  </Grid>
+                );
+              })}
+
+              <Grid
+                container
+                justifyContent="center"
+                style={{ marginTop: "40px", marginBottom: "40px" }}
+              >
+                <Grid item>
+                  <CButton
+                    title="Save Changes"
+                    type="submit"
+                    width="180px"
+                    borderRadius="20px"
+                    height="50px"
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid item xs={6} className={"flex-column"}>
+              <ChangePassword />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </AdminLayoutView>
+  );
 };
 
 export default Settings;
