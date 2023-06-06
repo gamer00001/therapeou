@@ -115,7 +115,7 @@ const AppointmentsPage = () => {
 
   return (
     <AdminLayoutView>
-      <Grid container>
+      <Grid container className={styles.mainContainer}>
         <Grid item xs={8}>
           {!viewAllCheck ? (
             <AppointmentLeftSection

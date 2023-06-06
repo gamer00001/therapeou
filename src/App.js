@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // import { history } from "./history";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -10,6 +10,7 @@ import Overview from "./pages/Overview";
 import AppointmentsPage from "./pages/Appointments";
 import Settings from "./pages/Settings";
 import LearningCourses from "./pages/LearningCourses";
+import TherapistProfilePage from "./pages/TherapistProfilePage";
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
       <Routes>
         {/* Admin Routes */}
         <Route path="/admin/overview" exact element={<Overview />} />
+        <Route
+          path="/admin/therapist-profile"
+          exact
+          element={<TherapistProfilePage />}
+        />
 
         <Route
           path="/admin/appointments"

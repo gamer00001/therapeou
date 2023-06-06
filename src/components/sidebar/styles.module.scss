@@ -1,6 +1,3 @@
-// @import "../../public/static/styles/scrolls.scss";
-// @import "../../public/static/styles/font.scss";
-
 @mixin verticalScroll() {
   &::-webkit-scrollbar {
     width: 5px;
@@ -60,7 +57,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     border-radius: 15px;
 
     padding-left: 15px;

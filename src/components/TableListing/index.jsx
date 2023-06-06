@@ -15,7 +15,7 @@ import RatingIcon from "../../assets/rating-star.png";
 import styles from "./styles.module.scss";
 import "./table.scss";
 
-export default function BasicTable() {
+export default function BasicTable({ handleViewBtn }) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -62,7 +62,11 @@ export default function BasicTable() {
               </TableCell>
 
               <TableCell className={styles.columnValue}>
-                <CButton title="View" customClassName={styles.viewBtn} />
+                <CButton
+                  title="View"
+                  customClassName={styles.viewBtn}
+                  onClick={handleViewBtn}
+                />
               </TableCell>
             </TableRow>
           ))}

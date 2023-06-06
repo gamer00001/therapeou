@@ -29,10 +29,8 @@
   align-items: center;
   padding: 16px 24px;
   gap: 10px;
-
   width: 99px;
   height: 36px;
-
   background: #3c5671 !important;
   border: 1px solid #3c5671 !important;
   border-radius: 6px;
@@ -46,4 +44,43 @@
   text-align: center;
 
   color: #ffffff;
+}
+
+.appointment-btn {
+  background: #ffffff !important;
+  border: 3px solid #3c5671 !important;
+  border-radius: 12px !important;
+
+  font-family: "Public Sans" !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 17px !important;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #3c5671 !important;
+}
+
+.chat-btn {
+  background: transparent !important;
+  border: 3px solid #ffffff !important;
+  border-radius: 12px !important;
+  font-family: "Public Sans" !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 17px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #ffffff !important;
+}
+
+.book-btn {
+  font-family: Source Serif Pro !important;
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 22px !important;
+  line-height: 28px;
+  color: #00084f !important;
+  text-transform: none !important;
+
+  background-color: #c8c8c8 !important;
 }

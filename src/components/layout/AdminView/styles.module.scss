@@ -63,8 +63,8 @@ p {
       @include verticalScroll();
 
       & .child {
-        width: 95%;
-        margin: 15px 0 15px 0;
+        width: 100%;
+        // margin: 15px 0 15px 0;
       }
     }
   }

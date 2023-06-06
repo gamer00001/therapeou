@@ -24,6 +24,14 @@ const CButton = ({
         return "submit-btn";
       case "offer":
         return "offer-btn";
+      case "appointment":
+        return "appointment-btn";
+
+      case "book":
+        return "book-btn";
+
+      case "chat":
+        return "chat-btn";
 
       default:
         return "default-btn-styles";

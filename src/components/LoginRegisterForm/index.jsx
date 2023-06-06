@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Input, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./style.module.css";
 
-import fbSocial from "../../assets/fb-social.png";
-import googleSocial from "../../assets/google-social.png";
 import LoginImg from "../../assets/login-img.png";
 import SignupImg from "../../assets/signup-img.png";
+import TherapistImg from "../../assets/therapist-icon.png";
+import PatientImg from "../../assets/patient-icon.png";
 
 import CButton from "../CButton";
-import SocialLinkButton from "../../components/SocialLinkButton";
+import AccountTypeBlock from "../AccountTypeBlock";
 
 const LoginRegisterForm = ({
   title = "Create Account",
@@ -21,7 +21,10 @@ const LoginRegisterForm = ({
   actionHandler,
   formType = "Login",
 }) => {
+  const [isPatient, setIsPatient] = useState(false);
+
   const navigate = useNavigate();
+
   return (
     <Grid container justifyContent="center">
       <Grid item xs={4} className={styles.loginContainer}>
@@ -32,10 +35,39 @@ const LoginRegisterForm = ({
         />
       </Grid>
       <Grid item xs={8}>
+        {formType !== "Login" && (
+          <Grid container className={styles.userTypeBlock}>
+            <Grid item>
+              <AccountTypeBlock
+                img={TherapistImg}
+                customStyles={{
+                  border: !isPatient
+                    ? "3px solid #3C5671"
+                    : "3px solid #000000",
+                }}
+                onClick={() => setIsPatient(false)}
+                text="I'm a therapist, looking for a patient"
+              />
+            </Grid>
+            <Grid item>
+              <AccountTypeBlock
+                img={PatientImg}
+                onClick={() => setIsPatient(true)}
+                customStyles={{
+                  border: isPatient ? "3px solid #3C5671" : "3px solid #000000",
+                }}
+                text="I'm a patient, searching for a therapist"
+              />
+            </Grid>
+          </Grid>
+        )}
+
         <Grid
           container
           justifyContent="center"
-          style={{ padding: "140px 320px 50px 320px" }}
+          style={{
+            padding: formType === "Login" ? "140px 320px 50px 320px" : "",
+          }}
         >
           <Typography component="h4" className={styles.registerTitle}>
             {title}

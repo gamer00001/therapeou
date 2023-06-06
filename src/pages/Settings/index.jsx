@@ -39,7 +39,7 @@ const Settings = () => {
 
   return (
     <AdminLayoutView>
-      <Grid container>
+      <Grid container className={styles.settingsContainer}>
         <Grid item className="w-100">
           <Grid container justifyContent="center">
             <Grid item xs={12} className={"d-flex justify-center"}>

@@ -1,0 +1,73 @@
+.leftSectionContainer {
+  padding: 40px 60px;
+  text-align: center;
+
+  .doctorName {
+    font-family: "Public Sans" !important;
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 26px !important;
+    line-height: 30px;
+    text-align: center;
+    color: #3c5671;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .doctorDescription {
+    font-family: "Public Sans" !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px !important;
+    line-height: 33px;
+    color: #5a5a5a;
+  }
+}
+
+.rightSectionContainer {
+  background-color: #456382;
+  height: 100%;
+  padding: 50px 40px;
+
+  .profileTitle {
+    font-family: "Public Sans" !important;
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 26px !important;
+    line-height: 33px;
+    color: #ffffff;
+    padding-top: 20px;
+  }
+
+  .doctorName {
+    font-family: "Public Sans" !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 52px;
+    color: #ffffff;
+  }
+
+  .speciality {
+    font-family: "Public Sans" !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 30px !important;
+    line-height: 38px;
+    color: #ffffff;
+  }
+
+  .btnList {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+  }
+
+  .specialityList {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+  }
+}

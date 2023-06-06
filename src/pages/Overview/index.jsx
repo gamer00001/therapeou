@@ -5,12 +5,19 @@ import BasicTable from "../../components/TableListing";
 
 import styles from "./styles.module.scss";
 import UserProfileBlock from "../../components/UserProfileBlock";
+import { useNavigate } from "react-router-dom";
 
 const Overview = () => {
+  const navigate = useNavigate();
+
+  const handleViewBtn = () => {
+    navigate("/admin/therapist-profile");
+  };
+
   return (
     <AdminLayoutView>
       <>
-        <Grid container>
+        <Grid container className={styles.container}>
           <Grid item className="w-100">
             <Grid container>
               <Grid item xs={8}>
@@ -25,7 +32,8 @@ const Overview = () => {
                 <Typography className={styles.suggestionHeading} component="h4">
                   Suggestion
                 </Typography>
-                <BasicTable />
+
+                <BasicTable handleViewBtn={handleViewBtn} />
               </Grid>
 
               <Grid item xs={4}>
