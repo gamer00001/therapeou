@@ -1,0 +1,167 @@
+.aboutUsTitle {
+  font-family: "Montserrat" !important;
+  font-style: normal;
+  font-weight: 700 !important;
+  font-size: 40px !important;
+  line-height: 114.5%;
+  text-align: center;
+  color: #1c1c1c;
+}
+
+.aboutUsSubtitle {
+  font-family: "Lato" !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px !important;
+  line-height: 142%;
+  text-align: center;
+  color: #545454;
+}
+
+.aboutUsTextContainer {
+  padding: 20px 300px;
+}
+
+.headingText {
+  font-family: "Lato" !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px !important;
+  line-height: 142%;
+  letter-spacing: 0.415em !important;
+  width: 163px;
+  height: 26px;
+  border: 0.5px solid #cecece;
+  text-transform: uppercase;
+  color: #1c1c1c;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.titleText {
+  font-family: "Montserrat" !important;
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 30px !important;
+  line-height: 130%;
+  color: #1c1c1c;
+  padding-top: 20px;
+}
+
+.descriptionText {
+  font-family: "Lato" !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px !important;
+  line-height: 142%;
+  color: #545454;
+  width: 443px;
+  padding-top: 20px;
+}
+
+.successBlockContainer {
+  padding: 30px 165px;
+}
+
+.therapistContainer {
+  width: 100%;
+  height: 502.67px;
+  background: #3a546e;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px !important;
+
+  .therapistTitle {
+    font-family: "Montserrat" !important;
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 50px !important;
+    line-height: 130%;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .therapistSubtitle {
+    font-family: "Montserrat" !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 19px !important;
+    line-height: 130%;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px 20%;
+  }
+}
+
+.topPattern {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.bottomPattern {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.valuesContainer {
+  padding: 50px 185px;
+  .valuesTitle {
+    font-family: "Montserrat" !important;
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 40px !important;
+    line-height: 114.5%;
+    color: #1c1c1c;
+  }
+
+  .valuesSideTitle {
+    font-family: "Lato" !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px !important;
+    line-height: 142%;
+    color: #545454;
+  }
+}
+
+.servicesContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  .servicesBlockContainer {
+    width: 264.67px;
+    // height: 327.85px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    padding-top: 30px;
+    padding: 20px 20px 60px 20px;
+  }
+
+  .servicesTitle {
+    font-family: "Montserrat" !important;
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 114.5%;
+    color: #1c1c1c;
+    padding-top: 10px;
+  }
+
+  .servicesSubtitle {
+    font-family: "Lato" !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px !important;
+    line-height: 142%;
+    text-align: center;
+    color: #545454;
+    padding-top: 10px;
+  }
+}

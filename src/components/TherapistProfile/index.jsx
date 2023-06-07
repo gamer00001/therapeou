@@ -6,6 +6,7 @@ import TherapistImg from "../../assets/doctor-img.png";
 
 import styles from "./styles.module.scss";
 import DoctorSpeciality from "../DoctorSpeciality";
+import { useNavigate } from "react-router-dom";
 
 const list = [
   "Psychotherapy",
@@ -29,6 +30,7 @@ const LeftSection = () => {
 };
 
 const RightSection = ({ handleBookAppointment }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <Typography className={styles.profileTitle} component="h3">
@@ -88,7 +90,12 @@ const RightSection = ({ handleBookAppointment }) => {
           title="Book An Appointment"
           onClick={handleBookAppointment}
         />
-        <CButton title="Chat Now" type="chat" width="50%" />
+        <CButton
+          title="Chat Now"
+          type="chat"
+          width="50%"
+          onClick={() => navigate("/admin/chat")}
+        />
       </Typography>
     </div>
   );

@@ -1,8 +1,6 @@
 import React from "react";
 import { Button, Container, Grid, Input } from "@mui/material";
-import Logo from "../../assets/logo.png";
-import { MENU_LINKS } from "../../constants/Menu";
-import MenuLink from "../../components/MenuLink";
+
 import mind from "../../assets/mind.png";
 import aboutUs from "../../assets/aboutUs.png";
 import { SERVICE_CONTENT } from "../../constants/Service";
@@ -15,72 +13,16 @@ import {
   CardContent,
   CardMedia,
 } from "@mui/material";
-import Footer from "../../components/Footer";
 
 import CButton from "../../components/CButton";
-import { useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
+import HomePageWrapper from "../../hoc/HomePageWrapper";
 
 const Home = () => {
-  const navigate = useNavigate();
   return (
     <div>
-      <>
-        <Container
-          maxWidth={false}
-          sx={{ backgroundColor: "#F8F8F8", paddingBottom: 7 }}
-        >
-          <Grid container direction="row" alignItems="center" spacing={3}>
-            <Grid item>
-              <img src={Logo} alt="logo" />
-            </Grid>
-            <Grid item xs={6}>
-              <Grid container spacing={2} direction="row">
-                {MENU_LINKS.map((item) => (
-                  <Grid
-                    item
-                    style={{
-                      paddingTop: 0,
-                      cursor: "pointer",
-                      pointerEvents: "auto",
-                    }}
-                  >
-                    <MenuLink name={item.name} link={item.route} />
-                  </Grid>
-                ))}
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Grid container spacing={2} direction="row">
-                <Grid item style={{ paddingTop: 0 }}>
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      borderRadius: 50,
-                      borderColor: "#3C5671",
-                      color: "#3C5671",
-                    }}
-                    onClick={() => navigate("/login")}
-                  >
-                    Sign In
-                  </Button>
-                </Grid>
-                <Grid item style={{ paddingTop: 0 }}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      borderRadius: 50,
-                      background: "#3C5671",
-                      borderColor: "#3C5671",
-                    }}
-                    onClick={() => navigate("/register")}
-                  >
-                    Sign Up
-                  </Button>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
+      <HomePageWrapper>
+        <Container maxWidth={false} sx={{ backgroundColor: "#F8F8F8" }}>
           <Grid container direction="row" alignItems="center" spacing={3}>
             <Grid item md={6}>
               <Typography ml={10} component="div">
@@ -338,21 +280,7 @@ const Home = () => {
             <GetInTouch />
           </Grid>
         </Container> */}
-
-        <Container
-          maxWidth={false}
-          style={{
-            backgroundColor: "#f8f8f8",
-            marginTop: 50,
-            paddingBottom: "60px",
-            paddingLeft: "150px",
-            paddingRight: "150px",
-            paddingTop: "60px",
-          }}
-        >
-          <Footer />
-        </Container>
-      </>
+      </HomePageWrapper>
     </div>
   );
 };

@@ -11,6 +11,8 @@ import AppointmentsPage from "./pages/Appointments";
 import Settings from "./pages/Settings";
 import LearningCourses from "./pages/LearningCourses";
 import TherapistProfilePage from "./pages/TherapistProfilePage";
+import Chat from "./pages/Chat";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           exact
           element={<TherapistProfilePage />}
         />
+        <Route path="/admin/chat" exact element={<Chat />} />
 
         <Route
           path="/admin/appointments"
@@ -43,6 +46,7 @@ function App() {
           exact
           element={<TermsAndConditions />}
         />
+        <Route path="/about-us" exact element={<AboutUs />} />
         <Route path="/get-in-touch" exact element={<GetInTouch />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/register" exact element={<Register />} />
