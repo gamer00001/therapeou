@@ -19,7 +19,10 @@ export const patientSignupApi = async (patientData) => {
 export const patientLoginApi = async (loginData) => {
   return await axios
     .post(
-      `${PatientLoginApiUrl}?email=${loginData.email}&password=${loginData.password}`
+      `${PatientLoginApiUrl}`,{
+        "email": `${loginData.email}`,
+        "password": `${loginData.password}`
+      }
     )
     .then((result) => {
       return result;
