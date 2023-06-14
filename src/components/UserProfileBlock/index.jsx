@@ -6,13 +6,14 @@ import styles from "./styles.module.scss";
 const UserProfileBlock = ({
   username = "Irfan Ahsan",
   userType = "Patient",
+  profileImage,
 }) => {
   return (
     <Grid container justifyContent="center">
       <Grid item>
         <img
           className={styles.logoContainer}
-          src={UserLogo}
+          src={profileImage ?? UserLogo}
           alt="user-avatar"
         />
         <Typography component="div">

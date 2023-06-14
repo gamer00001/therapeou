@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
 import { Grid, Input, Typography } from "@mui/material";
 import ImageUpload from "../../components/ImageUpload";
@@ -6,15 +6,29 @@ import styles from "./styles.module.scss";
 import { RegisterFields } from "../../constants/LoginRegister";
 import CButton from "../../components/CButton";
 import ChangePassword from "../../components/ChangePassword";
+import { getUserInfoFromStorage } from "../../utility/common-helper";
+import { patientUpdateInfoApi } from "../../api/patient-api";
 
 const INITIAL_STATE = {
-  profileImage: null,
+  image: null,
+  fullName: "",
+  email: "",
+  // password: "",
 };
 
 const Settings = () => {
   const [state, setState] = useState(INITIAL_STATE);
 
   const inputReference = useRef(null);
+
+  useEffect(() => {
+    let userData = getUserInfoFromStorage();
+    setState({
+      ...state,
+      ...userData,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fileUploadAction = () => inputReference.current.click();
 
@@ -29,12 +43,30 @@ const Settings = () => {
       reader.addEventListener("load", function () {
         setState({
           ...state,
-          profileImage: reader.result,
+          image: reader.result,
         });
       });
 
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleSaveUserInfo = async () => {
+    let updatedData = { ...state };
+    let resp = await patientUpdateInfoApi(state?.id, updatedData);
+
+    let userInfo = resp?.data;
+
+    delete userInfo?.password;
+
+    localStorage.setItem("userInfo", userInfo);
+  };
+
+  const handleFieldChange = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -77,8 +109,11 @@ const Settings = () => {
                   >
                     <Grid item>
                       <Input
+                        name={item.fieldName}
+                        value={state[item.fieldName]}
                         placeholder={item.placeholder}
                         className={styles.profileFields}
+                        onChange={handleFieldChange}
                       />
                     </Grid>
                   </Grid>
@@ -97,6 +132,7 @@ const Settings = () => {
                     width="180px"
                     borderRadius="20px"
                     height="50px"
+                    onClick={handleSaveUserInfo}
                   />
                 </Grid>
               </Grid>

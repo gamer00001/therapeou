@@ -14,6 +14,7 @@ import AppointmentOrderBlock from "../../components/AppointmentOrderBlock";
 
 import styles from "./styles.module.scss";
 import "./tabs.scss";
+import AdminNavbar from "../../components/AdminNavbar";
 
 const AppointmentLeftSection = ({ viewAllCheck, setViewAllCheck }) => {
   return (
@@ -115,6 +116,11 @@ const AppointmentsPage = () => {
 
   return (
     <AdminLayoutView>
+      <Grid container>
+        <Grid item className="w-100">
+          <AdminNavbar />
+        </Grid>
+      </Grid>
       <Grid container className={styles.mainContainer}>
         <Grid item xs={8}>
           {!viewAllCheck ? (

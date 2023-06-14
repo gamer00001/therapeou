@@ -6,6 +6,7 @@ const CButton = ({
   type = "",
   title,
   onClick,
+  formType,
   width = "",
   height = "",
   icon,
@@ -40,6 +41,7 @@ const CButton = ({
   return (
     // <div className={`custom-button-container`} style={customContainerStyles}>
     <Button
+      type={formType}
       style={{
         width: width ?? "",
         height: height ?? "",

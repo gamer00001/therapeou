@@ -157,6 +157,18 @@
     }
   }
 }
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  position: absolute;
+  bottom: 40px;
+  left: 30px;
+}
+
 @media screen and (min-width: 1450px) {
   .sideBar .cellWrap .cell .sideTitle {
     font-size: 18px;

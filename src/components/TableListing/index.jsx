@@ -11,11 +11,12 @@ import { DoctorsListingMock } from "../../constants/Overview";
 import CButton from "../CButton";
 
 import RatingIcon from "../../assets/rating-star.png";
+import ProfileIcon from "../../assets/aboutUs.png";
 
 import styles from "./styles.module.scss";
 import "./table.scss";
 
-export default function BasicTable({ handleViewBtn }) {
+export default function BasicTable({ listing, handleViewBtn }) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -31,7 +32,7 @@ export default function BasicTable({ handleViewBtn }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {DoctorsListingMock.map((row) => (
+          {listing.map((row) => (
             <TableRow
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -41,7 +42,15 @@ export default function BasicTable({ handleViewBtn }) {
                 component="th"
                 scope="row"
               >
-                {row.name}
+                <div className={styles.profileIconBlock}>
+                  <img
+                    src={row?.profileImage ?? ProfileIcon}
+                    alt="rating-icon"
+                    className={styles.profileIcon}
+                  />
+
+                  {row.name}
+                </div>
               </TableCell>
 
               <TableCell className={styles.columnValue}>{row.status}</TableCell>

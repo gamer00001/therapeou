@@ -10,8 +10,6 @@ const ImageUpload = ({
   fileUploadAction,
   inputReference,
 }) => {
-  console.log({ state });
-
   return (
     <div className={styles.profile} onClick={fileUploadAction}>
       <input
@@ -24,7 +22,7 @@ const ImageUpload = ({
       />
       <img
         className={styles.profileImage}
-        src={state.profileImage ?? ImagePlaceholder}
+        src={state.image ?? ImagePlaceholder}
         alt="placeholder"
       />
       <div className={styles.overlay}>

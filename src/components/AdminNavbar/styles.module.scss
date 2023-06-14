@@ -1,0 +1,64 @@
+.navContainer {
+  padding: 30px 40px;
+  width: 100%;
+
+  .searchField {
+    width: 607.41px;
+    height: 50.32px;
+    padding-left: 15px;
+
+    background: #e5e5e5;
+    border-radius: 16.3861px;
+  }
+
+  .searchField::before {
+    border-bottom: none !important;
+  }
+
+  .searchField::after {
+    border-bottom: none !important;
+  }
+
+  .notificationIcon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+
+  .profileContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+.profileBlockContainer {
+  //   width: 126.69px;
+  height: 50.32px;
+  border: 1.02413px solid #d9d9d9;
+  border-radius: 16.3861px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  gap: 10px;
+  cursor: pointer;
+
+  .profileLogo {
+    width: 32.35px;
+    height: 32.35px;
+    border-radius: 50%;
+  }
+
+  .userName {
+    font-family: "Poppins" !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 16.3861px;
+    line-height: 25px;
+    color: #23262f;
+  }
+}

@@ -3,7 +3,7 @@ import Sidebar from "../../sidebar";
 
 import styles from "./styles.module.scss";
 
-const AdminLayoutView = ({ children, accessToken, signOutUser }) => {
+const AdminLayoutView = ({ children, accessToken }) => {
   return (
     <div className={styles.adminContainer}>
       <Sidebar accessToken={accessToken} />

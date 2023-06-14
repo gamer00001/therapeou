@@ -8,12 +8,14 @@
   font-weight: 600;
   font-size: 48px !important;
   line-height: 72px;
-  /* identical to box height */
-
   color: #000000;
-
   padding-top: 30px;
   padding-left: 10px;
+  padding-bottom: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .overviewSubtitle {
@@ -37,4 +39,39 @@
   color: #121212;
   padding-left: 14px;
   padding-bottom: 10px;
+}
+
+.noDataFound {
+  font-size: 24px !important;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.searchTherapistField {
+  width: 356px;
+  height: 45px;
+  padding-left: 15px;
+  background: #ffffff;
+  border-radius: 65px;
+}
+
+.searchTherapistField::before {
+  border-bottom: none !important;
+}
+
+.searchTherapistField::after {
+  border-bottom: none !important;
+}
+
+.fieldBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.notificationIcon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
 }

@@ -9,6 +9,8 @@ import styles from "./styles.module.scss";
 import { Typography } from "@mui/material";
 
 import Logo from "../../assets/admin-logo.png";
+import LogoutLogo from "../../assets/logout-icon.png";
+import { logoutUser } from "../../utility/common-helper";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -26,7 +28,6 @@ const Sidebar = () => {
           alt="logo"
           onClick={() => navigate("/")}
         />
-        {/* <span className={styles.logoName}>Therapeou</span> */}
       </Typography>
 
       {dynamicMenu &&
@@ -49,6 +50,18 @@ const Sidebar = () => {
             </div>
           </div>
         ))}
+
+      <Typography
+        className={styles.logout}
+        component="div"
+        onClick={() => {
+          logoutUser();
+          navigate("/");
+        }}
+      >
+        <img src={LogoutLogo} alt="logout" />
+        Logout
+      </Typography>
     </div>
   );
 };
