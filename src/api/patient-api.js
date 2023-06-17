@@ -2,6 +2,7 @@ import {
   PatientLoginApiUrl,
   PatientSignUpApiUrl,
   PatientUpdateApiUrl,
+  PatientChangePasswordApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -35,6 +36,17 @@ export const patientLoginApi = async (loginData) => {
 export const patientUpdateInfoApi = async (id, data) => {
   return await axios
     .put(`${PatientUpdateApiUrl}/${id}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const patientChangePasswordApi = async (data) => {
+  return await axios
+    .post(`${PatientChangePasswordApiUrl}`, data)
     .then((result) => {
       return result;
     })

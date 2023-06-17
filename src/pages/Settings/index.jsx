@@ -8,6 +8,8 @@ import CButton from "../../components/CButton";
 import ChangePassword from "../../components/ChangePassword";
 import { getUserInfoFromStorage } from "../../utility/common-helper";
 import { patientUpdateInfoApi } from "../../api/patient-api";
+import Loader from "../../components/Loader";
+
 
 const INITIAL_STATE = {
   image: null,
@@ -18,6 +20,7 @@ const INITIAL_STATE = {
 
 const Settings = () => {
   const [state, setState] = useState(INITIAL_STATE);
+  const [isLoading, setIsLoading] = useState(false)
 
   const inputReference = useRef(null);
 
@@ -71,6 +74,7 @@ const Settings = () => {
 
   return (
     <AdminLayoutView>
+       {isLoading && <Loader isShow={isLoading} />}
       <Grid container className={styles.settingsContainer}>
         <Grid item className="w-100">
           <Grid container justifyContent="center">
@@ -114,6 +118,7 @@ const Settings = () => {
                         placeholder={item.placeholder}
                         className={styles.profileFields}
                         onChange={handleFieldChange}
+                        disabled={item.fieldName === "email"}
                       />
                     </Grid>
                   </Grid>
@@ -139,7 +144,7 @@ const Settings = () => {
             </Grid>
 
             <Grid item xs={6} className={"flex-column"}>
-              <ChangePassword />
+              <ChangePassword  email={state.email} setIsLoading={setIsLoading}/>
             </Grid>
           </Grid>
         </Grid>

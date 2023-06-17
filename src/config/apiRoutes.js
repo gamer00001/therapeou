@@ -10,6 +10,7 @@ export const PatientLoginApiUrl = `${PatientBaseUrl}/login`;
 export const PatientInfoGetApiUrl = `${PatientBaseUrl}/get`;
 export const PatientInfoGetAllApiUrl = `${PatientBaseUrl}/get-all`;
 export const PatientUpdateApiUrl = `${PatientBaseUrl}/update`;
+export const PatientChangePasswordApiUrl = `${PatientBaseUrl}/change-password`;
 
 export const TherapistSignUpApiUrl = `${TherapistBaseUrl}/signup`;
 export const TherapistLoginApiUrl = `${TherapistBaseUrl}/login`;

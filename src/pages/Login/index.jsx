@@ -16,7 +16,7 @@ const Login = () => {
   const [state, setState] = useState({
     initialValues,
     isLoading: false,
-    isPatient: false,
+    isPatient: true,
   });
 
   const navigate = useNavigate();

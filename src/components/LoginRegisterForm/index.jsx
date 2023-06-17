@@ -68,7 +68,7 @@ const LoginRegisterForm = ({
           <Grid item>
             <AccountTypeBlock
               img={TherapistImg}
-              isPatient={isPatient}
+              isPatient={!isPatient}
               customStyles={{
                 border: !isPatient ? "3px solid #3C5671" : "3px solid #000000",
               }}
@@ -79,7 +79,7 @@ const LoginRegisterForm = ({
           <Grid item>
             <AccountTypeBlock
               img={PatientImg}
-              isPatient={!isPatient}
+              isPatient={isPatient}
               onClick={() => setIsPatient(true)}
               customStyles={{
                 border: isPatient ? "3px solid #3C5671" : "3px solid #000000",
