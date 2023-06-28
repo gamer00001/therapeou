@@ -6,6 +6,7 @@ import InstagramIcon from "../../assets/instagram.png";
 
 import styles from "./style.module.css";
 import { FooterLinks } from "../../constants/Home";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -54,6 +55,8 @@ const Footer = () => {
 export default Footer;
 
 const HighLight = ({ titles }) => {
+  const navigate = useNavigate();
+
   return (
     <Grid container spacing={2} direction="column">
       {titles.map((item) => {
@@ -63,6 +66,7 @@ const HighLight = ({ titles }) => {
               className={styles.listSubtitle}
               variant="h4"
               component="h4"
+              onClick={() => navigate(item.goTo)}
             >
               {item.title}
             </Typography>

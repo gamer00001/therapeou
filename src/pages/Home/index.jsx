@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Container, Grid, Input } from "@mui/material";
+import React, { useEffect } from "react";
+import { Button, Container, Grid } from "@mui/material";
 
 import mind from "../../assets/mind.png";
 import aboutUs from "../../assets/aboutUs.png";
@@ -14,11 +14,20 @@ import {
   CardMedia,
 } from "@mui/material";
 
-import CButton from "../../components/CButton";
-import styles from "./style.module.css";
+// import CButton from "../../components/CButton";
+// import styles from "./style.module.css";
 import HomePageWrapper from "../../hoc/HomePageWrapper";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
   return (
     <div>
       <HomePageWrapper>
@@ -36,9 +45,12 @@ const Home = () => {
                   Create a positive change in your life with therapy that
                   focuses on your individual strengths and values.
                 </Typography>
-                <Button variant="contained" sx={{ backgroundColor: "#3C5671" }}>
-                  {" "}
-                  Book an Appointment{" "}
+                <Button
+                  variant="contained"
+                  sx={{ backgroundColor: "#3C5671" }}
+                  onClick={() => navigate("/login")}
+                >
+                  Book an Appointment
                 </Button>
               </Typography>
             </Grid>
@@ -287,61 +299,61 @@ const Home = () => {
 
 export default Home;
 
-const GetInTouch = () => {
-  return (
-    <Grid container className={styles.getInTouchContainer}>
-      <Grid item xs={12} md={12} className={styles.innerContainer}>
-        <Typography className={styles.textTitle} component="h3">
-          LETS GET IN TOUCH
-        </Typography>
+// const GetInTouch = () => {
+//   return (
+//     <Grid container className={styles.getInTouchContainer}>
+//       <Grid item xs={12} md={12} className={styles.innerContainer}>
+//         <Typography className={styles.textTitle} component="h3">
+//           LETS GET IN TOUCH
+//         </Typography>
 
-        <Typography className={styles.textSubtitle} component="h3">
-          Have something to say! Our team is all ears
-        </Typography>
+//         <Typography className={styles.textSubtitle} component="h3">
+//           Have something to say! Our team is all ears
+//         </Typography>
 
-        <Grid container alignItems="center" style={{ paddingTop: "20px" }}>
-          <Grid item xs={6} className={styles.firstInputRow}>
-            <Input
-              placeholder="Enter Your Name"
-              className={styles.inputField}
-            />
-          </Grid>
+//         <Grid container alignItems="center" style={{ paddingTop: "20px" }}>
+//           <Grid item xs={6} className={styles.firstInputRow}>
+//             <Input
+//               placeholder="Enter Your Name"
+//               className={styles.inputField}
+//             />
+//           </Grid>
 
-          <Grid item xs={6}>
-            <Input
-              placeholder="Enter your email address"
-              className={styles.inputField}
-            />
-          </Grid>
-        </Grid>
+//           <Grid item xs={6}>
+//             <Input
+//               placeholder="Enter your email address"
+//               className={styles.inputField}
+//             />
+//           </Grid>
+//         </Grid>
 
-        <Grid
-          container
-          alignItems="center"
-          justifyContent="center"
-          style={{ paddingTop: "20px" }}
-        >
-          <Grid
-            item
-            xs={12}
-            justifyContent="center"
-            className={styles.firstInputRow}
-          >
-            <Input
-              placeholder="Kindly tell how can we help you"
-              className={styles.inputFieldTextArea}
-              multiline
-              rows={3}
-            />
-          </Grid>
-        </Grid>
+//         <Grid
+//           container
+//           alignItems="center"
+//           justifyContent="center"
+//           style={{ paddingTop: "20px" }}
+//         >
+//           <Grid
+//             item
+//             xs={12}
+//             justifyContent="center"
+//             className={styles.firstInputRow}
+//           >
+//             <Input
+//               placeholder="Kindly tell how can we help you"
+//               className={styles.inputFieldTextArea}
+//               multiline
+//               rows={3}
+//             />
+//           </Grid>
+//         </Grid>
 
-        <Grid container justifyContent="center">
-          <Grid item style={{ paddingTop: "20px" }}>
-            <CButton type="Submit" title="Submit" />
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
-  );
-};
+//         <Grid container justifyContent="center">
+//           <Grid item style={{ paddingTop: "20px" }}>
+//             <CButton type="Submit" title="Submit" />
+//           </Grid>
+//         </Grid>
+//       </Grid>
+//     </Grid>
+//   );
+// };

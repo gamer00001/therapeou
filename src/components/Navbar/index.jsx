@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 import CButton from "../CButton";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ loginRegisterCheck = true }) => {
   const navigate = useNavigate();
 
   return (
@@ -20,7 +20,7 @@ const Navbar = () => {
         sx={{ backgroundColor: "#F8F8F8" }}
       >
         <Grid item xs={3}>
-          <img src={Logo} alt="logo" />
+          <img src={Logo} alt="logo" onClick={() => navigate("/")} />
         </Grid>
         <Grid item xs={6}>
           <Grid spacing={2} direction="row" className={styles.menuLinks}>
@@ -38,26 +38,28 @@ const Navbar = () => {
             ))}
           </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <Grid spacing={2} direction="row" className={styles.menuLinks}>
-            <Grid item style={{ paddingTop: 0 }}>
-              <CButton
-                title="Sign In"
-                type="submit"
-                borderRadius="20px"
-                onClick={() => navigate("/login")}
-              />
-            </Grid>
-            <Grid item style={{ paddingTop: 0 }}>
-              <CButton
-                title="Sign Up"
-                type="decline"
-                borderRadius="20px"
-                onClick={() => navigate("/register")}
-              />
+        {loginRegisterCheck && (
+          <Grid item xs={3}>
+            <Grid spacing={2} direction="row" className={styles.menuLinks}>
+              <Grid item style={{ paddingTop: 0 }}>
+                <CButton
+                  title="Sign In"
+                  type="submit"
+                  borderRadius="20px"
+                  onClick={() => navigate("/login")}
+                />
+              </Grid>
+              <Grid item style={{ paddingTop: 0 }}>
+                <CButton
+                  title="Sign Up"
+                  type="decline"
+                  borderRadius="20px"
+                  onClick={() => navigate("/register")}
+                />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        )}
       </Grid>
     </>
   );

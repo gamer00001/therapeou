@@ -7,64 +7,18 @@ export const FooterLinks = [
         goTo: "/",
       },
       {
-        title: "Company",
-        goTo: "/",
+        title: "About Us",
+        goTo: "/about-us",
       },
 
-      {
-        title: "Services",
-        goTo: "/",
-      },
-
-      {
-        title: "Contact",
-        goTo: "/",
-      },
-    ],
-  },
-  {
-    heading: "Products",
-    titles: [
-      {
-        title: "Home",
-        goTo: "/",
-      },
       {
         title: "Company",
         goTo: "/",
       },
 
       {
-        title: "Services",
-        goTo: "/",
-      },
-
-      {
         title: "Contact",
-        goTo: "/",
-      },
-    ],
-  },
-  {
-    heading: "Resources",
-    titles: [
-      {
-        title: "Blog",
-        goTo: "/",
-      },
-      {
-        title: "404",
-        goTo: "/",
-      },
-
-      {
-        title: "Services",
-        goTo: "/",
-      },
-
-      {
-        title: "Contact",
-        goTo: "/",
+        goTo: "/get-in-touch",
       },
     ],
   },

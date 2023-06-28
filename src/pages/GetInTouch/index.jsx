@@ -1,14 +1,21 @@
 import React from "react";
-import { Grid, Input, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Grid,
+  Input,
+  Typography,
+} from "@mui/material";
 import styles from "./style.module.css";
 import CButton from "../../components/CButton";
-import { ContactInfo } from "../../constants/GetInTouch";
-// import MapImg from "../../assets/map-view.png";
+import { ContactInfo, FAQsMock } from "../../constants/GetInTouch";
+import HomePageWrapper from "../../hoc/HomePageWrapper";
 
 const GetInTouch = () => {
   return (
-    <>
-      <Grid container style={{ height: "100vh" }}>
+    <HomePageWrapper>
+      <Grid container style={{ height: "100%" }}>
         <Grid item xs={9}>
           <Grid
             container
@@ -31,16 +38,6 @@ const GetInTouch = () => {
           <Grid
             container
             className={styles.container}
-            style={{ paddingTop: "50px" }}
-          >
-            <Grid item>
-              <Input placeholder="Name" className={styles.inputField} />
-            </Grid>
-          </Grid>
-
-          <Grid
-            container
-            className={styles.container}
             style={{ paddingTop: "20px" }}
           >
             <Grid item>
@@ -55,21 +52,9 @@ const GetInTouch = () => {
           >
             <Grid item>
               <Input
-                type="number"
-                placeholder="Phone Number"
-                className={styles.inputField}
-              />
-            </Grid>
-          </Grid>
-
-          <Grid
-            container
-            className={styles.container}
-            style={{ paddingTop: "20px" }}
-          >
-            <Grid item>
-              <Input
-                placeholder="How did you find us?"
+                placeholder="Message"
+                type="text"
+                multiline
                 className={styles.inputField}
               />
             </Grid>
@@ -107,12 +92,54 @@ const GetInTouch = () => {
               );
             })}
           </Grid>
+
+          <Grid container>
+            <Grid item>
+              <AccordianBlock />
+            </Grid>
+          </Grid>
         </Grid>
 
         <Grid item xs={3} className={styles.getInTouchRightSide}></Grid>
       </Grid>
-    </>
+    </HomePageWrapper>
   );
 };
 
 export default GetInTouch;
+
+const AccordianBlock = () => {
+  const [expanded, setExpanded] = React.useState("0");
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
+
+  return (
+    <div className={styles.accordianBlockContainer}>
+      <Typography component="h4" className={styles.faqsTitle}>
+        FAQ's
+      </Typography>
+      {FAQsMock.map((item) => {
+        return (
+          <Accordion
+            className={styles.accordianMain}
+            expanded={expanded === item.type}
+            onChange={handleChange(item.type)}
+          >
+            <AccordionSummary
+              className={styles.accordianSummary}
+              aria-controls="panel1d-content"
+              id="panel1d-header"
+            >
+              <Typography>{item?.title}</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={styles.accordianSummary}>
+              <Typography>{item.subtitle}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
+    </div>
+  );
+};

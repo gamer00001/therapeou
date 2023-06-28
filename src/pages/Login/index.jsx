@@ -6,10 +6,12 @@ import { patientLoginApi } from "../../api/patient-api";
 import { therapistLoginApi } from "../../api/therapist-api";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
+import Navbar from "../../components/Navbar";
 
 const initialValues = {
   email: "",
   password: "",
+  type: "patient",
 };
 
 const Login = () => {
@@ -35,7 +37,7 @@ const Login = () => {
     }));
 
     let apiToHit;
-    if (state?.isPatient) {
+    if (data?.type === "patient") {
       apiToHit = patientLoginApi;
     } else {
       apiToHit = therapistLoginApi;
@@ -57,7 +59,6 @@ const Login = () => {
     } else {
       return toast.error("Invalid Email or Password.");
     }
-
   };
 
   useEffect(() => {
@@ -68,6 +69,8 @@ const Login = () => {
   return (
     <>
       {state.isLoading && <Loader isShow={state.isLoading} />}
+      <Navbar loginRegisterCheck={false} />
+
       <LoginRegisterForm
         state={state}
         initialValues={state.initialValues}
@@ -76,9 +79,7 @@ const Login = () => {
         redirectText="Sign Up"
         fields={LoginFields}
         redirectRoute="register"
-        isPatient={state.isPatient}
         handleSubmit={handleSubmit}
-        setIsPatient={() => setState({ ...state, isPatient: !state.isPatient })}
         actionHandler={() => navigate("/admin/overview")}
       />
     </>

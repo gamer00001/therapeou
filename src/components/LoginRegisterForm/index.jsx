@@ -6,11 +6,11 @@ import styles from "./style.module.css";
 
 import LoginImg from "../../assets/login-img.png";
 import SignupImg from "../../assets/signup-img.png";
-import TherapistImg from "../../assets/therapist-icon.png";
-import PatientImg from "../../assets/patient-icon.png";
+// import TherapistImg from "../../assets/therapist-icon.png";
+// import PatientImg from "../../assets/patient-icon.png";
 
 import CButton from "../CButton";
-import AccountTypeBlock from "../AccountTypeBlock";
+// import AccountTypeBlock from "../AccountTypeBlock";
 
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -51,20 +51,13 @@ const LoginRegisterForm = ({
         />
       </Grid>
       <Grid item xs={8}>
-        <Grid
-          container
-          justifyContent="center"
-          // style={{
-          //   padding: formType === "Login" ? "140px 320px 50px 320px" : "",
-          // }}
-        >
+        <Grid container justifyContent="center">
           <Typography component="h4" className={styles.registerTitle}>
             {title}
           </Typography>
         </Grid>
 
-        {/* {formType !== "Login" && ( */}
-        <Grid container className={styles.userTypeBlock}>
+        {/* <Grid container className={styles.userTypeBlock}>
           <Grid item>
             <AccountTypeBlock
               img={TherapistImg}
@@ -87,8 +80,7 @@ const LoginRegisterForm = ({
               text="I'm a patient, searching for a therapist"
             />
           </Grid>
-        </Grid>
-        {/* )} */}
+        </Grid> */}
 
         <Grid container justifyContent="center">
           <Formik
@@ -109,25 +101,44 @@ const LoginRegisterForm = ({
                       className={styles.formGroupContainer}
                       key={index}
                     >
-                      <Field
-                        // as="textarea"
-                        name={item.fieldName}
-                        type={item.type}
-                        label={item.placeholder}
-                        onChange={handleChange}
-                        placeholder={item.placeholder}
-                        // className={styles.registerFields}
-                        className={`${styles.registerFields} form-control ${
-                          errors[item.fieldName] &&
-                          touched[item.fieldName] &&
-                          `${styles.isInvalid}`
-                        }`}
-                      />
-                      <ErrorMessage
-                        name={item.fieldName}
-                        component="div"
-                        className={styles.errorMessage}
-                      />
+                      {item.type === "dropdown" ? (
+                        <>
+                          <Field
+                            name="type"
+                            as="select"
+                            placeholder={item.placeholder}
+                            onChange={handleChange}
+                            className={`${styles.registerFields} form-control ${
+                              errors[item.fieldName] &&
+                              touched[item.fieldName] &&
+                              `${styles.isInvalid}`
+                            }`}
+                          >
+                            <option value="patient">Patient</option>
+                            <option value="therapist">Therapist</option>
+                          </Field>
+                        </>
+                      ) : (
+                        <>
+                          <Field
+                            name={item.fieldName}
+                            type={item.type}
+                            label={item.placeholder}
+                            onChange={handleChange}
+                            placeholder={item.placeholder}
+                            className={`${styles.registerFields} form-control ${
+                              errors[item.fieldName] &&
+                              touched[item.fieldName] &&
+                              `${styles.isInvalid}`
+                            }`}
+                          />
+                          <ErrorMessage
+                            name={item.fieldName}
+                            component="div"
+                            className={styles.errorMessage}
+                          />
+                        </>
+                      )}
                     </Grid>
                   ))}
                   <Grid

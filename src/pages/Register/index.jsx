@@ -7,11 +7,13 @@ import { prepareApiDataForRegistration } from "../../data-parsers/user-registrat
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
+import Navbar from "../../components/Navbar";
 
 const initialValues = {
   name: "",
   email: "",
   password: "",
+  type: "patient",
 };
 
 const Register = () => {
@@ -37,7 +39,7 @@ const Register = () => {
     }));
 
     let apiToCall;
-    if (state.isPatient) {
+    if (data?.type === "patient") {
       apiToCall = patientSignupApi;
     } else {
       apiToCall = therapistSignupApi;
@@ -77,6 +79,8 @@ const Register = () => {
   return (
     <>
       {state.loading && <Loader />}
+      <Navbar loginRegisterCheck={false} />
+
       <LoginRegisterForm
         state={state}
         title="Create Account"

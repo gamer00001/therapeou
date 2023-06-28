@@ -31,3 +31,13 @@
   margin-top: 30px;
   border: 1px solid #979ca5 !important;
 }
+
+@media screen and (max-width: 1300px) {
+  .userName {
+    font-size: 26px !important;
+  }
+
+  .userType {
+    font-size: 18px !important;
+  }
+}
