@@ -48,3 +48,12 @@ code {
 .font-bold {
   font-weight: 600 !important;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.messageSendField .MuiInputBase-root {
+  border-radius: 10px;
+  border: 1px solid #a5a6f6 !important;
+}

@@ -9,6 +9,10 @@ import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar";
 
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase";
+
 const initialValues = {
   name: "",
   email: "",
@@ -30,6 +34,35 @@ const Register = () => {
       handleUserRegisteration(values);
       setSubmitting(false);
     }, 500);
+  };
+
+  const handleFirebaseAction = async (data) => {
+    try {
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      console.log({ res }, data);
+
+      //Update profile
+      await updateProfile(res.user, {
+        displayName: data.fullName,
+      });
+
+      await setDoc(doc(db, "users", res.user.uid), {
+        uid: res.user.uid,
+        displayName: data.fullName,
+        email: data.email,
+      });
+
+      await setDoc(doc(db, "userChats", res.user.uid), {});
+    } catch (err) {
+      console.log({ err });
+    }
+
+    return;
   };
 
   const handleUserRegisteration = async (data) => {
@@ -60,6 +93,8 @@ const Register = () => {
     if (signupResposne?.status === 201) {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+      await handleFirebaseAction(data);
 
       setTimeout(() => {
         navigate("/admin/overview");

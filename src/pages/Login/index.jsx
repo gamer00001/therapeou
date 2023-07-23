@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 import LoginRegisterForm from "../../components/LoginRegisterForm";
 import { LoginFields } from "../../constants/LoginRegister";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +9,7 @@ import { therapistLoginApi } from "../../api/therapist-api";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import Navbar from "../../components/Navbar";
+import { auth } from "../../firebase";
 
 const initialValues = {
   email: "",
@@ -55,6 +58,14 @@ const Login = () => {
       delete userInfo.password;
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+      try {
+        await signInWithEmailAndPassword(auth, data.email, data.password);
+        navigate("/");
+      } catch (err) {
+        console.log(err);
+      }
+
       navigate("/admin/overview");
     } else {
       return toast.error("Invalid Email or Password.");

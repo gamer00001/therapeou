@@ -43,7 +43,8 @@
 
     &:hover {
       background: #ffffff;
-      border: 2px solid #dfe0eb;
+      // border: 2px solid #dfe0eb;
+      box-shadow: 0 0 0 2px #dfe0eb;
       border-radius: 10px;
       box-sizing: border-box;
     }
@@ -60,6 +61,8 @@
       font-size: 14px !important;
       line-height: 16px;
       color: #000000;
+      display: flex;
+      align-items: center;
     }
 
     .nameImgBlock {
