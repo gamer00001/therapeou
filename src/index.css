@@ -57,3 +57,7 @@ code {
   border-radius: 10px;
   border: 1px solid #a5a6f6 !important;
 }
+
+.pb-12 {
+  padding-bottom: 12px;
+}

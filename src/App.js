@@ -15,6 +15,10 @@ import TherapistProfilePage from "./pages/TherapistProfilePage";
 import Chat from "./pages/Chat";
 import AboutUs from "./pages/AboutUs";
 import NotFound from "./pages/NotFound";
+import TherapistHome from "./pages/TherapistHome";
+import TherapistProfile from "./pages/TherapistProfile";
+import Reports from "./pages/Reports";
+import OnGoingAppointments from "./pages/Reports/OnGoingAppointments";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -62,6 +66,15 @@ const App = () => {
               element={<LearningCourses />}
             />
             <Route path="/admin/settings" element={<Settings />} />
+
+            <Route path="/admin/therapist-home" element={<TherapistHome />} />
+            <Route path="/admin/profile" element={<TherapistProfile />} />
+            <Route path="/admin/reports" element={<Reports />} />
+
+            <Route
+              path="/admin/reports/ongoing-appointments"
+              element={<OnGoingAppointments />}
+            />
           </>
         )}
 

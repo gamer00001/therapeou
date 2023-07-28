@@ -10,12 +10,17 @@ import { Typography } from "@mui/material";
 
 import Logo from "../../assets/admin-logo.png";
 import LogoutLogo from "../../assets/logout-icon.png";
-import { logoutUser } from "../../utility/common-helper";
+import {
+  getUserInfoFromStorage,
+  logoutUser,
+} from "../../utility/common-helper";
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
-  const sideBarContent = panelSideBar()["admin"];
+  const currentUserInfo = getUserInfoFromStorage();
+
+  const sideBarContent = panelSideBar()[currentUserInfo.userType];
 
   const dynamicMenu = sideBarContent;
 

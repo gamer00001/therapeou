@@ -5,7 +5,7 @@ import AppointmentIcon from "../assets/appointment-side-icon.png";
 import LearningIcon from "../assets/learning-side-icon.png";
 
 const panelSideBar = () => ({
-  admin: [
+  patient: [
     {
       text: "Overview",
       icon: (fill, width, height) => <img src={OverviewIcon} alt="icon" />,
@@ -23,6 +23,35 @@ const panelSideBar = () => ({
 
       path: "/admin/learning-courses",
     },
+    {
+      text: "Settings",
+      icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
+      path: "/admin/settings",
+    },
+  ],
+  therapist: [
+    {
+      text: "Home",
+      icon: (fill, width, height) => <img src={OverviewIcon} alt="icon" />,
+      path: "/admin/therapist-home",
+    },
+    {
+      text: "My Profile",
+      icon: (fill, width, height) => <img src={AppointmentIcon} alt="icon" />,
+
+      path: "/admin/profile",
+    },
+    {
+      text: "Reports",
+      icon: (fill, width, height) => <img src={LearningIcon} alt="icon" />,
+
+      path: "/admin/reports",
+    },
+    // {
+    //   text: "Calender",
+    //   icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
+    //   path: "/admin/settings",
+    // },
     {
       text: "Settings",
       icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,

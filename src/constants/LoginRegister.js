@@ -9,11 +9,6 @@ export const LoginFields = [
     fieldName: "password",
     type: "password",
   },
-  {
-    placeholder: "Select Type",
-    fieldName: "type",
-    type: "dropdown",
-  },
 ];
 
 export const RegisterFields = [
@@ -32,11 +27,11 @@ export const RegisterFields = [
     fieldName: "password",
     type: "password",
   },
-  {
-    placeholder: "Select Type",
-    fieldName: "type",
-    type: "dropdown",
-  },
+  // {
+  //   placeholder: "Select Type",
+  //   fieldName: "type",
+  //   type: "dropdown",
+  // },
 ];
 
 export const SettingsFields = [

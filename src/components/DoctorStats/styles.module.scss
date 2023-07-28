@@ -1,7 +1,5 @@
 .statsContainer {
-  width: 212.06px;
-  //   height: 107.7px;
-
+  width: fit-content;
   background: rgba(255, 255, 255, 0.55);
   border-radius: 18.0188px;
   padding: 20px;
@@ -13,8 +11,8 @@
   .title {
     font-family: "Poppins" !important;
     font-style: normal;
-    font-weight: 500;
-    font-size: 18.0188px;
+    font-size: 32px;
+    font-weight: bold;
     line-height: 27px;
   }
 
@@ -22,9 +20,8 @@
     font-family: "Poppins" !important;
     font-style: normal;
     font-weight: 500;
-    font-size: 36.0376px;
     line-height: 54px;
-
+    font-size: 18px;
     color: #000000;
   }
 }

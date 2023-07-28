@@ -55,7 +55,6 @@ const Chat = () => {
   };
 
   const handleSearch = async () => {
-    console.log("handleSearch", state);
     const q = query(
       collection(db, "users"),
       where("displayName", "==", state.username)
@@ -63,16 +62,13 @@ const Chat = () => {
 
     try {
       const querySnapshot = await getDocs(q);
-      console.log({ querySnapshot });
       querySnapshot.forEach((doc) => {
-        console.log({ doc });
         setState((prev) => ({
           ...prev,
           user: doc.data(),
         }));
       });
     } catch (err) {
-      console.log({ err });
       return toast.error(err ?? "Some Error Occured.");
     }
   };
@@ -83,7 +79,6 @@ const Chat = () => {
 
   const handleSelect = async () => {
     const { user } = state;
-    console.log("handleSelect", { user, currentUser });
     //check whether the group(chats in firestore) exists, if not create
     const combinedId =
       currentUser.uid > user.uid

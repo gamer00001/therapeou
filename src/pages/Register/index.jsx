@@ -4,7 +4,7 @@ import { RegisterFields } from "../../constants/LoginRegister";
 import { patientSignupApi } from "../../api/patient-api";
 import { therapistSignupApi } from "../../api/therapist-api";
 import { prepareApiDataForRegistration } from "../../data-parsers/user-registration";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar";
@@ -27,6 +27,7 @@ const Register = () => {
     loading: false,
   });
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -43,8 +44,6 @@ const Register = () => {
         data.email,
         data.password
       );
-
-      console.log({ res }, data);
 
       //Update profile
       await updateProfile(res.user, {
@@ -71,8 +70,10 @@ const Register = () => {
       loading: !prev.loading,
     }));
 
+    const type = location?.state?.selectedType || "patient";
+
     let apiToCall;
-    if (data?.type === "patient") {
+    if (type === "patient") {
       apiToCall = patientSignupApi;
     } else {
       apiToCall = therapistSignupApi;
@@ -110,6 +111,8 @@ const Register = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userInfo");
   }, []);
+
+  console.log({ location });
 
   return (
     <>

@@ -19,13 +19,9 @@ const UserChatRow = ({
       time.seconds * 1000 + Math.floor(time.nanoseconds / 1000000);
     date = new Date(milliseconds);
 
-    console.log({ date, time });
-
     let hours = date.getHours();
     const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-
-    console.log(hours, minutes, seconds);
+    // const seconds = date.getSeconds();
 
     let period = "AM";
 

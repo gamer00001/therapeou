@@ -16,11 +16,11 @@ import styles from "./styles.module.scss";
 import "./tabs.scss";
 import AdminNavbar from "../../components/AdminNavbar";
 
-const AppointmentLeftSection = ({ viewAllCheck, setViewAllCheck }) => {
+const AppointmentLeftSection = ({ img, viewAllCheck, setViewAllCheck }) => {
   return (
     <>
       <div style={{ paddingTop: "50px" }}></div>
-      <DoctorInfo />
+      <DoctorInfo img={img} />
 
       <Typography
         component="div"
@@ -53,7 +53,7 @@ const AppointmentLeftSection = ({ viewAllCheck, setViewAllCheck }) => {
   );
 };
 
-const AppointmentCalenderSection = () => {
+export const AppointmentCalenderSection = () => {
   return (
     <>
       <AppointmentInfo />
@@ -111,7 +111,7 @@ const AppointmentDetailsSection = () => {
   );
 };
 
-const AppointmentsPage = () => {
+const AppointmentsPage = ({ img }) => {
   const [viewAllCheck, setViewAllCheck] = useState(false);
 
   return (
@@ -125,6 +125,7 @@ const AppointmentsPage = () => {
         <Grid item xs={8}>
           {!viewAllCheck ? (
             <AppointmentLeftSection
+              img={img}
               viewAllCheck={viewAllCheck}
               setViewAllCheck={setViewAllCheck}
             />

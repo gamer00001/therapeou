@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 import LoginRegisterForm from "../../components/LoginRegisterForm";
 import { LoginFields } from "../../constants/LoginRegister";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { patientLoginApi } from "../../api/patient-api";
 import { therapistLoginApi } from "../../api/therapist-api";
 import { toast } from "react-toastify";
@@ -25,6 +25,7 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
@@ -39,8 +40,10 @@ const Login = () => {
       isLoading: !prev.isLoading,
     }));
 
+    const type = location?.state?.selectedType || "patient";
+
     let apiToHit;
-    if (data?.type === "patient") {
+    if (type === "patient") {
       apiToHit = patientLoginApi;
     } else {
       apiToHit = therapistLoginApi;
@@ -54,9 +57,12 @@ const Login = () => {
     }));
 
     if (loginResposne.status === 200) {
-      const userInfo = loginResposne?.data;
+      let userInfo = loginResposne?.data;
+      userInfo = {
+        ...userInfo,
+        userType: type,
+      };
       delete userInfo.password;
-      localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
       try {
@@ -65,8 +71,11 @@ const Login = () => {
       } catch (err) {
         console.log(err);
       }
-
-      navigate("/admin/overview");
+      if (type === "therapist") {
+        navigate("/admin/therapist-home");
+      } else {
+        navigate("/admin/overview");
+      }
     } else {
       return toast.error("Invalid Email or Password.");
     }

@@ -1,0 +1,47 @@
+.mainContainer {
+  padding: 40px;
+}
+
+.infoContainer {
+  //   width: 100%;
+  height: 425.009px;
+
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 20px;
+
+  .mainTitle {
+    color: #000;
+    font-family: Poppins !important;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.24px;
+  }
+
+  .fieldTitle {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 175% */
+  }
+
+  .fieldSubtitle {
+    color: #212121;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 128.571% */
+    letter-spacing: 0.25px;
+  }
+
+  .verticalLine {
+    padding-left: 20px;
+    border-left: 1px solid #e7e7e7;
+  }
+}
