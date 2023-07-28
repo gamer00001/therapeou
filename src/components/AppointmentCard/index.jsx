@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { Grid } from "@mui/material";
+import CButton from "../CButton";
 
 const AppointmentCard = ({
   appointmentId = 3433,
@@ -8,6 +9,7 @@ const AppointmentCard = ({
   purpose,
   rating = 4.3,
   date = "June 25-2022",
+  handleAppointmentDetailAction,
 }) => {
   return (
     <div className={styles.appointmentBlock}>
@@ -30,8 +32,20 @@ const AppointmentCard = ({
         </Grid>
       </Grid>
 
-      <div className={styles.appointmentId}>Appointment Id:{appointmentId}</div>
-      <div className={styles.appointmentDate}>{date}</div>
+      <div className={styles.viewMoreBtnBlock}>
+        <div>
+          <div className={styles.appointmentId}>Appoint Id:{appointmentId}</div>
+          <div className={styles.appointmentDate}>{date}</div>
+        </div>
+
+        <div className={styles.viewMoreBtn}>
+          <CButton
+            title="View More"
+            type="viewMore"
+            onClick={handleAppointmentDetailAction}
+          />
+        </div>
+      </div>
     </div>
   );
 };

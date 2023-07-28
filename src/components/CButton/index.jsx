@@ -27,7 +27,8 @@ const CButton = ({
         return "offer-btn";
       case "appointment":
         return "appointment-btn";
-
+      case "viewmore":
+        return "view-more-btn";
       case "book":
         return "book-btn";
 

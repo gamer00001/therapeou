@@ -29,8 +29,51 @@
   font-family: Poppins !important;
   font-size: 32px !important;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 600 !important;
   line-height: normal;
   letter-spacing: 0.48px;
   padding: 30px 20px;
+}
+
+.appointmentInfoContainer {
+  padding: 20px 40px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    padding-bottom: 5px;
+  }
+
+  .value {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0em;
+    color: #000000a6;
+    padding-bottom: 5px;
+  }
+
+  .reviewDetails {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .verticalBar {
+    border-left: 2px solid rgba(0, 0, 0, 0.5);
+    height: 100%;
+    position: absolute;
+    left: -20px;
+  }
+
+  .appointmentIcon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    float: right;
+  }
 }

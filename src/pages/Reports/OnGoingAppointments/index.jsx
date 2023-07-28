@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import AdminLayoutView from "../../../components/layout/AdminView";
 import AppointmentCard from "../../../components/AppointmentCard";
 import { Grid, Typography } from "@mui/material";
@@ -36,6 +37,8 @@ const List = [
 ];
 
 const OnGoingAppointments = () => {
+  const navigate = useNavigate();
+
   return (
     <AdminLayoutView>
       <Typography className={styles.mainHeading} component="h2">
@@ -45,7 +48,12 @@ const OnGoingAppointments = () => {
       <Grid container gap={10} style={{ padding: "40px" }}>
         {List.map((item) => (
           <Grid item>
-            <AppointmentCard {...item} />
+            <AppointmentCard
+              {...item}
+              handleAppointmentDetailAction={() =>
+                navigate("/admin/reports/appointments-detail")
+              }
+            />
           </Grid>
         ))}
       </Grid>

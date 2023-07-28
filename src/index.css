@@ -61,3 +61,7 @@ code {
 .pb-12 {
   padding-bottom: 12px;
 }
+
+.p-relative {
+  position: relative;
+}

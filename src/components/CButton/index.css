@@ -81,6 +81,18 @@
   line-height: 28px;
   color: #00084f !important;
   text-transform: none !important;
-
   background-color: #c8c8c8 !important;
+}
+
+.view-more-btn {
+  font-style: normal;
+  border-radius: 14px !important;
+  color: #fff !important;
+  text-transform: none !important;
+  background: linear-gradient(
+    75.56deg,
+    #bfddfd -55.36%,
+    #6d9bca 15.63%,
+    #3e5975 105.48%
+  );
 }

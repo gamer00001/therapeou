@@ -19,6 +19,7 @@ import TherapistHome from "./pages/TherapistHome";
 import TherapistProfile from "./pages/TherapistProfile";
 import Reports from "./pages/Reports";
 import OnGoingAppointments from "./pages/Reports/OnGoingAppointments";
+import AppointmentDetail from "./pages/Reports/AppointmentDetail";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -74,6 +75,11 @@ const App = () => {
             <Route
               path="/admin/reports/ongoing-appointments"
               element={<OnGoingAppointments />}
+            />
+
+            <Route
+              path="/admin/reports/appointments-detail"
+              element={<AppointmentDetail />}
             />
           </>
         )}
