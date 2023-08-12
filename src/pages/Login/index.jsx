@@ -35,33 +35,44 @@ const Login = () => {
   };
 
   const handleUserLogin = async (data) => {
+    //For Mock Login
+
+    // localStorage.setItem(
+    //   "userInfo",
+    //   JSON.stringify({
+    //     userType: "therapist",
+    //     name: "Mike",
+    //     email: "mike@gmail.com",
+    //   })
+    // );
+    // navigate("/admin/therapist-home");
+
+    let apiToHit;
+
     setState((prev) => ({
       ...prev,
       isLoading: !prev.isLoading,
     }));
-
     const type = location?.state?.selectedType || "patient";
 
-    let apiToHit;
     if (type === "patient") {
       apiToHit = patientLoginApi;
     } else {
       apiToHit = therapistLoginApi;
     }
-
     const loginResposne = await apiToHit(data);
 
     setState((prev) => ({
       ...prev,
       isLoading: !prev.isLoading,
     }));
-
-    if (loginResposne.status === 200) {
+    if (loginResposne?.status === 200) {
       let userInfo = loginResposne?.data;
       userInfo = {
         ...userInfo,
         userType: type,
       };
+
       delete userInfo.password;
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
 

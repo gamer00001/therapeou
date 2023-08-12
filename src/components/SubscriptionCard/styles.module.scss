@@ -1,0 +1,21 @@
+.container {
+  width: 294px;
+  height: 303px;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow: 3px 4px 8px 0px rgba(0, 0, 0, 0.17);
+
+  .packageInfo {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+  }
+
+  .premuim {
+    color: #fff;
+    border-radius: 25px 25px 0px 0px;
+    background: linear-gradient(300deg, #adb5bd 0%, #3c5671 100%);
+  }
+}

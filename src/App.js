@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { getUserInfoFromStorage } from "./utility/common-helper";
 import { isEmpty } from "lodash";
@@ -20,6 +20,8 @@ import TherapistProfile from "./pages/TherapistProfile";
 import Reports from "./pages/Reports";
 import OnGoingAppointments from "./pages/Reports/OnGoingAppointments";
 import AppointmentDetail from "./pages/Reports/AppointmentDetail";
+import TherapistRegistration from "./pages/TherapistRegistration";
+import Calender from "./pages/Calender";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -51,11 +53,17 @@ const App = () => {
         <Route path="/get-in-touch" element={<GetInTouch />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route
+          path="/therapist/registeration-process"
+          element={<TherapistRegistration />}
+        />
+        <Route path="/admin/chat" element={<Chat />} />
 
         {/* Admin Routes */}
         {isLoggedIn && (
           <>
             <Route path="/admin/overview" element={<Overview />} />
+            <Route path="/admin/calender" element={<Calender />} />
             <Route
               path="/admin/therapist-profile"
               element={<TherapistProfilePage />}

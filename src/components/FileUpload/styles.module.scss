@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+
+  .block {
+    width: 200px;
+    height: 29px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px dashed #d9d9d9;
+    background: #fffafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

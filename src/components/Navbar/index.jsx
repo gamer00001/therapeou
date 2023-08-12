@@ -58,30 +58,42 @@ const Navbar = ({ loginRegisterCheck = true }) => {
           <Grid item xs={3}>
             <Grid spacing={2} direction="row" className={styles.menuLinks}>
               <Grid item style={{ paddingTop: 0 }}>
-                <CButton
-                  title="Sign In"
-                  type="submit"
-                  borderRadius="20px"
-                  onClick={handleLoginTooltipAction}
-                  // onClick={() => navigate("/login")}
-                />
-                <CustomTooltip
-                  title="Sign In"
-                  route="login"
-                  navigate={navigate}
-                  open={loginTooltipOpen}
-                />
+                <div
+                  onMouseEnter={handleLoginTooltipAction}
+                  onMouseLeave={handleLoginTooltipAction}
+                >
+                  <CButton
+                    title="Sign In"
+                    type="submit"
+                    borderRadius="20px"
+                    onClick={handleLoginTooltipAction}
+                  />
+                  <CustomTooltip
+                    title="Sign In"
+                    route="login"
+                    navigate={navigate}
+                    open={loginTooltipOpen}
+                    setTooltip={handleLoginTooltipAction}
+                  />
+                </div>
               </Grid>
               <Grid item style={{ paddingTop: 0 }}>
-                <CButton
-                  title="Sign Up"
-                  type="decline"
-                  borderRadius="20px"
-                  onClick={handleRegisterTooltipAction}
-                  // onClick={() => navigate("/register")}
-                />
-
-                <CustomTooltip navigate={navigate} open={registerTooltipOpen} />
+                <div
+                  onMouseEnter={handleRegisterTooltipAction}
+                  onMouseLeave={handleRegisterTooltipAction}
+                >
+                  <CButton
+                    title="Sign Up"
+                    type="decline"
+                    borderRadius="20px"
+                    onClick={handleRegisterTooltipAction}
+                  />
+                  <CustomTooltip
+                    navigate={navigate}
+                    open={registerTooltipOpen}
+                    setTooltip={handleRegisterTooltipAction}
+                  />
+                </div>
               </Grid>
             </Grid>
           </Grid>
@@ -98,11 +110,16 @@ const CustomTooltip = ({
   title = "Sign Up",
   route = "register",
   navigate,
+  setTooltip,
 }) => {
   return (
     <>
       {open && (
-        <div className={styles.signInContainer}>
+        <div
+          className={styles.signInContainer}
+
+          // onMouseLeave={setTooltip}
+        >
           <div id="tooltip" className={styles.tooltipContent}>
             <button
               className={styles.tooltipOption}

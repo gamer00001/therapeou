@@ -42,6 +42,12 @@ const panelSideBar = () => ({
       path: "/admin/profile",
     },
     {
+      text: "My Calender",
+      icon: (fill, width, height) => <img src={AppointmentIcon} alt="icon" />,
+
+      path: "/admin/calender",
+    },
+    {
       text: "Reports",
       icon: (fill, width, height) => <img src={LearningIcon} alt="icon" />,
 

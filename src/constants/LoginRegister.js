@@ -57,3 +57,95 @@ export const SettingsFields = [
     type: "text",
   },
 ];
+
+export const TherapistPersonalFields = [
+  {
+    placeholder: "Title",
+    fieldName: "title",
+    type: "text",
+    col: 12,
+  },
+  {
+    placeholder: "Full Name",
+    fieldName: "fullName",
+    type: "text",
+    col: 12,
+  },
+  {
+    placeholder: "Email",
+    fieldName: "email",
+    type: "text",
+    col: 12,
+  },
+  {
+    placeholder: "Phone Number",
+    fieldName: "phoneNumber",
+    type: "text",
+    col: 12,
+  },
+  {
+    placeholder: "Country",
+    fieldName: "country",
+    type: "text",
+    col: 6,
+  },
+
+  {
+    placeholder: "City",
+    fieldName: "city",
+    type: "text",
+    col: 6,
+  },
+
+  {
+    placeholder: "Postal Code",
+    fieldName: "postalCode",
+    type: "text",
+    col: 6,
+  },
+  {
+    placeholder: "Gender",
+    fieldName: "gender",
+    type: "text",
+    col: 6,
+  },
+  {
+    placeholder: "Address",
+    fieldName: "address",
+    type: "text",
+    col: 12,
+  },
+];
+
+export const TherapistProfessionalFields = [
+  {
+    placeholder: "Specialization",
+    fieldName: "specialization",
+    type: "text",
+  },
+  {
+    placeholder: "Experience",
+    fieldName: "experience",
+    type: "text",
+  },
+  {
+    placeholder: "Fee",
+    fieldName: "fee",
+    type: "text",
+  },
+  {
+    placeholder: "Education",
+    fieldName: "education",
+    type: "file",
+  },
+  {
+    placeholder: "Insurance",
+    fieldName: "insurance",
+    type: "file",
+  },
+  {
+    placeholder: "DBS Check",
+    fieldName: "dbsCheck",
+    type: "file",
+  },
+];

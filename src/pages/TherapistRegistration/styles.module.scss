@@ -1,0 +1,129 @@
+.registrationConatiner {
+  .sideSection {
+    background: #365473;
+    // height: 100vh;
+    display: flex;
+    padding-top: 40px;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .processBlock {
+    width: 100%;
+    height: 77px;
+    flex-shrink: 0;
+    border-radius: 21px;
+    background: #d9d9d9;
+
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .registerFields {
+    color: #bdadad !important;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+
+    width: 100%;
+    height: 40px;
+    border: none;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e4d9d9 !important;
+  }
+
+  .registerFields::placeholder {
+    color: #bdadad !important;
+  }
+
+  .doubleField {
+    width: 90%;
+    // width: 211px;
+  }
+
+  .registerFields::before {
+    border-bottom: 1px solid #e4d9d9 !important;
+  }
+
+  .registerFields:focus-visible {
+    outline: none;
+  }
+
+  .registerFields input {
+    font-size: 16px;
+    height: 2em !important;
+  }
+
+  .errorMessage {
+    color: red;
+    text-align: start;
+    padding-top: 10px;
+    font-size: 14px;
+  }
+
+  .pageTitle {
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 50px;
+  }
+}
+
+.subscriptionTitle {
+  color: #000;
+  font-family: Poppins;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.subscriptionSubtitle {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.subscriptionTitlesRow {
+  padding: 50px;
+}
+
+.subscriptionBlock {
+  gap: 40px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hrLine {
+  margin-top: 20px;
+  border-bottom: 1px solid #e4d9d9;
+}
+
+.fieldLabel {
+  color: #bdadad;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  font-size: 16px;
+  border: none;
+  background-color: #fff;
+  margin-bottom: 20px;
+}

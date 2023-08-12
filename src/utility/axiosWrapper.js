@@ -10,7 +10,6 @@ const getOptions = (additionalData) => {
         additionalData && additionalData["Content-Type"]
           ? additionalData["Content-Type"]
           : "application/json",
-      //   Authorization,
     },
     data:
       additionalData && additionalData["data"] ? additionalData["data"] : null,

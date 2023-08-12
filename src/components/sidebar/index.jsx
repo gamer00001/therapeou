@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   const currentUserInfo = getUserInfoFromStorage();
 
-  const sideBarContent = panelSideBar()[currentUserInfo.userType];
+  const sideBarContent = panelSideBar()[currentUserInfo?.userType];
 
   const dynamicMenu = sideBarContent;
 
