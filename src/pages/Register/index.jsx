@@ -72,6 +72,8 @@ const Register = () => {
 
     const type = location?.state?.selectedType || "patient";
 
+    console.log({ location, type });
+
     let apiToCall;
     if (type === "patient") {
       apiToCall = patientSignupApi;
@@ -93,12 +95,19 @@ const Register = () => {
 
     if (signupResposne?.status === 201) {
       localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...userInfo, userType: type })
+      );
 
       await handleFirebaseAction(data);
 
       setTimeout(() => {
-        navigate("/admin/overview");
+        if (type === "therapist") {
+          navigate("/admin/therapist-home");
+        } else {
+          navigate("/admin/overview");
+        }
       }, 500);
     } else if (signupResposne?.status === 409) {
       return toast.error("User Already Exist with this email.");
