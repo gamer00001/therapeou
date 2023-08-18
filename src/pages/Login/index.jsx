@@ -35,18 +35,6 @@ const Login = () => {
   };
 
   const handleUserLogin = async (data) => {
-    //For Mock Login
-
-    // localStorage.setItem(
-    //   "userInfo",
-    //   JSON.stringify({
-    //     userType: "therapist",
-    //     name: "Mike",
-    //     email: "mike@gmail.com",
-    //   })
-    // );
-    // navigate("/admin/therapist-home");
-
     let apiToHit;
 
     setState((prev) => ({

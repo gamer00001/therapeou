@@ -149,3 +149,31 @@ export const TherapistProfessionalFields = [
     type: "file",
   },
 ];
+
+export const BookingAppointmentFields = [
+  {
+    placeholder: "Full Name",
+    fieldName: "name",
+    type: "text",
+  },
+  {
+    placeholder: "Email",
+    fieldName: "email",
+    type: "text",
+  },
+  {
+    placeholder: "Date",
+    fieldName: "date",
+    type: "date",
+  },
+  {
+    placeholder: "Slot",
+    fieldName: "slot",
+    type: "dropdown",
+  },
+  {
+    placeholder: "Description",
+    fieldName: "appointmentReason",
+    type: "text",
+  },
+];

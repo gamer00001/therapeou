@@ -10,7 +10,7 @@ const AppointmentOrderBlock = ({
   orderDate,
   profileLogo,
   name,
-  rating,
+  rating = 4.7,
 }) => {
   return (
     <div className={styles.infoContainer}>
@@ -18,7 +18,7 @@ const AppointmentOrderBlock = ({
         Order ID: {orderId}
       </Typography>
       <Typography className={styles.orderDate} component="div">
-        {orderDate}
+        Order Date: {orderDate}
       </Typography>
 
       <Typography component="div" className={styles.profileBlock}>

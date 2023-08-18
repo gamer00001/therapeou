@@ -3,6 +3,8 @@ import {
   PatientSignUpApiUrl,
   PatientUpdateApiUrl,
   PatientChangePasswordApiUrl,
+  PatientAddAppointmentApiUrl,
+  FetchPatientAppointmentApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -19,12 +21,10 @@ export const patientSignupApi = async (patientData) => {
 
 export const patientLoginApi = async (loginData) => {
   return await axios
-    .post(
-      `${PatientLoginApiUrl}`,{
-        "email": `${loginData.email}`,
-        "password": `${loginData.password}`
-      }
-    )
+    .post(`${PatientLoginApiUrl}`, {
+      email: `${loginData.email}`,
+      password: `${loginData.password}`,
+    })
     .then((result) => {
       return result;
     })
@@ -47,6 +47,28 @@ export const patientUpdateInfoApi = async (id, data) => {
 export const patientChangePasswordApi = async (data) => {
   return await axios
     .post(`${PatientChangePasswordApiUrl}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const AddPatientAppointmentApi = async (appoinmtentData) => {
+  return await axios
+    .post(`${PatientAddAppointmentApiUrl}`, appoinmtentData)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const fetchPatientAppointmentsApi = async (userId) => {
+  return await axios
+    .get(`${FetchPatientAppointmentApiUrl}/${userId}`)
     .then((result) => {
       return result;
     })

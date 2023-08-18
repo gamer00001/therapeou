@@ -1,7 +1,11 @@
 import React from "react";
-import { Box, Fade, Input, Typography } from "@mui/material";
+import { Box, Fade, Grid, Input, Typography } from "@mui/material";
 import styles from "./styles.module.scss";
 import CButton from "../CButton";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+import { BookingAppointmentFields } from "../../constants/LoginRegister";
+
 // import ReactDatePicker from "react-datepicker";
 
 const style = {
@@ -16,7 +20,23 @@ const style = {
   p: 4,
 };
 
-const BookAppointment = ({ isOpen, handleClose }) => {
+const bookingSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  date: Yup.string().required("Date is required"),
+  slot: Yup.string().required("Slot is required"),
+  description: Yup.string().required("Description is required"),
+});
+
+const BookAppointment = ({
+  isOpen,
+  formValues,
+  timeSlots,
+  handleClose,
+  handleFieldChange,
+  handleSubmit,
+  fetchAppointmentSlots,
+}) => {
   return (
     <div>
       <Fade in={isOpen}>
@@ -30,34 +50,120 @@ const BookAppointment = ({ isOpen, handleClose }) => {
             Start Now
           </Typography>
           <Typography className={styles.fieldsContainer} component="div">
-            <Input placeholder="Full Name" className={styles.inputFields} />
+            <Grid container justifyContent="center">
+              <Formik
+                initialValues={formValues}
+                validationSchema={bookingSchema}
+                onSubmit={handleSubmit}
+              >
+                {({
+                  isSubmitting,
+                  errors,
+                  setFieldValue,
+                  touched,
+                  values,
+                  handleChange,
+                }) => (
+                  <>
+                    <Form>
+                      {BookingAppointmentFields.map((item, index) => (
+                        <Grid
+                          item
+                          className={styles.formGroupContainer}
+                          key={index}
+                        >
+                          {item.type === "dropdown" ? (
+                            <>
+                              <Field
+                                name={item.name}
+                                value={values["slot"]}
+                                type={item.type}
+                                as="select"
+                                placeholder={item.placeholder}
+                                onChange={(e) => {
+                                  setFieldValue("slot", e.target.value);
+                                }}
+                                className={`${
+                                  styles.inputFields
+                                } form-control ${
+                                  errors[item.fieldName] &&
+                                  touched[item.fieldName] &&
+                                  `${styles.isInvalid}`
+                                }`}
+                              >
+                                {timeSlots.map((time) => (
+                                  <option
+                                    value={time.startTime + "-" + time.endTime}
+                                  >
+                                    {time.startTime + "-" + time.endTime}
+                                  </option>
+                                ))}
+                              </Field>
+                            </>
+                          ) : (
+                            <>
+                              <Field
+                                name={item.fieldName}
+                                type={item.type}
+                                label={item.placeholder}
+                                onChange={(e) => {
+                                  if (e.target.name === "date") {
+                                    const date = new Date(e.target.value);
+                                    const dayNames = [
+                                      "Sunday",
+                                      "Monday",
+                                      "Tuesday",
+                                      "Wednesday",
+                                      "Thursday",
+                                      "Friday",
+                                      "Saturday",
+                                    ];
+                                    const dayName = dayNames[date.getDay()];
 
-            <Input placeholder="Email Address" className={styles.inputFields} />
-
-            {/* <ReactDatePicker
-              //   selected={startDate}
-              //   onChange={(date) => setStartDate(date)}
-              showTimeSelect
-              className={styles.inputFields}
-              //   filterTime={filterPassedTime}
-              dateFormat="MMMM d, yyyy h:mm aa"
-            /> */}
-
-            <Input placeholder="Date" className={styles.inputFields} />
-
-            <Input
-              placeholder="What Services do you need?"
-              className={styles.inputFields}
-            />
-          </Typography>
-
-          <Typography className={styles.bookNowBtn} component="div">
-            <CButton
-              title="Book now"
-              width="160px"
-              borderRadius="30px"
-              type="book"
-            />
+                                    fetchAppointmentSlots(dayName);
+                                  }
+                                  setFieldValue(e.target.name, e.target.value);
+                                }}
+                                placeholder={item.placeholder}
+                                className={`${
+                                  styles.inputFields
+                                } form-control ${
+                                  errors[item.fieldName] &&
+                                  touched[item.fieldName] &&
+                                  `${styles.isInvalid}`
+                                }`}
+                              />
+                              <ErrorMessage
+                                name={item.fieldName}
+                                component="div"
+                                className={styles.errorMessage}
+                              />
+                            </>
+                          )}
+                        </Grid>
+                      ))}
+                      <Grid
+                        container
+                        justifyContent="center"
+                        style={{ paddingTop: "40px" }}
+                      >
+                        <Grid item>
+                          <CButton
+                            title="Book now"
+                            width="160px"
+                            borderRadius="30px"
+                            type="book"
+                            formType="submit"
+                            // onClick={handleSubmit}
+                          />
+                        </Grid>
+                      </Grid>
+                    </Form>
+                  </>
+                )}
+              </Formik>
+              {/* </Grid> */}
+            </Grid>
           </Typography>
         </Box>
       </Fade>

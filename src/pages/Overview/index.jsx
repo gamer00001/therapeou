@@ -7,7 +7,10 @@ import styles from "./styles.module.scss";
 import UserProfileBlock from "../../components/UserProfileBlock";
 import { useNavigate } from "react-router-dom";
 import { getUserInfoFromStorage } from "../../utility/common-helper";
-import { fetchAllTherapistApi } from "../../api/therapist-api";
+import {
+  fetchAllTherapistApi,
+  searchTherapistApi,
+} from "../../api/therapist-api";
 import { parseTherapistListing } from "../../data-parsers/user-registration";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
@@ -17,6 +20,7 @@ import ChatIcon from "../../assets/chat-icon.svg";
 
 const Overview = () => {
   const [state, setState] = useState({
+    search: "",
     userInfo: getUserInfoFromStorage(),
     listing: [],
     loading: true,
@@ -41,8 +45,23 @@ const Overview = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleViewBtn = () => {
-    navigate("/admin/therapist-profile");
+  const handleViewBtn = (data) => {
+    navigate("/admin/therapist-profile", {
+      state: {
+        therapistId: data.therapistId,
+      },
+    });
+  };
+
+  const handleTherapistSearch = (e) => {
+    console.log({ e }, e.target.value);
+
+    // const searchResp = searchTherapistApi();
+
+    setState((prev) => ({
+      ...prev,
+      search: e.target.value,
+    }));
   };
 
   return (
@@ -58,8 +77,10 @@ const Overview = () => {
                     Overview
                     <div className={styles.fieldBlock}>
                       <Input
+                        value={state.search}
                         placeholder="Search your nearby therapist"
                         className={styles.searchTherapistField}
+                        onChange={handleTherapistSearch}
                       />
 
                       <img

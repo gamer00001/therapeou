@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 // import { scheduleTiming } from "../../constants/Calender";
 import { Input } from "@mui/material";
+import CButton from "../../components/CButton";
 
 const TherapistScheduleView = ({ schedule, handleAddSchedule }) => {
   return (
@@ -21,10 +22,13 @@ const TherapistScheduleView = ({ schedule, handleAddSchedule }) => {
                 {!item.addFields ? (
                   <span className={styles.unavailableText}>Unavailable</span>
                 ) : (
-                  <div>
+                  <div className={styles.fieldsBlock}>
                     <Input className={styles.timeField} />
                     &nbsp;-&nbsp;
                     <Input className={styles.timeField} />
+                    <div>
+                      <CButton title="Save" type="viewmore" />
+                    </div>
                   </div>
                 )}
               </div>

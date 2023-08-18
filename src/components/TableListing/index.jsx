@@ -74,7 +74,7 @@ export default function BasicTable({ listing, handleViewBtn }) {
                 <CButton
                   title="View"
                   customClassName={styles.viewBtn}
-                  onClick={handleViewBtn}
+                  onClick={() => handleViewBtn(row)}
                 />
               </TableCell>
             </TableRow>

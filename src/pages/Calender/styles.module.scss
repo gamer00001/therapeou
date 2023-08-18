@@ -61,6 +61,12 @@
     justify-content: space-between;
   }
 
+  .fieldsBlock {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
   .inputBlock {
     display: flex;
     align-items: center;
