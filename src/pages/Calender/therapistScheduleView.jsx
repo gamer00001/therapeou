@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 // import { scheduleTiming } from "../../constants/Calender";
 import { Input } from "@mui/material";
 import CButton from "../../components/CButton";
+import TimePicker from "react-time-picker";
+import "./styles.scss";
 
-const TherapistScheduleView = ({ schedule, handleAddSchedule }) => {
+import "react-time-picker/dist/TimePicker.css";
+import "react-clock/dist/Clock.css";
+
+const TherapistScheduleView = ({
+  schedule,
+  addSchedule,
+  handleAddSchedule,
+  handleFieldChange,
+}) => {
+  const [value, onChange] = useState("10:00");
   return (
     <div className={styles.scheduleContainer}>
       <div className={styles.mainTitle}>Set your availability</div>
@@ -23,11 +34,41 @@ const TherapistScheduleView = ({ schedule, handleAddSchedule }) => {
                   <span className={styles.unavailableText}>Unavailable</span>
                 ) : (
                   <div className={styles.fieldsBlock}>
-                    <Input className={styles.timeField} />
+                    <TimePicker
+                      format="HH:mm"
+                      disableClock
+                      onChange={(value) =>
+                        handleFieldChange("startTime", value, item)
+                      }
+                      value={item.startTime}
+                    />
+                    {/* <Input
+                      name="startTime"
+                      className={styles.timeField}
+                      value={item.startTime}
+                      onChange={(e) => handleFieldChange(e, item)}
+                    /> */}
                     &nbsp;-&nbsp;
-                    <Input className={styles.timeField} />
+                    <TimePicker
+                      format="HH:mm"
+                      disableClock
+                      value={item.endTime}
+                      onChange={(value) =>
+                        handleFieldChange("endTime", value, item)
+                      }
+                    />
+                    {/* <Input
+                      name="endTime"
+                      className={styles.timeField}
+                      value={item.endTime}
+                      onChange={(e) => handleFieldChange(e, item)}
+                    /> */}
                     <div>
-                      <CButton title="Save" type="viewmore" />
+                      <CButton
+                        title="Save"
+                        type="viewmore"
+                        onClick={() => addSchedule(item)}
+                      />
                     </div>
                   </div>
                 )}
@@ -35,7 +76,9 @@ const TherapistScheduleView = ({ schedule, handleAddSchedule }) => {
 
               <img
                 className="cursor-pointer"
-                src="/add-schedule-icon.svg"
+                src={
+                  item.addFields ? "/delete-icon.svg" : "/add-schedule-icon.svg"
+                }
                 alt="icon"
                 onClick={() => {
                   handleAddSchedule(item, index);

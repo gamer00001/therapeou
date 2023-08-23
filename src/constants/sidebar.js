@@ -42,22 +42,19 @@ const panelSideBar = () => ({
       path: "/admin/profile",
     },
     {
-      text: "My Calender",
-      icon: (fill, width, height) => <img src={AppointmentIcon} alt="icon" />,
-
-      path: "/admin/calender",
-    },
-    {
       text: "Reports",
       icon: (fill, width, height) => <img src={LearningIcon} alt="icon" />,
 
       path: "/admin/reports",
     },
-    // {
-    //   text: "Calender",
-    //   icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
-    //   path: "/admin/settings",
-    // },
+
+    {
+      text: "My Calender",
+      icon: (fill, width, height) => <img src={AppointmentIcon} alt="icon" />,
+
+      path: "/admin/calender",
+    },
+
     {
       text: "Settings",
       icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,

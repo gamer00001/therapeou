@@ -16,10 +16,10 @@ const TimeOfAppointment = ({ time, backgroundColor, textColor }) => {
 
 const PatientAppointemntInfo = ({
   logo,
-  name,
   purpose,
   time,
   textColor,
+  therapistName,
   backgroundColor,
 }) => {
   return (
@@ -28,7 +28,7 @@ const PatientAppointemntInfo = ({
         <img src={logo} alt={logo} className={styles.logoImg} />
         <Typography component="div">
           <Typography className={styles.appointmentTitle} component="h3">
-            {name}
+            {therapistName}
           </Typography>
 
           <Typography

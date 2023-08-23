@@ -54,8 +54,6 @@ const Overview = () => {
   };
 
   const handleTherapistSearch = (e) => {
-    console.log({ e }, e.target.value);
-
     // const searchResp = searchTherapistApi();
 
     setState((prev) => ({

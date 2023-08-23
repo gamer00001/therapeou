@@ -19,7 +19,7 @@ root.render(
       <ChatContextProvider>
         <BrowserRouter>
           <App />
-          <ToastContainer />
+          <ToastContainer autoClose={2000} />
         </BrowserRouter>
       </ChatContextProvider>
     </AuthContextProvider>

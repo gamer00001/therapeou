@@ -1,4 +1,9 @@
 import {
+  AddTherapistScheduleApiUrl,
+  FetchTherapistAppointmentApiUrl,
+  GetTherapistScheduleApiUrl,
+  ModifyAppointmentApiUrl,
+  ModifyTherapistScheduleApiUrl,
   SearchTherapistApiUrl,
   TherapistAppointmentSlots,
   TherapistInfoGetAllApiUrl,
@@ -57,6 +62,65 @@ export const searchTherapistApi = async (data) => {
 export const fetchTherapistAppointmentSlots = async (therapistId, day) => {
   return await axios
     .get(`${TherapistAppointmentSlots}/${therapistId}/${day}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const fetchTherapistAppointmentsApi = async (therapistId) => {
+  return await axios
+    .get(`${FetchTherapistAppointmentApiUrl}/${therapistId}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const updateAppointmentApi = async (appointmentId, data) => {
+  return await axios
+    .put(`${ModifyAppointmentApiUrl}/${appointmentId}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const addTherapistScheduleApi = async (data) => {
+  return await axios
+    .post(`${AddTherapistScheduleApiUrl}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const fetchTherapistScheduleApi = async (therapistId) => {
+  return await axios
+    .get(`${GetTherapistScheduleApiUrl}/${therapistId}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const updateTherapistScheduleByDayApi = async (
+  data,
+  therapistId,
+  day
+) => {
+  return await axios
+    .put(`${ModifyTherapistScheduleApiUrl}/${therapistId}/${day}`, data)
     .then((result) => {
       return result;
     })

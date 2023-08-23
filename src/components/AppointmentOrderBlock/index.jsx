@@ -6,11 +6,18 @@ import CButton from "../CButton";
 
 const AppointmentOrderBlock = ({
   tabId = "1",
+  status,
   orderId,
   orderDate,
   profileLogo,
-  name,
+  fromPatient,
+  handleModal,
+  patientName,
+  therapistName,
   rating = 4.7,
+  cancelAppointment,
+  handleAgainApppintment,
+  appointmentCompleteInfo,
 }) => {
   return (
     <div className={styles.infoContainer}>
@@ -20,13 +27,19 @@ const AppointmentOrderBlock = ({
       <Typography className={styles.orderDate} component="div">
         Order Date: {orderDate}
       </Typography>
+      <Typography className={styles.orderDate} component="div">
+        Status:
+        <span style={{ fontWeight: "bold" }}> {status}</span>
+      </Typography>
 
       <Typography component="div" className={styles.profileBlock}>
         <Typography component="div" className={styles.rowList}>
           <img className={styles.profileLogo} src={profileLogo} alt="dd" />
 
           <Typography component="div" className={styles.nameRatingInfo}>
-            <Typography component="h4">{name}</Typography>
+            <Typography component="h4">
+              {fromPatient ? therapistName : patientName}
+            </Typography>
             <Typography component="h4" className={styles.ratingContainer}>
               <img className={styles.ratingStar} src={RatingStar} alt="ff" />
               {rating}
@@ -36,11 +49,18 @@ const AppointmentOrderBlock = ({
 
         {tabId === "1" && (
           <Typography component="div">
-            <CButton title="Cancel" type="decline" borderRadius="10px" />
+            <CButton
+              title="Cancel"
+              type="decline"
+              borderRadius="10px"
+              onClick={() =>
+                cancelAppointment(orderId, appointmentCompleteInfo)
+              }
+            />
           </Typography>
         )}
 
-        {tabId === "2" && (
+        {tabId === "2" && fromPatient && (
           <Typography
             component="div"
             className="d-flex flex-column"
@@ -51,12 +71,14 @@ const AppointmentOrderBlock = ({
               type="submit"
               width="160px"
               borderRadius="10px"
+              onClick={handleAgainApppintment}
             />
             <CButton
               title="Write a Review"
               type="decline"
               width="160px"
               borderRadius="10px"
+              onClick={() => handleModal(appointmentCompleteInfo)}
             />
           </Typography>
         )}

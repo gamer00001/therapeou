@@ -1,4 +1,18 @@
 import moment from "moment";
+import { isEmpty } from "lodash";
+import { scheduleTiming } from "../constants/Calender";
+
+export const WEEK_DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const WEEK_DAYS_SMALL = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 export const makeTuplesOfSlots = (slots) => {
   const timeTuples = [];
@@ -33,4 +47,48 @@ export const parseBookAppointmentData = (
     paymentId: 0,
     therapistId: therapistId,
   };
+};
+
+export const prepareDataForApi = (data, therapistId) => {
+  return {
+    day: WEEK_DAYS[data.id],
+    endTime: data.endTime,
+    startTime: data.startTime,
+    therapistId: therapistId,
+  };
+};
+
+export const parseScheduleListing = (data) => {
+  let parseData = [];
+  parseData = !isEmpty(data)
+    ? WEEK_DAYS_SMALL.map((item, index) => {
+        const d = data.filter((schedule) => schedule.day === item);
+        return {
+          id: index,
+          title: item,
+          startTime: d[0]?.startTime,
+          endTime: d[0]?.endTime,
+          isEdit: d.length === 0 ? false : true,
+          addFields: d.length === 0 ? false : true,
+        };
+      })
+    : scheduleTiming;
+
+  return parseData;
+};
+
+export const parseTherapistAppointmentListing = (data) => {
+  return data.map((item) => {
+    return {
+      appointmentCompleteInfo: { ...item },
+      status: item.appointmentStatus,
+      patientInfo: item.patientName,
+      therapistInfo: item.therapistName,
+      patientName: item.patientName.fullName,
+      purpose: item.appointmentReason ?? "N/A",
+      rating: 4.4,
+      appointmentId: item.id,
+      date: moment(item.date).format("MMMM-DD-yyyy"),
+    };
+  });
 };

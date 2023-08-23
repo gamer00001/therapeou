@@ -72,8 +72,6 @@ const Register = () => {
 
     const type = location?.state?.selectedType || "patient";
 
-    console.log({ location, type });
-
     let apiToCall;
     if (type === "patient") {
       apiToCall = patientSignupApi;
@@ -120,8 +118,6 @@ const Register = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userInfo");
   }, []);
-
-  console.log({ location });
 
   return (
     <>

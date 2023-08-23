@@ -5,6 +5,7 @@ import CButton from "../CButton";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { BookingAppointmentFields } from "../../constants/LoginRegister";
+import { WEEK_DAYS } from "../../data-parsers/therapist-parser";
 
 // import ReactDatePicker from "react-datepicker";
 
@@ -21,11 +22,9 @@ const style = {
 };
 
 const bookingSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
   date: Yup.string().required("Date is required"),
   slot: Yup.string().required("Slot is required"),
-  description: Yup.string().required("Description is required"),
+  appointmentReason: Yup.string().required("Description is required"),
 });
 
 const BookAppointment = ({
@@ -86,6 +85,8 @@ const BookAppointment = ({
                                 className={`${
                                   styles.inputFields
                                 } form-control ${
+                                  item.type === "dropdown" && "w-100"
+                                } ${
                                   errors[item.fieldName] &&
                                   touched[item.fieldName] &&
                                   `${styles.isInvalid}`
@@ -109,16 +110,8 @@ const BookAppointment = ({
                                 onChange={(e) => {
                                   if (e.target.name === "date") {
                                     const date = new Date(e.target.value);
-                                    const dayNames = [
-                                      "Sunday",
-                                      "Monday",
-                                      "Tuesday",
-                                      "Wednesday",
-                                      "Thursday",
-                                      "Friday",
-                                      "Saturday",
-                                    ];
-                                    const dayName = dayNames[date.getDay()];
+
+                                    const dayName = WEEK_DAYS[date.getDay()];
 
                                     fetchAppointmentSlots(dayName);
                                   }

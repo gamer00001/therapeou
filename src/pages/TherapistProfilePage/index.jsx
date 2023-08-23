@@ -62,6 +62,8 @@ const TherapistProfilePage = () => {
 
     if (addAppointmentResp.status === 201) {
       toast.success("Appointment Booked Successfully.");
+    } else {
+      toast.error("Something went wrong.");
     }
     handleLoader();
   };
@@ -76,12 +78,11 @@ const TherapistProfilePage = () => {
       ...prev,
       timeSlots: parseSlots,
     }));
-
-    console.log({ slotsResp });
   };
 
   useEffect(() => {
     fetchAppointmentSlots();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

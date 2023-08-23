@@ -5,6 +5,7 @@ import {
   PatientChangePasswordApiUrl,
   PatientAddAppointmentApiUrl,
   FetchPatientAppointmentApiUrl,
+  addReviewApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -69,6 +70,17 @@ export const AddPatientAppointmentApi = async (appoinmtentData) => {
 export const fetchPatientAppointmentsApi = async (userId) => {
   return await axios
     .get(`${FetchPatientAppointmentApiUrl}/${userId}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const addReviewToAppointmentApi = async (data) => {
+  return await axios
+    .post(`${addReviewApiUrl}`, data)
     .then((result) => {
       return result;
     })

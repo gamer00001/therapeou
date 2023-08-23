@@ -6,19 +6,23 @@ import { useNavigate } from "react-router-dom";
 
 const List = [
   {
+    id: "onGoingAppointments",
     title: "On going Appointment",
     link: "/admin/reports/ongoing-appointments",
   },
 
   {
+    id: "pastAppointments",
     title: "Appointment History",
-    link: "",
+    link: "/admin/reports/past-appointments",
   },
   {
+    id: "",
     title: "Patient details",
     link: "",
   },
   {
+    id: "",
     title: "Total Earnings",
     link: "",
   },
@@ -30,7 +34,7 @@ const Reports = () => {
       <div className={styles.container}>
         {List.map((item) => (
           <>
-            <ActionItem title={item.title} link={item.link} />
+            <ActionItem title={item.title} link={item.link} id={item.id} />
           </>
         ))}
       </div>
@@ -40,11 +44,20 @@ const Reports = () => {
 
 export default Reports;
 
-const ActionItem = ({ title, link }) => {
+const ActionItem = ({ title, link, id }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.actionBlock} onClick={() => navigate(link)}>
+    <div
+      className={styles.actionBlock}
+      onClick={() =>
+        navigate(link, {
+          state: {
+            id,
+          },
+        })
+      }
+    >
       {title}
 
       <img src="/side-icon.svg" alt="icon" />
