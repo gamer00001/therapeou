@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 import CButton from "../CButton";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ loginRegisterCheck = true }) => {
+const Navbar = ({ showLogin = true, showRegister = true }) => {
   const navigate = useNavigate();
 
   const [loginTooltipOpen, setLoginTooltipOpen] = useState(false);
@@ -54,50 +54,55 @@ const Navbar = ({ loginRegisterCheck = true }) => {
             ))}
           </Grid>
         </Grid>
-        {loginRegisterCheck && (
+        {
           <Grid item xs={3}>
             <Grid spacing={2} direction="row" className={styles.menuLinks}>
-              <Grid item style={{ paddingTop: 0 }}>
-                <div
-                  onMouseEnter={handleLoginTooltipAction}
-                  onMouseLeave={handleLoginTooltipAction}
-                >
-                  <CButton
-                    title="Sign In"
-                    type="submit"
-                    borderRadius="20px"
-                    onClick={handleLoginTooltipAction}
-                  />
-                  <CustomTooltip
-                    title="Sign In"
-                    route="login"
-                    navigate={navigate}
-                    open={loginTooltipOpen}
-                    setTooltip={handleLoginTooltipAction}
-                  />
-                </div>
-              </Grid>
-              <Grid item style={{ paddingTop: 0 }}>
-                <div
-                  onMouseEnter={handleRegisterTooltipAction}
-                  onMouseLeave={handleRegisterTooltipAction}
-                >
-                  <CButton
-                    title="Sign Up"
-                    type="decline"
-                    borderRadius="20px"
-                    onClick={handleRegisterTooltipAction}
-                  />
-                  <CustomTooltip
-                    navigate={navigate}
-                    open={registerTooltipOpen}
-                    setTooltip={handleRegisterTooltipAction}
-                  />
-                </div>
-              </Grid>
+              {showLogin && (
+                <Grid item style={{ paddingTop: 0 }}>
+                  <div
+                    onMouseEnter={handleLoginTooltipAction}
+                    onMouseLeave={handleLoginTooltipAction}
+                  >
+                    <CButton
+                      title="Sign In"
+                      type="submit"
+                      borderRadius="20px"
+                      onClick={handleLoginTooltipAction}
+                    />
+
+                    <CustomTooltip
+                      title="Sign In"
+                      route="login"
+                      navigate={navigate}
+                      open={loginTooltipOpen}
+                      setTooltip={handleLoginTooltipAction}
+                    />
+                  </div>
+                </Grid>
+              )}
+              {showRegister && (
+                <Grid item style={{ paddingTop: 0 }}>
+                  <div
+                    onMouseEnter={handleRegisterTooltipAction}
+                    onMouseLeave={handleRegisterTooltipAction}
+                  >
+                    <CButton
+                      title="Sign Up"
+                      type="decline"
+                      borderRadius="20px"
+                      onClick={handleRegisterTooltipAction}
+                    />
+                    <CustomTooltip
+                      navigate={navigate}
+                      open={registerTooltipOpen}
+                      setTooltip={handleRegisterTooltipAction}
+                    />
+                  </div>
+                </Grid>
+              )}
             </Grid>
           </Grid>
-        )}
+        }
       </Grid>
     </>
   );

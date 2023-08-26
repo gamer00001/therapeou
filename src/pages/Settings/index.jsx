@@ -7,9 +7,13 @@ import { SettingsFields } from "../../constants/LoginRegister";
 import CButton from "../../components/CButton";
 import ChangePassword from "../../components/ChangePassword";
 import { getUserInfoFromStorage } from "../../utility/common-helper";
-import { patientUpdateInfoApi } from "../../api/patient-api";
+import {
+  patientUpdateInfoApi,
+  uploadProfileImageApi,
+} from "../../api/patient-api";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
+import { therapistUpdateInfoApi } from "../../api/therapist-api";
 
 const INITIAL_STATE = {
   image: null,
@@ -21,42 +25,48 @@ const Settings = () => {
   const [state, setState] = useState(INITIAL_STATE);
   const [isLoading, setIsLoading] = useState(false);
 
+  const userData = getUserInfoFromStorage();
+
   const inputReference = useRef(null);
 
   useEffect(() => {
-    let userData = getUserInfoFromStorage();
     setState({
       ...state,
-      ...userData,
+      ...userData?.apiUserInfo,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fileUploadAction = () => inputReference.current.click();
 
-  const fileUploadInputChange = (e) => {
+  const fileUploadInputChange = async (e) => {
+    setIsLoading(true);
+
     let formData = new FormData();
     let file = e.target?.files[0];
-    formData.append("images", file);
+    formData.append("image", file);
 
-    if (file) {
-      const reader = new FileReader();
+    const type = userData.userType === "patient" ? 1 : 2;
 
-      reader.addEventListener("load", function () {
-        setState({
-          ...state,
-          image: reader.result,
-        });
-      });
+    const resp = await uploadProfileImageApi(userData.id, type, formData);
 
-      reader.readAsDataURL(file);
-    }
+    console.log({ resp });
+
+    setState((prev) => ({ ...prev, image: resp?.data?.url }));
+
+    setIsLoading(false);
   };
 
   const handleSaveUserInfo = async () => {
     let updatedData = { ...state };
     setIsLoading(true);
-    let resp = await patientUpdateInfoApi(state?.id, updatedData);
+
+    const apiToCall =
+      userData.userType === "patient"
+        ? patientUpdateInfoApi
+        : therapistUpdateInfoApi;
+
+    let resp = await apiToCall(state?.id, updatedData);
 
     if (resp.status === 200) {
       let userInfo = resp?.data;
@@ -65,7 +75,10 @@ const Settings = () => {
 
       setIsLoading(false);
 
-      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...userInfo, userType: userData?.userType })
+      );
 
       return toast.success("Settings Updated Successfully.");
     } else {

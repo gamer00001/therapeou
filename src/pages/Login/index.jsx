@@ -59,6 +59,7 @@ const Login = () => {
       userInfo = {
         ...userInfo,
         userType: type,
+        apiUserInfo: loginResposne?.data,
       };
 
       delete userInfo.password;
@@ -88,7 +89,7 @@ const Login = () => {
   return (
     <>
       {state.isLoading && <Loader isShow={state.isLoading} />}
-      <Navbar loginRegisterCheck={false} />
+      <Navbar showLogin={false} />
 
       <LoginRegisterForm
         state={state}

@@ -3,20 +3,29 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { TherapistPersonalFields } from "../../constants/LoginRegister";
 import CButton from "../../components/CButton";
+import * as Yup from "yup";
 
 import styles from "./styles.module.scss";
 
-const PersonalInformation = () => {
+const validationSchemaForPersonalInformation = Yup.object({
+  title: Yup.string().required("Title is required"),
+  fullName: Yup.string().required("Full Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  phoneNumber: Yup.string().required("Phone Number is required"),
+  country: Yup.string().required("Country is required"),
+  city: Yup.string().required("City is required"),
+  postalCode: Yup.string().required("Postal Code is required"),
+  gender: Yup.string().required("Gender is required"),
+  address: Yup.string().required("Address is required"),
+});
+
+const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
   return (
     <div>
       <Formik
-      //   initialValues={initialValues}
-      //   validationSchema={
-      //     formType === "Login"
-      //       ? validationSchemaForLogin
-      //       : validationSchemaForSignup
-      //   }
-      //   onSubmit={handleSubmit}
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchemaForPersonalInformation}
       >
         {({ isSubmitting, errors, touched, values, handleChange }) => (
           <>
@@ -69,12 +78,12 @@ const PersonalInformation = () => {
                 <Grid item>
                   <CButton
                     formType="submit"
-                    disabled={isSubmitting}
-                    title={"Submit"}
+                    title={"Next"}
                     type="Submit"
                     width="462px"
                     height="67px"
                     style={{ paddingTop: "40px" }}
+                    // onClick={() => handleChange(null, 1)}
                   />
                 </Grid>
               </Grid>

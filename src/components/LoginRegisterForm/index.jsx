@@ -164,34 +164,6 @@ const LoginRegisterForm = ({
           </Formik>
           {/* </Grid> */}
         </Grid>
-
-        {/* <Grid container justifyContent="center" style={{ paddingTop: "40px" }}>
-          <Grid item>
-            <CButton
-              title={actionText}
-              type="Submit"
-              width="462px"
-              height="67px"
-              onClick={actionHandler}
-            />
-          </Grid>
-        </Grid> */}
-
-        <Grid
-          container
-          justifyContent="center"
-          style={{ paddingTop: "40px", paddingRight: "250px" }}
-        >
-          <Grid item className={styles.lastSubtitle}>
-            <span>Already have an account? </span>
-            <span
-              className={styles.underline}
-              onClick={() => navigate(`/${redirectRoute}`)}
-            >
-              {redirectText}
-            </span>
-          </Grid>
-        </Grid>
       </Grid>
     </Grid>
   );

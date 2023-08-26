@@ -7,6 +7,8 @@ const TherapistBaseUrl = `${apiVersion}therapist`;
 const AppointmentsBaseUrl = `${apiVersion}appointments`;
 const ScheduleBaseUrl = `${apiVersion}schedule`;
 const ReviewsBaseUrl = `${apiVersion}reviews`;
+const UploadFileBaseUrl = `${apiVersion}upload-doc`;
+const UploadImageBaseUrl = `${apiVersion}upload-image`;
 
 export const PatientSignUpApiUrl = `${PatientBaseUrl}/signup`;
 export const PatientLoginApiUrl = `${PatientBaseUrl}/login`;
@@ -22,6 +24,7 @@ export const TherapistLoginApiUrl = `${TherapistBaseUrl}/login`;
 export const TherapistInfoGetApiUrl = `${TherapistBaseUrl}/get`;
 export const TherapistInfoGetAllApiUrl = `${TherapistBaseUrl}/get-all`;
 export const SearchTherapistApiUrl = `${TherapistBaseUrl}/search/name`;
+export const TherapistUpdateApiUrl = `${TherapistBaseUrl}/update`;
 
 export const TherapistAppointmentSlots = `${AppointmentsBaseUrl}/therapist/available-times`;
 export const FetchTherapistAppointmentApiUrl = `${AppointmentsBaseUrl}/get/therapist`;
@@ -31,6 +34,7 @@ export const AddTherapistScheduleApiUrl = `${ScheduleBaseUrl}/add`;
 export const GetTherapistScheduleApiUrl = `${ScheduleBaseUrl}/get/therapist`;
 export const ModifyTherapistScheduleApiUrl = `${ScheduleBaseUrl}/update`;
 
-export const TherapistUpdateApiUrl = `${TherapistBaseUrl}/update`;
-
 export const addReviewApiUrl = `${ReviewsBaseUrl}/add`;
+
+export const uploadDocumentApiUrl = `${UploadFileBaseUrl}/therapist`;
+export const uploadImageApiUrl = `${UploadImageBaseUrl}/profile`;

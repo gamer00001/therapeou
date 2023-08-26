@@ -9,6 +9,8 @@ import {
   TherapistInfoGetAllApiUrl,
   TherapistLoginApiUrl,
   TherapistSignUpApiUrl,
+  TherapistUpdateApiUrl,
+  uploadDocumentApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -121,6 +123,30 @@ export const updateTherapistScheduleByDayApi = async (
 ) => {
   return await axios
     .put(`${ModifyTherapistScheduleApiUrl}/${therapistId}/${day}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const uploadTherapistDocumnetApi = async (userId, docType, data) => {
+  return await axios
+    .post(`${uploadDocumentApiUrl}/${userId}/${docType}`, data, {
+      "Content-Type": "multipart/form-data",
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const therapistUpdateInfoApi = async (id, data) => {
+  return await axios
+    .put(`${TherapistUpdateApiUrl}/${id}`, data)
     .then((result) => {
       return result;
     })

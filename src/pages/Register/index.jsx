@@ -102,6 +102,7 @@ const Register = () => {
 
       setTimeout(() => {
         if (type === "therapist") {
+          // navigate("/therapist/registeration-process", { state: userInfo });
           navigate("/admin/therapist-home");
         } else {
           navigate("/admin/overview");
@@ -122,7 +123,7 @@ const Register = () => {
   return (
     <>
       {state.loading && <Loader />}
-      <Navbar loginRegisterCheck={false} />
+      <Navbar showRegister={false} />
 
       <LoginRegisterForm
         state={state}

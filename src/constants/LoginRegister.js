@@ -134,19 +134,22 @@ export const TherapistProfessionalFields = [
     type: "text",
   },
   {
-    placeholder: "Education",
+    type: "file",
     fieldName: "education",
-    type: "file",
+    placeholder: "Education",
+    title: "Add Education Certificate",
   },
   {
-    placeholder: "Insurance",
+    type: "file",
     fieldName: "insurance",
-    type: "file",
+    placeholder: "Insurance",
+    title: "Add Insurance Certificate",
   },
   {
-    placeholder: "DBS Check",
-    fieldName: "dbsCheck",
     type: "file",
+    fieldName: "dbsCheck",
+    placeholder: "DBS Check",
+    title: "Add DBS Certificate",
   },
 ];
 

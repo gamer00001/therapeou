@@ -1,24 +1,44 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import styles from "./styles.module.scss";
-import { TherapistProfessionalFields } from "../../constants/LoginRegister";
+import * as Yup from "yup";
+
 import CButton from "../../components/CButton";
 import FileUpload from "../../components/FileUpload";
+import { TherapistProfessionalFields } from "../../constants/LoginRegister";
 
-const ProfessionalInformation = () => {
+import styles from "./styles.module.scss";
+
+const validationSchemaForProfessionalInformation = Yup.object({
+  specialization: Yup.string().required("Specialization is required"),
+  experience: Yup.string().required("Experience is required"),
+  fee: Yup.string().required("Fee is required"),
+  education: Yup.string().required("Education is required"),
+  city: Yup.string().required("City is required"),
+  insurance: Yup.string().required("Insurance is required"),
+  dbsCheck: Yup.string().required("DbsCheck is required"),
+});
+
+const ProfessionalInformation = ({
+  initialValues,
+  handleSubmit,
+  handleTabChange,
+}) => {
   return (
     <div>
       <Formik
-      //   initialValues={initialValues}
-      //   validationSchema={
-      //     formType === "Login"
-      //       ? validationSchemaForLogin
-      //       : validationSchemaForSignup
-      //   }
-      //   onSubmit={handleSubmit}
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchemaForProfessionalInformation}
       >
-        {({ isSubmitting, errors, touched, values, handleChange }) => (
+        {({
+          isSubmitting,
+          errors,
+          touched,
+          values,
+          handleChange,
+          setFieldValue,
+        }) => (
           <>
             <Form>
               <div className={styles.pageTitle}>Professional Information</div>
@@ -49,21 +69,27 @@ const ProfessionalInformation = () => {
                               `${styles.isInvalid}`
                             }`}
                           />
-                          <ErrorMessage
-                            name={item.fieldName}
-                            component="div"
-                            className={styles.errorMessage}
-                          />
 
                           {item.type === "file" && (
                             <>
                               <label className={styles.fieldLabel}>
                                 {item.placeholder}
                               </label>
-                              <FileUpload />
+                              <FileUpload
+                                title={item.title}
+                                fileUploadInputChange={(e) =>
+                                  setFieldValue(item.name)
+                                }
+                              />
                               <div className={styles.hrLine} />
                             </>
                           )}
+
+                          <ErrorMessage
+                            name={item.fieldName}
+                            component="div"
+                            className={styles.errorMessage}
+                          />
                         </>
                       </Grid>
                     </>
@@ -75,10 +101,18 @@ const ProfessionalInformation = () => {
                 justifyContent="center"
                 style={{ paddingTop: "40px", paddingBottom: "40px" }}
               >
-                <Grid item>
+                <Grid item className="d-flex" gap={4}>
+                  <CButton
+                    // formType="submit"
+                    title={"Previous"}
+                    type="Submit"
+                    width="462px"
+                    height="67px"
+                    style={{ paddingTop: "40px" }}
+                    onClick={() => handleTabChange(null, 0)}
+                  />
                   <CButton
                     formType="submit"
-                    disabled={isSubmitting}
                     title={"Submit"}
                     type="Submit"
                     width="462px"
