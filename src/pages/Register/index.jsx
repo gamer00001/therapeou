@@ -65,54 +65,70 @@ const Register = () => {
   };
 
   const handleUserRegisteration = async (data) => {
+    let latitude, longitude;
     setState((prev) => ({
       ...prev,
       loading: !prev.loading,
     }));
 
-    const type = location?.state?.selectedType || "patient";
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      console.log("Latitude:", latitude);
+      console.log("Longitude:", longitude);
 
-    let apiToCall;
-    if (type === "patient") {
-      apiToCall = patientSignupApi;
-    } else {
-      apiToCall = therapistSignupApi;
-    }
+      const type = location?.state?.selectedType || "patient";
 
-    let signupBody = prepareApiDataForRegistration(data);
+      let apiToCall;
+      if (type === "patient") {
+        apiToCall = patientSignupApi;
+      } else {
+        apiToCall = therapistSignupApi;
+      }
 
-    const signupResposne = await apiToCall(signupBody);
+      let signupBody = prepareApiDataForRegistration(data);
 
-    setState((prev) => ({
-      ...prev,
-      loading: !prev.loading,
-    }));
+      const signupResposne = await apiToCall({
+        ...signupBody,
+        lat: latitude,
+        lng: longitude,
+      });
 
-    const userInfo = signupResposne?.data;
-    delete userInfo.password;
+      setState((prev) => ({
+        ...prev,
+        loading: !prev.loading,
+      }));
 
-    if (signupResposne?.status === 201) {
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({ ...userInfo, userType: type })
-      );
+      const userInfo = signupResposne?.data;
+      delete userInfo.password;
 
-      await handleFirebaseAction(data);
+      if (signupResposne?.status === 201) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({ ...userInfo, userType: type })
+        );
 
-      setTimeout(() => {
-        if (type === "therapist") {
-          // navigate("/therapist/registeration-process", { state: userInfo });
-          navigate("/admin/therapist-home");
-        } else {
-          navigate("/admin/overview");
-        }
-      }, 500);
-    } else if (signupResposne?.status === 409) {
-      return toast.error("User Already Exist with this email.");
-    } else {
-      return toast.error("Some Error Occred. Please try again in few moments.");
-    }
+        await handleFirebaseAction(data);
+
+        setTimeout(() => {
+          if (type === "therapist") {
+            navigate("/therapist/registeration-process", {
+              state: { userInfo },
+            });
+            // navigate("/admin/therapist-home");
+          } else {
+            navigate("/admin/overview");
+          }
+        }, 500);
+      } else if (signupResposne?.status === 409) {
+        return toast.error("User Already Exist with this email.");
+      } else {
+        return toast.error(
+          "Some Error Occred. Please try again in few moments."
+        );
+      }
+    });
   };
 
   useEffect(() => {

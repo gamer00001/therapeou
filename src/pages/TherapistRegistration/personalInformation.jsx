@@ -8,15 +8,16 @@ import * as Yup from "yup";
 import styles from "./styles.module.scss";
 
 const validationSchemaForPersonalInformation = Yup.object({
-  title: Yup.string().required("Title is required"),
+  profileTitle: Yup.string().required("Title is required"),
   fullName: Yup.string().required("Full Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  phoneNumber: Yup.string().required("Phone Number is required"),
+  phone: Yup.string().required("Phone Number is required"),
   country: Yup.string().required("Country is required"),
   city: Yup.string().required("City is required"),
-  postalCode: Yup.string().required("Postal Code is required"),
+  postCode: Yup.string().required("Postal Code is required"),
   gender: Yup.string().required("Gender is required"),
   address: Yup.string().required("Address is required"),
+  profileDescription: Yup.string().required("Profile Description is required"),
 });
 
 const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
@@ -25,9 +26,10 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
+        enableReinitialize
         validationSchema={validationSchemaForPersonalInformation}
       >
-        {({ isSubmitting, errors, touched, values, handleChange }) => (
+        {({ errors, touched, values, handleChange }) => (
           <>
             <Form>
               <div className={styles.pageTitle}>Personal Information</div>
@@ -50,6 +52,7 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
                             type={item.type}
                             label={item.placeholder}
                             onChange={handleChange}
+                            disabled={item?.disabled}
                             placeholder={item.placeholder}
                             className={`${styles.registerFields} ${
                               item.col === 6 && `${styles.doubleField}`

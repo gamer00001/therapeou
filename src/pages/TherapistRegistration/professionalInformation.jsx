@@ -11,15 +11,19 @@ import styles from "./styles.module.scss";
 
 const validationSchemaForProfessionalInformation = Yup.object({
   specialization: Yup.string().required("Specialization is required"),
-  experience: Yup.string().required("Experience is required"),
+  experience: Yup.number().required("Experience is required"),
   fee: Yup.string().required("Fee is required"),
-  education: Yup.string().required("Education is required"),
-  city: Yup.string().required("City is required"),
-  insurance: Yup.string().required("Insurance is required"),
-  dbsCheck: Yup.string().required("DbsCheck is required"),
+  education: Yup.array()
+    .of(Yup.string())
+    .min(1)
+    .required("Education is required"),
+  insurance: Yup.array().of(Yup.string()).required("Insurance is required"),
+  dbsCheck: Yup.array().of(Yup.string()).required("DbsCheck is required"),
 });
 
 const ProfessionalInformation = ({
+  isLoading,
+  handleLoader,
   initialValues,
   handleSubmit,
   handleTabChange,
@@ -27,18 +31,11 @@ const ProfessionalInformation = ({
   return (
     <div>
       <Formik
-        initialValues={initialValues}
         onSubmit={handleSubmit}
+        initialValues={initialValues}
         validationSchema={validationSchemaForProfessionalInformation}
       >
-        {({
-          isSubmitting,
-          errors,
-          touched,
-          values,
-          handleChange,
-          setFieldValue,
-        }) => (
+        {({ errors, touched, values, handleChange, setFieldValue }) => (
           <>
             <Form>
               <div className={styles.pageTitle}>Professional Information</div>
@@ -56,6 +53,7 @@ const ProfessionalInformation = ({
                           <Field
                             name={item.fieldName}
                             type={item.type}
+                            value={undefined}
                             label={item.placeholder}
                             onChange={handleChange}
                             placeholder={item.placeholder}
@@ -76,10 +74,15 @@ const ProfessionalInformation = ({
                                 {item.placeholder}
                               </label>
                               <FileUpload
+                                isLoading={isLoading}
+                                setIsLoading={handleLoader}
+                                name={item.fieldName}
                                 title={item.title}
-                                fileUploadInputChange={(e) =>
-                                  setFieldValue(item.name)
-                                }
+                                fileUploadInputChange={(filesList) => {
+                                  setFieldValue(item.fieldName, filesList, {
+                                    shouldValidate: true,
+                                  });
+                                }}
                               />
                               <div className={styles.hrLine} />
                             </>

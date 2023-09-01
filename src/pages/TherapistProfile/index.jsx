@@ -6,8 +6,10 @@ import DoctorInfo from "../../components/DoctorInfo";
 import { AppointmentCalenderSection } from "../Appointments";
 
 import styles from "./styles.module.scss";
+import { getUserInfoFromStorage } from "../../utility/common-helper";
 
 const TherapistProfile = () => {
+  const userInfo = getUserInfoFromStorage();
   return (
     <AdminLayoutView>
       <Grid container>
@@ -17,9 +19,13 @@ const TherapistProfile = () => {
       </Grid>
       <Grid container className={styles.mainContainer}>
         <Grid item xs={8}>
-          <DoctorInfo title="Specialization" subtitle="Sports Therapist" />
+          <DoctorInfo
+            name={userInfo?.fullName}
+            title="Specialization"
+            subtitle={userInfo?.specialization || "N/A"}
+          />
 
-          <TherapistInfo />
+          <TherapistInfo userInfo={userInfo} />
         </Grid>
 
         <Grid item xs={4}>
@@ -32,7 +38,7 @@ const TherapistProfile = () => {
 
 export default TherapistProfile;
 
-const TherapistInfo = () => {
+const TherapistInfo = ({ userInfo }) => {
   return (
     <div className={styles.infoContainer}>
       <Grid container>
@@ -43,49 +49,58 @@ const TherapistInfo = () => {
 
           <Grid container className="pb-12">
             <Grid item sm={6}>
-              <InfoRow title="Email" subtitle="daniyal@gmail.com" />
+              <InfoRow title="Email" subtitle={userInfo.email} />
             </Grid>
             <Grid item sm={6}>
-              <InfoRow title="Gender" subtitle="Female" />
+              <InfoRow title="Gender" subtitle={userInfo?.gender || "N/A"} />
             </Grid>
           </Grid>
 
           <Grid container className="pb-12">
             <Grid item sm={6}>
-              <InfoRow title="Phone No" subtitle="123-432-455" />
+              <InfoRow title="Phone No" subtitle={userInfo?.phone || "N/A"} />
             </Grid>
             <Grid item sm={6}>
-              <InfoRow title="Post Code" subtitle="45" />
+              <InfoRow
+                title="Post Code"
+                subtitle={userInfo?.postCode || "N/A"}
+              />
             </Grid>
           </Grid>
 
           <Grid container className="pb-12">
             <Grid item sm={6}>
-              <InfoRow title="Country" subtitle="USA" />
+              <InfoRow title="Country" subtitle={userInfo?.country || "N/A"} />
             </Grid>
             <Grid item sm={6}>
-              <InfoRow title="City" subtitle="Austin" />
-            </Grid>
-          </Grid>
-
-          <Grid container className="pb-12">
-            <Grid item>
-              <InfoRow title="Address" subtitle="45 New Avenue, New York" />
-            </Grid>
-          </Grid>
-
-          <Grid container className="pb-12">
-            <Grid item sm={6}>
-              <InfoRow title="Specialization" subtitle="XYZ" />
-            </Grid>
-            <Grid item sm={6}>
-              <InfoRow title="Fee" subtitle="250 $" />
+              <InfoRow title="City" subtitle={userInfo?.city || "N/A"} />
             </Grid>
           </Grid>
 
           <Grid container className="pb-12">
             <Grid item>
-              <InfoRow title="Experience" subtitle="4 Years" />
+              <InfoRow title="Address" subtitle={userInfo?.address || "N/A"} />
+            </Grid>
+          </Grid>
+
+          <Grid container className="pb-12">
+            <Grid item sm={6}>
+              <InfoRow
+                title="Specialization"
+                subtitle={userInfo?.specialization || "N/A"}
+              />
+            </Grid>
+            <Grid item sm={6}>
+              <InfoRow title="Fee" subtitle={`${userInfo?.fee || 0} $`} />
+            </Grid>
+          </Grid>
+
+          <Grid container className="pb-12">
+            <Grid item>
+              <InfoRow
+                title="Experience"
+                subtitle={`${userInfo?.experience || 0} Years`}
+              />
             </Grid>
           </Grid>
         </Grid>

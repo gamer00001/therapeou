@@ -34,6 +34,24 @@ const Login = () => {
     }, 500);
   };
 
+  const checkForRegistration = (therapistData) => {
+    if (!therapistData.city) {
+      navigate("/therapist/registeration-process", {
+        state: {
+          tabId: 0,
+          userInfo: therapistData,
+        },
+      });
+    } else if (!therapistData.specialization) {
+      navigate("/therapist/registeration-process", {
+        state: {
+          tabId: 1,
+          userInfo: therapistData,
+        },
+      });
+    } else navigate("/admin/therapist-home");
+  };
+
   const handleUserLogin = async (data) => {
     let apiToHit;
 
@@ -72,7 +90,8 @@ const Login = () => {
         console.log(err);
       }
       if (type === "therapist") {
-        navigate("/admin/therapist-home");
+        return checkForRegistration(loginResposne?.data);
+        // navigate("/admin/therapist-home");
       } else {
         navigate("/admin/overview");
       }

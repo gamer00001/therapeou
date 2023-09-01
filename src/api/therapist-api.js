@@ -7,6 +7,7 @@ import {
   SearchTherapistApiUrl,
   TherapistAppointmentSlots,
   TherapistInfoGetAllApiUrl,
+  TherapistInfoGetApiUrl,
   TherapistLoginApiUrl,
   TherapistSignUpApiUrl,
   TherapistUpdateApiUrl,
@@ -14,9 +15,9 @@ import {
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
-export const therapistSignupApi = async (patientData) => {
+export const therapistSignupApi = async (therapistData) => {
   return await axios
-    .post(`${TherapistSignUpApiUrl}`, patientData)
+    .post(`${TherapistSignUpApiUrl}`, therapistData)
     .then((result) => {
       return result;
     })
@@ -147,6 +148,17 @@ export const uploadTherapistDocumnetApi = async (userId, docType, data) => {
 export const therapistUpdateInfoApi = async (id, data) => {
   return await axios
     .put(`${TherapistUpdateApiUrl}/${id}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const fetchTherapistInfoApi = async (id) => {
+  return await axios
+    .get(`${TherapistInfoGetApiUrl}/${id}`)
     .then((result) => {
       return result;
     })

@@ -14,22 +14,21 @@ const list = [
   "Cognitive behavioral therapy",
 ];
 
-const LeftSection = () => {
+const LeftSection = ({ therapistInfo }) => {
   return (
     <div>
       <img src={TherapistImg} alt="therapist-profile" />
       <Typography className={styles.doctorName} component="div">
-        Dr Jassica
+        Dr {therapistInfo?.fullName || "N/A"}
       </Typography>
       <Typography className={styles.doctorDescription} component="div">
-        Physiotherapy is a healthcare profession focused on helping individuals
-        improve their physical function, mobility, and quality of life.
+        {therapistInfo?.profileDescription || "N/A"}
       </Typography>
     </div>
   );
 };
 
-const RightSection = ({ handleBookAppointment }) => {
+const RightSection = ({ therapistInfo, handleBookAppointment }) => {
   const navigate = useNavigate();
   return (
     <div>
@@ -38,15 +37,15 @@ const RightSection = ({ handleBookAppointment }) => {
       </Typography>
 
       <Typography className={styles.doctorName} component="h3">
-        Dr. Jassica
+        Dr. {therapistInfo?.fullName || "N/A"}
       </Typography>
 
       <Typography className={styles.speciality} component="h3">
-        Physiotherapist
+        {therapistInfo?.profileTitle || "N/A"}
       </Typography>
 
       <Typography className={styles.speciality} component="h3">
-        Appolo Hospital, New York, USA
+        {therapistInfo?.city || "N/A"}, {therapistInfo?.country || "N/A"}
       </Typography>
 
       <Typography className={styles.profileTitle} component="h3">
@@ -54,9 +53,9 @@ const RightSection = ({ handleBookAppointment }) => {
       </Typography>
 
       <Typography className={styles.specialityList} component="div">
-        {list.map((item) => (
-          <DoctorSpeciality title={item} />
-        ))}
+        {/* {list.map((item) => ( */}
+        <DoctorSpeciality title={therapistInfo?.specialization || "N/A"} />
+        {/* ))} */}
       </Typography>
 
       <Typography className={styles.profileTitle} component="h3">
@@ -64,7 +63,7 @@ const RightSection = ({ handleBookAppointment }) => {
       </Typography>
 
       <Typography className={styles.speciality} component="h3">
-        6 years +
+        {therapistInfo?.experience} years +
       </Typography>
 
       <Typography className={styles.profileTitle} component="h3">
@@ -72,7 +71,7 @@ const RightSection = ({ handleBookAppointment }) => {
       </Typography>
 
       <Typography className={styles.speciality} component="h3">
-        +949 000 000 000
+        {therapistInfo?.phone || "N/A"}
       </Typography>
 
       <Typography className={styles.profileTitle} component="h3">
@@ -80,7 +79,7 @@ const RightSection = ({ handleBookAppointment }) => {
       </Typography>
 
       <Typography className={styles.speciality} component="h3">
-        719 Woodland Terrace, Sacramento California
+        {therapistInfo?.address || "N/A"}
       </Typography>
 
       <Typography className={styles.btnList} component="div">
@@ -101,14 +100,17 @@ const RightSection = ({ handleBookAppointment }) => {
   );
 };
 
-const TherapistProfile = ({ handleBookAppointment }) => {
+const TherapistProfile = ({ therapistInfo, handleBookAppointment }) => {
   return (
     <Grid container>
       <Grid item xs={6} className={styles.leftSectionContainer}>
-        <LeftSection />
+        <LeftSection therapistInfo={therapistInfo} />
       </Grid>
       <Grid item xs={6} className={styles.rightSectionContainer}>
-        <RightSection handleBookAppointment={handleBookAppointment} />
+        <RightSection
+          therapistInfo={therapistInfo}
+          handleBookAppointment={handleBookAppointment}
+        />
       </Grid>
     </Grid>
   );

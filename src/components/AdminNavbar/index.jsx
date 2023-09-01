@@ -11,6 +11,7 @@ import ChatIcon from "../../assets/chat-icon.svg";
 import styles from "./styles.module.scss";
 
 const AdminNavbar = () => {
+  const profileImage = getUserInfoFromStorage()?.image;
   return (
     <Grid container className={styles.navContainer}>
       <Grid item xs={7}>
@@ -29,7 +30,10 @@ const AdminNavbar = () => {
           src={NotificationIcon2}
           alt="notification-icon"
         />
-        <ProfileBlock name={getUserInfoFromStorage()?.fullName} />
+        <ProfileBlock
+          image={profileImage}
+          name={getUserInfoFromStorage()?.fullName}
+        />
       </Grid>
     </Grid>
   );

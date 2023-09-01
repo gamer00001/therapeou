@@ -24,7 +24,7 @@ export const TherapistLoginApiUrl = `${TherapistBaseUrl}/login`;
 export const TherapistInfoGetApiUrl = `${TherapistBaseUrl}/get`;
 export const TherapistInfoGetAllApiUrl = `${TherapistBaseUrl}/get-all`;
 export const SearchTherapistApiUrl = `${TherapistBaseUrl}/search/name`;
-export const TherapistUpdateApiUrl = `${TherapistBaseUrl}/update`;
+export const TherapistUpdateApiUrl = `${TherapistBaseUrl}/update-therapist`;
 
 export const TherapistAppointmentSlots = `${AppointmentsBaseUrl}/therapist/available-times`;
 export const FetchTherapistAppointmentApiUrl = `${AppointmentsBaseUrl}/get/therapist`;

@@ -4,7 +4,10 @@ import AdminLayoutView from "../../components/layout/AdminView";
 import BookAppointment from "../../components/BookAppointment";
 import { Modal } from "@mui/material";
 
-import { fetchTherapistAppointmentSlots } from "../../api/therapist-api";
+import {
+  fetchTherapistAppointmentSlots,
+  fetchTherapistInfoApi,
+} from "../../api/therapist-api";
 import {
   makeTuplesOfSlots,
   parseBookAppointmentData,
@@ -24,6 +27,7 @@ const TherapistProfilePage = () => {
   const [state, setState] = useState({
     isOpen: false,
     isLoading: false,
+    therapistInfo: {},
     timeSlots: [],
     formValues: {
       name: "",
@@ -80,8 +84,31 @@ const TherapistProfilePage = () => {
     }));
   };
 
+  const fetchTherapistInfo = () => {
+    handleLoader();
+
+    const therapistId = location.state.therapistId;
+
+    fetchTherapistInfoApi(therapistId)
+      .then((res) => {
+        handleLoader();
+
+        setState((prev) => ({
+          ...prev,
+          therapistInfo: res.data,
+        }));
+      })
+      .catch((error) => {
+        handleLoader();
+
+        console.log({ error });
+      });
+  };
+
   useEffect(() => {
     fetchAppointmentSlots();
+
+    fetchTherapistInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -90,7 +117,10 @@ const TherapistProfilePage = () => {
       {state.isLoading && <Loader isShow={state.isLoading} />}
 
       <AdminLayoutView>
-        <TherapistProfile handleBookAppointment={handleClose} />
+        <TherapistProfile
+          therapistInfo={state.therapistInfo}
+          handleBookAppointment={handleClose}
+        />
 
         <Modal
           aria-labelledby="transition-modal-title"

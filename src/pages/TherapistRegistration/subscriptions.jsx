@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import SubscriptionCard from "../../components/SubscriptionCard";
 import styles from "./styles.module.scss";
 import { Grid } from "@mui/material";
 import CButton from "../../components/CButton";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "../../components/CheckoutForm";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
+
+const options = {
+  mode: "payment",
+  amount: 1099,
+  currency: "usd",
+  // Fully customizable with appearance API.
+  appearance: {
+    /*...*/
+  },
+};
 
 const Subscriptions = () => {
+  const [isCheckoutPage, setIsCheckoutPage] = useState(false);
+
+  const handlePackage = () => {
+    setIsCheckoutPage(!isCheckoutPage);
+  };
+
+  if (isCheckoutPage) {
+    return (
+      <Elements stripe={stripePromise} options={options}>
+        <CheckoutForm />
+      </Elements>
+    );
+  }
   return (
     <>
       <div className={styles.subscriptionTitlesRow}>
@@ -15,9 +43,13 @@ const Subscriptions = () => {
       </div>
 
       <div className={styles.subscriptionBlock}>
-        <SubscriptionCard isPremium={true} />
+        <SubscriptionCard isPremium={true} handlePackage={handlePackage} />
 
-        <SubscriptionCard packageName="Standard" packageAmount="$50/mo." />
+        <SubscriptionCard
+          packageName="Standard"
+          packageAmount="$50/mo."
+          handlePackage={handlePackage}
+        />
       </div>
 
       <Grid container justifyContent="center" style={{ paddingTop: "40px" }}>

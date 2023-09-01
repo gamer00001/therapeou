@@ -5,9 +5,10 @@ const SubscriptionCard = ({
   packageName = "Premium",
   packageAmount = "$100/mo.",
   isPremium = false,
+  handlePackage,
 }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handlePackage}>
       <div
         className={`${styles.packageInfo} ${isPremium && `${styles.premuim}`}`}
       >

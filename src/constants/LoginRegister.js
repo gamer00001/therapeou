@@ -61,7 +61,7 @@ export const SettingsFields = [
 export const TherapistPersonalFields = [
   {
     placeholder: "Title",
-    fieldName: "title",
+    fieldName: "profileTitle",
     type: "text",
     col: 12,
   },
@@ -74,12 +74,13 @@ export const TherapistPersonalFields = [
   {
     placeholder: "Email",
     fieldName: "email",
+    disabled: true,
     type: "text",
     col: 12,
   },
   {
     placeholder: "Phone Number",
-    fieldName: "phoneNumber",
+    fieldName: "phone",
     type: "text",
     col: 12,
   },
@@ -99,7 +100,7 @@ export const TherapistPersonalFields = [
 
   {
     placeholder: "Postal Code",
-    fieldName: "postalCode",
+    fieldName: "postCode",
     type: "text",
     col: 6,
   },
@@ -115,6 +116,12 @@ export const TherapistPersonalFields = [
     type: "text",
     col: 12,
   },
+  {
+    placeholder: "General Description",
+    fieldName: "profileDescription",
+    type: "text",
+    col: 12,
+  },
 ];
 
 export const TherapistProfessionalFields = [
@@ -126,7 +133,7 @@ export const TherapistProfessionalFields = [
   {
     placeholder: "Experience",
     fieldName: "experience",
-    type: "text",
+    type: "number",
   },
   {
     placeholder: "Fee",
