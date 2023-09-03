@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   FormControl,
   FormControlLabel,
@@ -12,6 +12,8 @@ import "./styles.scss";
 import CButton from "../CButton";
 
 const SearchField = (props) => {
+  const ref = useRef();
+
   const [state, setState] = useState({
     open: false,
     searchType: "name",
@@ -46,6 +48,20 @@ const SearchField = (props) => {
     props.setSearchType(state.searchType);
   };
 
+  useEffect(() => {
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      if (state.open && ref.current && !ref.current.contains(e.target)) {
+        handleFilters();
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [state.open]);
+
   return (
     <div>
       <Input
@@ -64,7 +80,7 @@ const SearchField = (props) => {
 
       {state.open && (
         <>
-          <div className="filtersBlock">
+          <div className="filtersBlock" ref={ref}>
             <FormControl>
               <FormLabel id="demo-radio-buttons-group-label">
                 Search by
