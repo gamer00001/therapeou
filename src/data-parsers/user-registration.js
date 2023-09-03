@@ -14,7 +14,7 @@ export const parseTherapistListing = (data) => {
     ? data.map((item) => {
         return {
           therapistId: item.id,
-          name: item?.fullName.length > 0 ? item?.fullName : "N/A",
+          name: item?.fullName ? item?.fullName : "N/A",
           status: item.active ? "Online" : "Offline",
           profileImage: item.image,
           fee: "$ 50.00",

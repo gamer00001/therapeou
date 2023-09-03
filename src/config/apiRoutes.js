@@ -23,7 +23,7 @@ export const TherapistSignUpApiUrl = `${TherapistBaseUrl}/signup`;
 export const TherapistLoginApiUrl = `${TherapistBaseUrl}/login`;
 export const TherapistInfoGetApiUrl = `${TherapistBaseUrl}/get`;
 export const TherapistInfoGetAllApiUrl = `${TherapistBaseUrl}/get-all`;
-export const SearchTherapistApiUrl = `${TherapistBaseUrl}/search/name`;
+export const SearchTherapistApiUrl = `${TherapistBaseUrl}/search`;
 export const TherapistUpdateApiUrl = `${TherapistBaseUrl}/update-therapist`;
 
 export const TherapistAppointmentSlots = `${AppointmentsBaseUrl}/therapist/available-times`;

@@ -17,10 +17,12 @@ import Loader from "../../components/Loader";
 
 import NotificationIcon2 from "../../assets/notification-icon-1.svg";
 import ChatIcon from "../../assets/chat-icon.svg";
+import SearchField from "../../components/SearchFIeld";
 
 const Overview = () => {
   const [state, setState] = useState({
     search: "",
+    searchType: "name",
     userInfo: getUserInfoFromStorage(),
     listing: [],
     loading: true,
@@ -53,12 +55,34 @@ const Overview = () => {
     });
   };
 
-  const handleTherapistSearch = (e) => {
-    // const searchResp = searchTherapistApi();
+  const handleTherapistSearch = async (e) => {
+    const { searchType } = state;
+    let latitude = 0,
+      longitude = 0;
+    const searchValue = e.target?.value;
+    setState({ ...state, loading: true });
+
+    // navigator.geolocation.getCurrentPosition(async (position) => {
+    //   let latitude = position.coords.latitude;
+    //   let longitude = position.coords.longitude;
+
+    const searchResp = await searchTherapistApi(
+      searchType,
+      `?latitude=${latitude}&longitude=${longitude}&radius=0&searchData=${searchValue}`
+    );
+
+    console.log({ searchValue, searchResp });
+
+    if (searchResp.status === 200) {
+      let parsedData = parseTherapistListing(searchResp?.data);
+      setState({ ...state, listing: parsedData, loading: false });
+    } else {
+      toast.error("Some Error Occured While Fetching Therapist Lisitng.");
+    }
 
     setState((prev) => ({
       ...prev,
-      search: e.target.value,
+      search: searchValue,
     }));
   };
 
@@ -74,10 +98,16 @@ const Overview = () => {
                   <Typography className={styles.overviewHeading} component="h2">
                     Overview
                     <div className={styles.fieldBlock}>
-                      <Input
-                        value={state.search}
+                      <SearchField
+                        // value={state.search}
+                        name="search"
+                        setSearchType={(type) =>
+                          setState((prev) => ({
+                            ...prev,
+                            searchType: type,
+                          }))
+                        }
                         placeholder="Search your nearby therapist"
-                        className={styles.searchTherapistField}
                         onChange={handleTherapistSearch}
                       />
 

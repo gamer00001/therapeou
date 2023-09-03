@@ -51,9 +51,9 @@ export const fetchAllTherapistApi = async (loginData) => {
     });
 };
 
-export const searchTherapistApi = async (data) => {
+export const searchTherapistApi = async (searchType, queryParams) => {
   return await axios
-    .get(`${SearchTherapistApiUrl}`)
+    .get(`${SearchTherapistApiUrl}/${searchType}${queryParams}`)
     .then((result) => {
       return result;
     })

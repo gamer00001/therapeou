@@ -77,3 +77,20 @@ code {
 .ratingBox .MuiBox-root {
   color: #fff;
 }
+
+.searchTherapistField {
+  width: 356px;
+  height: 45px;
+  padding-left: 15px;
+  background: #ffffff;
+  border-radius: 65px;
+  bottom: 10px;
+}
+
+.searchTherapistField::before {
+  border-bottom: none !important;
+}
+
+.searchTherapistField::after {
+  border-bottom: none !important;
+}
