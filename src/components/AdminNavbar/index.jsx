@@ -41,10 +41,14 @@ const AdminNavbar = () => {
 
 export default AdminNavbar;
 
-const ProfileBlock = ({ image = ProfileLogo, name = "Alex" }) => {
+const ProfileBlock = ({ image, name = "Alex" }) => {
   return (
     <div className={styles.profileBlockContainer}>
-      <img className={styles.profileLogo} src={image} alt="profile-logo" />
+      <img
+        className={styles.profileLogo}
+        src={image ?? ProfileLogo}
+        alt="profile-logo"
+      />
       <span className={styles.userName}>{name}</span>
     </div>
   );

@@ -6,6 +6,7 @@ import CButton from "../../components/CButton";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../../components/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
 
@@ -21,6 +22,7 @@ const options = {
 
 const Subscriptions = () => {
   const [isCheckoutPage, setIsCheckoutPage] = useState(false);
+  const navigate = useNavigate();
 
   const handlePackage = () => {
     setIsCheckoutPage(!isCheckoutPage);
@@ -57,6 +59,7 @@ const Subscriptions = () => {
           <CButton
             formType="submit"
             // disabled={isSubmitting}
+            onClick={() => navigate("/admin/therapist-home")}
             title={"Save"}
             type="Submit"
             width="462px"
