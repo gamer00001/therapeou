@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 
 import LoginRegisterForm from "../../components/LoginRegisterForm";
 import { LoginFields } from "../../constants/LoginRegister";
@@ -9,7 +9,7 @@ import { therapistLoginApi } from "../../api/therapist-api";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import Navbar from "../../components/Navbar";
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
 
 const initialValues = {
   email: "",
@@ -59,6 +59,7 @@ const Login = () => {
       ...prev,
       isLoading: !prev.isLoading,
     }));
+
     const type = location?.state?.selectedType || "patient";
 
     if (type === "patient") {
@@ -68,10 +69,6 @@ const Login = () => {
     }
     const loginResposne = await apiToHit(data);
 
-    setState((prev) => ({
-      ...prev,
-      isLoading: !prev.isLoading,
-    }));
     if (loginResposne?.status === 200) {
       let userInfo = loginResposne?.data;
       userInfo = {
@@ -83,15 +80,14 @@ const Login = () => {
       delete userInfo.password;
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
-      try {
-        await signInWithEmailAndPassword(auth, data.email, data.password);
-        navigate("/");
-      } catch (err) {
-        console.log(err);
-      }
+      // try {
+      //   await signInWithEmailAndPassword(auth, data.email, data.password);
+      //   navigate("/");
+      // } catch (err) {
+      //   console.log(err);
+      // }
       if (type === "therapist") {
         return checkForRegistration(loginResposne?.data);
-        // navigate("/admin/therapist-home");
       } else {
         navigate("/admin/overview");
       }
