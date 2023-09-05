@@ -32,10 +32,12 @@ const Overview = () => {
 
   const fetchTherapistListing = async () => {
     const data = await fetchAllTherapistApi();
-    if (data.status === 200) {
+    if (data?.status === 200) {
       let parsedData = parseTherapistListing(data?.data);
+
       setState({ ...state, listing: parsedData, loading: false });
     } else {
+      setState({ ...state, loading: false })
       return toast.error(
         "Some Error Occured While Fetching Therapist Lisitng."
       );
@@ -43,7 +45,8 @@ const Overview = () => {
   };
 
   useEffect(() => {
-    fetchTherapistListing();
+    if(state.listing.length === 0)
+      fetchTherapistListing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
