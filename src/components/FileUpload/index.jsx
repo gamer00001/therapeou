@@ -20,7 +20,7 @@ const FileUpload = ({
     setIsLoading();
     const formData = new FormData();
     const imageList = [];
-    const files = e.target.files;
+    const files = Array.from(e.target.files);
 
     for (let i = 0; i < files.length; i++) {
       imageList.push(files[i]);
