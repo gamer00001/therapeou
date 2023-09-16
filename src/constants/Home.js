@@ -15,10 +15,10 @@ export const FooterLinks = [
         goTo: "/about-us",
       },
 
-      {
-        title: "How It Works",
-        goTo: "/",
-      },
+      // {
+      //   title: "How It Works",
+      //   goTo: "/",
+      // },
 
       {
         title: "Contact",
