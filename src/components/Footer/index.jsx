@@ -38,7 +38,7 @@ const Footer = () => {
         {FooterLinks.map((item) => {
           return (
             <Grid container direction="row">
-              <Grid item md={4}>
+              <Grid item md={12}>
                 <Typography
                   className={styles.listTitle}
                   variant="h4"
@@ -62,10 +62,10 @@ const HighLight = ({ titles }) => {
   const navigate = useNavigate();
 
   return (
-    <Grid container spacing={2} direction="column">
+    <div className="d-flex gap-40">
       {titles.map((item) => {
         return (
-          <Grid item md={4}>
+          <div item md={3}>
             <Typography
               className={styles.listSubtitle}
               variant="h4"
@@ -74,9 +74,9 @@ const HighLight = ({ titles }) => {
             >
               {item.title}
             </Typography>
-          </Grid>
+          </div>
         );
       })}
-    </Grid>
+    </div>
   );
 };
