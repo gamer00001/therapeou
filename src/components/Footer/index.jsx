@@ -28,6 +28,10 @@ const Footer = () => {
             className={`${styles.socialsLogo} ${styles.socialsSpacing}`}
           />
         </Typography>
+        <div>
+          <br />
+          Copyright &copy; {new Date().getFullYear()}
+        </div>
       </Grid>
 
       <Grid item xs={8} md={8} lg={8} className={styles.linksContainer}>

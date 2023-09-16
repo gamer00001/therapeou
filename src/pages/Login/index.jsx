@@ -92,6 +92,10 @@ const Login = () => {
         navigate("/admin/overview");
       }
     } else {
+      setState((prev) => ({
+        ...prev,
+        isLoading: !prev.isLoading,
+      }));
       return toast.error("Invalid Email or Password.");
     }
   };

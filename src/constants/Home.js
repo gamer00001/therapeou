@@ -1,10 +1,14 @@
 export const FooterLinks = [
   {
-    heading: "Company",
+    heading: "Quick Links",
     titles: [
+      // {
+      //   title: "Home",
+      //   goTo: "/",
+      // },
       {
-        title: "Home",
-        goTo: "/",
+        title: "FAQ's",
+        goTo: "/get-in-touch",
       },
       {
         title: "About Us",
@@ -12,7 +16,7 @@ export const FooterLinks = [
       },
 
       {
-        title: "Company",
+        title: "How It Works",
         goTo: "/",
       },
 

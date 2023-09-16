@@ -8,7 +8,7 @@ export const MENU_LINKS = [
     route: "/about-us",
   },
   {
-    name: "Company",
+    name: "How It Works",
     route: "/",
   },
 

@@ -1,24 +1,27 @@
-import React from "react";
-import { Grid, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-
-import styles from "./style.module.css";
-
-import LoginImg from "../../assets/login-img.png";
-import SignupImg from "../../assets/signup-img.png";
-// import TherapistImg from "../../assets/therapist-icon.png";
-// import PatientImg from "../../assets/patient-icon.png";
+import React, { useState } from "react";
+import {
+  Grid,
+  Input,
+  Checkbox,
+  IconButton,
+  Typography,
+  InputAdornment,
+} from "@mui/material";
+import * as Yup from "yup";
+import { ErrorMessage, Form, Formik } from "formik";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import CButton from "../CButton";
-// import AccountTypeBlock from "../AccountTypeBlock";
 
-import * as Yup from "yup";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import SignupImg from "../../assets/signup-img.png";
+import LoginImg from "../../assets/login-img.png";
+
+import styles from "./style.module.css";
 
 const validationSchemaForSignup = Yup.object({
   fullName: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  password: Yup.string().min(8).required("Password is required"),
 });
 
 const validationSchemaForLogin = Yup.object({
@@ -39,7 +42,10 @@ const LoginRegisterForm = ({
   initialValues,
   handleSubmit,
 }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  const [termsCheck, setTermsCheck] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <Grid container justifyContent="center">
@@ -92,7 +98,7 @@ const LoginRegisterForm = ({
             }
             onSubmit={handleSubmit}
           >
-            {({ isSubmitting, errors, touched, values, handleChange }) => (
+            {({ errors, touched, setFieldValue, handleChange }) => (
               <>
                 <Form>
                   {fields.map((item, index) => (
@@ -101,26 +107,9 @@ const LoginRegisterForm = ({
                       className={styles.formGroupContainer}
                       key={index}
                     >
-                      {item.type === "dropdown" ? (
+                      {item.type === "text" ? (
                         <>
-                          <Field
-                            name="type"
-                            as="select"
-                            placeholder={item.placeholder}
-                            onChange={handleChange}
-                            className={`${styles.registerFields} form-control ${
-                              errors[item.fieldName] &&
-                              touched[item.fieldName] &&
-                              `${styles.isInvalid}`
-                            }`}
-                          >
-                            <option value="patient">Patient</option>
-                            <option value="therapist">Therapist</option>
-                          </Field>
-                        </>
-                      ) : (
-                        <>
-                          <Field
+                          <Input
                             name={item.fieldName}
                             type={item.type}
                             label={item.placeholder}
@@ -132,6 +121,37 @@ const LoginRegisterForm = ({
                               `${styles.isInvalid}`
                             }`}
                           />
+                        </>
+                      ) : (
+                        <>
+                          <Input
+                            name={item.fieldName}
+                            placeholder={item.placeholder}
+                            id="filled-adornment-password"
+                            type={showPassword ? "text" : "password"}
+                            fullWidth={true}
+                            className={`${styles.registerFields} form-control ${
+                              errors[item.fieldName] &&
+                              touched[item.fieldName] &&
+                              `${styles.isInvalid}`
+                            }`}
+                            endAdornment={
+                              <InputAdornment position="end">
+                                <IconButton
+                                  aria-label="toggle password visibility"
+                                  onClick={() => setShowPassword(!showPassword)}
+                                  edge="end"
+                                >
+                                  {showPassword ? (
+                                    <Visibility />
+                                  ) : (
+                                    <VisibilityOff />
+                                  )}
+                                </IconButton>
+                              </InputAdornment>
+                            }
+                            onChange={handleChange}
+                          />
                           <ErrorMessage
                             name={item.fieldName}
                             component="div"
@@ -141,6 +161,18 @@ const LoginRegisterForm = ({
                       )}
                     </Grid>
                   ))}
+                  {formType !== "Login" && (
+                    <Grid>
+                      <Checkbox
+                        value={termsCheck}
+                        onChange={() => {
+                          setTermsCheck(!termsCheck);
+                          setFieldValue("termsCheck", !termsCheck);
+                        }}
+                      />
+                      I Agree to terms and conditions
+                    </Grid>
+                  )}
                   <Grid
                     container
                     justifyContent="center"
@@ -149,7 +181,6 @@ const LoginRegisterForm = ({
                     <Grid item>
                       <CButton
                         formType="submit"
-                        disabled={isSubmitting}
                         title={actionText}
                         type="Submit"
                         width="462px"

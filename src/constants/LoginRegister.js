@@ -130,11 +130,11 @@ export const TherapistProfessionalFields = [
     fieldName: "specialization",
     type: "text",
   },
-  {
-    placeholder: "Experience",
-    fieldName: "experience",
-    type: "number",
-  },
+  // {
+  //   placeholder: "Experience",
+  //   fieldName: "experience",
+  //   type: "number",
+  // },
   {
     placeholder: "Fee",
     fieldName: "fee",

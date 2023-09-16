@@ -20,7 +20,7 @@ const options = {
   },
 };
 
-const Subscriptions = () => {
+const Subscriptions = ({ handleTabChange }) => {
   const [isCheckoutPage, setIsCheckoutPage] = useState(false);
   const navigate = useNavigate();
 
@@ -55,7 +55,16 @@ const Subscriptions = () => {
       </div>
 
       <Grid container justifyContent="center" style={{ paddingTop: "40px" }}>
-        <Grid item>
+        <Grid item className="d-flex" gap={4}>
+          <CButton
+            // formType="submit"
+            title={"Previous"}
+            type="Submit"
+            width="462px"
+            height="67px"
+            style={{ paddingTop: "40px" }}
+            onClick={() => handleTabChange(null, 1)}
+          />
           <CButton
             formType="submit"
             // disabled={isSubmitting}

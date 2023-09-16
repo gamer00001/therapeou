@@ -18,6 +18,7 @@ const initialValues = {
   email: "",
   password: "",
   type: "patient",
+  termsCheck: false,
 };
 
 const Register = () => {
@@ -30,12 +31,42 @@ const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      handleUserRegisteration(values);
-      setSubmitting(false);
-    }, 500);
+  const handleLoader = () => {
+    setState((prev) => ({
+      ...prev,
+      loading: !prev.loading,
+    }));
   };
+
+  const handleSubmit = (values, { setSubmitting }) => {
+    if (values.termsCheck) {
+      setTimeout(() => {
+        handleUserRegisteration(values);
+        setSubmitting(false);
+      }, 500);
+    } else {
+      return toast.error("Please accept terms and conditions first.");
+    }
+  };
+
+  function isStrongPassword(password) {
+    // Regular expressions to check for each condition
+    const capitalLetterRegex = /[A-Z]/;
+    const smallLetterRegex = /[a-z]/;
+    const numberRegex = /[0-9]/;
+    const specialCharacterRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+
+    // Check if the password meets all the conditions
+    const hasCapitalLetter = capitalLetterRegex.test(password);
+    const hasSmallLetter = smallLetterRegex.test(password);
+    const hasNumber = numberRegex.test(password);
+    const hasSpecialCharacter = specialCharacterRegex.test(password);
+
+    // Return true if all conditions are met
+    return (
+      hasCapitalLetter && hasSmallLetter && hasNumber && hasSpecialCharacter
+    );
+  }
 
   const handleFirebaseAction = async (data) => {
     try {
@@ -65,11 +96,14 @@ const Register = () => {
   };
 
   const handleUserRegisteration = async (data) => {
+    if (!isStrongPassword(data.password)) {
+      return toast.error(
+        "Password is not strong. It should contain at least one capital letter, one lowercase letter, one digit, and one special character."
+      );
+    }
+
     let latitude, longitude;
-    setState((prev) => ({
-      ...prev,
-      loading: !prev.loading,
-    }));
+    handleLoader();
 
     navigator.geolocation.getCurrentPosition(async (position) => {
       latitude = position.coords.latitude;
@@ -94,10 +128,7 @@ const Register = () => {
         lng: longitude,
       });
 
-      setState((prev) => ({
-        ...prev,
-        loading: !prev.loading,
-      }));
+      handleLoader();
 
       const userInfo = signupResposne?.data;
       delete userInfo.password;
@@ -122,11 +153,9 @@ const Register = () => {
           }
         }, 500);
       } else if (signupResposne?.status === 409) {
-        return toast.error("User Already Exist with this email.");
+        toast.error("User Already Exist with this email.");
       } else {
-        return toast.error(
-          "Some Error Occred. Please try again in few moments."
-        );
+        toast.error("Some Error Occred. Please try again in few moments.");
       }
     });
   };

@@ -33,7 +33,7 @@ const TherapistRegistration = () => {
     },
     professionalInitialValues: {
       specialization: "",
-      experience: "",
+      // experience: "",
       fee: "",
       education: "",
       insurance: "",
@@ -51,7 +51,6 @@ const TherapistRegistration = () => {
   };
 
   const handleTabChange = (event, newValue) => {
-    console.log({ newValue });
     setState((prev) => ({
       ...prev,
       tabValue: newValue,
@@ -62,8 +61,6 @@ const TherapistRegistration = () => {
     handleLoader();
 
     const therapistId = userInfo.id;
-
-    console.log({ data });
 
     const payload = {
       ...userInfo,
@@ -117,8 +114,8 @@ const TherapistRegistration = () => {
       ...prev,
       tabValue: location.state?.tabId || 0,
       personalInitialValues: {
-        ...userInfo,
         ...prev.personalInitialValues,
+        ...userInfo,
         email: userInfo.email,
       },
     }));
@@ -177,7 +174,7 @@ const TherapistRegistration = () => {
               value={state.tabValue}
               index={2}
             >
-              <Subscriptions />
+              <Subscriptions handleTabChange={handleTabChange} />
             </div>
           </Grid>
         </Grid>
@@ -198,8 +195,22 @@ const SideSection = ({ tabId, handleChange }) => {
         // onChange={handleChange}
         aria-label="basic tabs example"
       >
-        <Tab label={<RegistrationProcess title="Personal Information" />} />
-        <Tab label={<RegistrationProcess title="Professional Information" />} />
+        <Tab
+          label={
+            <RegistrationProcess
+              title="Personal Information"
+              icon={[1, 2].includes(tabId) ? `/green-check-1.svg` : null}
+            />
+          }
+        />
+        <Tab
+          label={
+            <RegistrationProcess
+              title="Professional Information"
+              icon={[2, 3].includes(tabId) ? "/green-check-1.svg" : null}
+            />
+          }
+        />
         <Tab label={<RegistrationProcess title="Subscription" />} />
       </Tabs>
     </>

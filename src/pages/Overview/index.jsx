@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
-import { Grid, Input, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import BasicTable from "../../components/TableListing";
 
 import styles from "./styles.module.scss";
@@ -37,7 +37,7 @@ const Overview = () => {
 
       setState({ ...state, listing: parsedData, loading: false });
     } else {
-      setState({ ...state, loading: false })
+      setState({ ...state, loading: false });
       return toast.error(
         "Some Error Occured While Fetching Therapist Lisitng."
       );
@@ -45,8 +45,7 @@ const Overview = () => {
   };
 
   useEffect(() => {
-    if(state.listing.length === 0)
-      fetchTherapistListing();
+    if (state.listing.length === 0) fetchTherapistListing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

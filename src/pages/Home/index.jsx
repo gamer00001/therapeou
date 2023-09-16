@@ -226,7 +226,12 @@ const Home = () => {
 
         <Container
           maxWidth={false}
-          sx={{ backgroundColor: "#C8C8C8", marginTop: 5, paddingBottom: 5 }}
+          sx={{
+            backgroundColor: "#C8C8C8",
+            marginTop: 5,
+            marginBottom: 5,
+            paddingBottom: 5,
+          }}
         >
           <Grid
             container

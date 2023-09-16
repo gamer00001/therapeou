@@ -11,7 +11,7 @@ import styles from "./styles.module.scss";
 
 const validationSchemaForProfessionalInformation = Yup.object({
   specialization: Yup.string().required("Specialization is required"),
-  experience: Yup.number().required("Experience is required"),
+  // experience: Yup.number().required("Experience is required"),
   fee: Yup.string().required("Fee is required"),
   education: Yup.array()
     .of(Yup.string())
