@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Container, Grid } from "@mui/material";
 
-import mind from "../../assets/mind.png";
+// import mind from "../../assets/mind.png";
 import aboutUs from "../../assets/aboutUs.png";
 import { SERVICE_CONTENT } from "../../constants/Service";
 import { TESTIMONIAL } from "../../constants/Testimonial";
@@ -35,9 +35,9 @@ const Home = () => {
           <Grid container direction="row" alignItems="center" spacing={3}>
             <Grid item md={6}>
               <Typography ml={10} component="div">
-                <Typography variant="h6" component="h6">
+                {/* <Typography variant="h6" component="h6">
                   HEALING THERAPY
-                </Typography>
+                </Typography> */}
                 <Typography variant="h2" component="h2">
                   Choose your own therapist.
                 </Typography>
@@ -56,8 +56,12 @@ const Home = () => {
             </Grid>
             <Grid item md={6}>
               <img
-                src={mind}
-                style={{ width: "-webkit-fill-available" }}
+                src={"/main-home.jpeg"}
+                style={{
+                  width: "-webkit-fill-available",
+                  height: "430px",
+                  objectFit: "contain",
+                }}
                 alt="Mind"
               />
             </Grid>
