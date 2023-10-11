@@ -10,6 +10,8 @@ import styles from "./styles.module.scss";
 const validationSchemaForPersonalInformation = Yup.object({
   profileTitle: Yup.string().required("Title is required"),
   fullName: Yup.string().required("Full Name is required"),
+  firstName: Yup.string().required("First Name is required"),
+  lastName: Yup.string().required("Last Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   phone: Yup.string().required("Phone Number is required"),
   country: Yup.string().required("Country is required"),
@@ -76,7 +78,7 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
               <Grid
                 container
                 justifyContent="center"
-                style={{ paddingTop: "40px" }}
+                style={{ paddingTop: "40px", paddingBottom: "40px" }}
               >
                 <Grid item>
                   <CButton

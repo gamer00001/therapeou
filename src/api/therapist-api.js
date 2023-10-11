@@ -11,6 +11,8 @@ import {
   TherapistLoginApiUrl,
   TherapistSignUpApiUrl,
   TherapistUpdateApiUrl,
+  addAppointmentNoteeApiUrl,
+  updateAppointmentNoteApiUrl,
   uploadDocumentApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
@@ -87,6 +89,28 @@ export const fetchTherapistAppointmentsApi = async (therapistId) => {
 export const updateAppointmentApi = async (appointmentId, data) => {
   return await axios
     .put(`${ModifyAppointmentApiUrl}/${appointmentId}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const addNoteToAppointmentApi = async (data) => {
+  return await axios
+    .post(`${addAppointmentNoteeApiUrl}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const updateNoteToAppointmentApi = async (data, noteId) => {
+  return await axios
+    .put(`${updateAppointmentNoteApiUrl}/${noteId}`, data)
     .then((result) => {
       return result;
     })

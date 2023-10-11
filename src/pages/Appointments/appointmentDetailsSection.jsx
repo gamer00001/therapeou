@@ -40,6 +40,7 @@ const AppointmentDetailsSection = ({
             return (
               <div style={{ padding: "35px 70px" }}>
                 <AppointmentOrderBlock
+                  item={item}
                   {...item}
                   tabId="1"
                   fromPatient={fromPatient}

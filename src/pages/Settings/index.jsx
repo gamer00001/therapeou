@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
 import { Grid, Input, Typography } from "@mui/material";
+
 import ImageUpload from "../../components/ImageUpload";
-import styles from "./styles.module.scss";
 import { SettingsFields } from "../../constants/LoginRegister";
 import CButton from "../../components/CButton";
 import ChangePassword from "../../components/ChangePassword";
@@ -14,6 +14,8 @@ import {
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import { therapistUpdateInfoApi } from "../../api/therapist-api";
+
+import styles from "./styles.module.scss";
 
 const INITIAL_STATE = {
   image: null,

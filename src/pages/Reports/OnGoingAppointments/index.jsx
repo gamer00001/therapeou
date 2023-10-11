@@ -12,40 +12,9 @@ import { parseTherapistAppointmentListing } from "../../../data-parsers/therapis
 import { isEmpty } from "lodash";
 
 const INITIAL_STATE = {
-  isLoading: false,
+  isLoading: true,
   appointmentListing: [],
 };
-
-const List = [
-  {
-    patientName: "Franklin Sierra",
-    purpose: "Chronic pain patient",
-    rating: 4.4,
-    id: "3333",
-    date: "June-22-2022",
-  },
-  {
-    patientName: "Franklin Sierra",
-    purpose: "Chronic pain patient",
-    rating: 4.4,
-    id: "3333",
-    date: "June-22-2022",
-  },
-  {
-    patientName: "Franklin Sierra",
-    purpose: "Chronic pain patient",
-    rating: 4.4,
-    id: "3333",
-    date: "June-22-2022",
-  },
-  {
-    patientName: "Franklin Sierra",
-    purpose: "Chronic pain patient",
-    rating: 4.4,
-    id: "3333",
-    date: "June-22-2022",
-  },
-];
 
 const OnGoingAppointments = () => {
   const [state, setState] = useState(INITIAL_STATE);
@@ -60,27 +29,27 @@ const OnGoingAppointments = () => {
   };
 
   const fetchTherapistAppointments = async () => {
-    handleLoader();
-
     const userInfo = getUserInfoFromStorage();
 
     const resp = await fetchTherapistAppointmentsApi(userInfo.id);
 
-    handleLoader();
     if (resp.status === 200) {
       const parseData = parseTherapistAppointmentListing(resp.data);
 
       setState((prev) => ({
         ...prev,
+        isLoading: false,
         appointmentListing: parseData,
       }));
     } else {
+      handleLoader();
       return toast.error("Some Error Occured while fetching appointments.");
     }
   };
 
   useEffect(() => {
     fetchTherapistAppointments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

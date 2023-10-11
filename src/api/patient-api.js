@@ -7,6 +7,8 @@ import {
   FetchPatientAppointmentApiUrl,
   addReviewApiUrl,
   uploadImageApiUrl,
+  uploadPatientReportsApiUrl,
+  addAppointmentDocsApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -95,6 +97,39 @@ export const uploadProfileImageApi = async (userId, type, data) => {
     .post(`${uploadImageApiUrl}/${userId}/${type}`, data, {
       "Content-Type": "multipart/form-data",
     })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const uploadPatientReportsDocumnetApi = async (
+  userId,
+  docType,
+  data,
+  appointmentId
+) => {
+  return await axios
+    .post(
+      `${uploadPatientReportsApiUrl}/${userId}/${docType}/${appointmentId}`,
+      data,
+      {
+        "Content-Type": "multipart/form-data",
+      }
+    )
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const addPatientReportsToAppointmentApi = async (data) => {
+  return await axios
+    .post(`${addAppointmentDocsApiUrl}`, data)
     .then((result) => {
       return result;
     })

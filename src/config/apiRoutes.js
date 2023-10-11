@@ -9,6 +9,11 @@ const ScheduleBaseUrl = `${apiVersion}schedule`;
 const ReviewsBaseUrl = `${apiVersion}reviews`;
 const UploadFileBaseUrl = `${apiVersion}upload-doc`;
 const UploadImageBaseUrl = `${apiVersion}upload-image`;
+const AppointmentNotesBaseUrl = `${apiVersion}notes`;
+const AppointmentDocsBaseUrl = `${apiVersion}appointment-docs`;
+
+export const updateAppointmentNoteApiUrl = `${AppointmentNotesBaseUrl}`;
+export const addAppointmentNoteeApiUrl = `${AppointmentNotesBaseUrl}/add`;
 
 export const PatientSignUpApiUrl = `${PatientBaseUrl}/signup`;
 export const PatientLoginApiUrl = `${PatientBaseUrl}/login`;
@@ -38,3 +43,7 @@ export const addReviewApiUrl = `${ReviewsBaseUrl}/add`;
 
 export const uploadDocumentApiUrl = `${UploadFileBaseUrl}/therapist`;
 export const uploadImageApiUrl = `${UploadImageBaseUrl}/profile`;
+
+export const uploadPatientReportsApiUrl = `${UploadFileBaseUrl}/patient-reports`;
+
+export const addAppointmentDocsApiUrl = `${AppointmentDocsBaseUrl}/add`;

@@ -3,9 +3,11 @@ import styles from "./styles.module.scss";
 import { Typography } from "@mui/material";
 import RatingStar from "../../assets/rating-star.png";
 import CButton from "../CButton";
+import { useNavigate } from "react-router-dom";
 
 const AppointmentOrderBlock = ({
   tabId = "1",
+  item,
   status,
   orderId,
   orderDate,
@@ -19,6 +21,8 @@ const AppointmentOrderBlock = ({
   handleAgainApppintment,
   appointmentCompleteInfo,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.infoContainer}>
       <Typography className={styles.orderId} component="div">
@@ -48,13 +52,32 @@ const AppointmentOrderBlock = ({
         </Typography>
 
         {tabId === "1" && (
-          <Typography component="div">
+          <Typography
+            component="div"
+            className="d-flex flex-column"
+            style={{ gap: "15px" }}
+          >
             <CButton
               title="Cancel"
               type="decline"
               borderRadius="10px"
+              width="160px"
               onClick={() =>
                 cancelAppointment(orderId, appointmentCompleteInfo)
+              }
+            />
+            <CButton
+              title="View Details"
+              type="submit"
+              borderRadius="10px"
+              width="160px"
+              onClick={() =>
+                navigate("/admin/reports/appointments-detail", {
+                  state: {
+                    appointmentInfo: item,
+                    // parent: "patient",
+                  },
+                })
               }
             />
           </Typography>

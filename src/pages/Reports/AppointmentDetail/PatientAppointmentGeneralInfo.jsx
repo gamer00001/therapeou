@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "../styles.module.scss";
 import Dropdown from "../../../components/Dropdown";
 import CButton from "../../../components/CButton";
+import { isCurrentUserPatient } from "../../../utility/common-helper";
+import { isEmpty } from "lodash";
 
 const StatusOptions = [
   {
@@ -18,8 +20,11 @@ const PatientAppointmentGeneralInfo = ({
   parent,
   appointmentInfo,
   handleSubmit,
+  handlePatientReports,
+  handlePatientReportsSaveAction,
 }) => {
   const [option, setOption] = useState(null);
+  const inputRef = useRef();
 
   const handleOptionChange = (option) => {
     setOption(option.target.value);
@@ -44,12 +49,42 @@ const PatientAppointmentGeneralInfo = ({
       <div className={styles.title}>Appointment Date:</div>
       <div className={styles.value}>{appointmentInfo.date}</div>
 
-      <div className={styles.title}>Patient Report:</div>
-      <div className={styles.value}>Medical Report.pdf</div>
-      <div className={styles.value}>Xray Report.pdf</div>
-      <div className={styles.value}>Images.jpg</div>
+      <div className={styles.title}>
+        Patient Reports:
+        {isCurrentUserPatient() && (
+          <img
+            className={styles.editReportsIcon}
+            src="/edit-note.svg"
+            alt="add-reports-icon"
+            onClick={() => inputRef.current.click()}
+          />
+        )}
+        <input
+          id="patientReports"
+          ref={inputRef}
+          type="file"
+          accept=".pdf"
+          multiple
+          hidden
+          onChange={handlePatientReports}
+        />
+      </div>
+      {isEmpty(appointmentInfo?.appointmentDocs) ? (
+        <div className={`${styles.value}`}>No Reports Found</div>
+      ) : (
+        appointmentInfo.appointmentDocs?.map((item) => (
+          <div
+            className={`${styles.value} cursor-pointer`}
+            onClick={() => {
+              window.open(item?.url);
+            }}
+          >
+            {item.docName}
+          </div>
+        ))
+      )}
 
-      {parent !== "pastAppointments" && (
+      {parent === "onGoingAppointments" && (
         <div className={styles.dropdownBlock}>
           <Dropdown
             label="Status"
@@ -67,11 +102,21 @@ const PatientAppointmentGeneralInfo = ({
         </div>
       )}
 
-      {parent === "pastAppointments" && (
+      {parent !== "onGoingAppointments" && (
         <>
           <div className={styles.title}>Amount Paid:</div>
           <div className={styles.value}>$250/-</div>
         </>
+      )}
+
+      {isCurrentUserPatient() && (
+        <div className="pt-20">
+          <CButton
+            title="Save"
+            type="submit"
+            onClick={handlePatientReportsSaveAction}
+          />
+        </div>
       )}
     </>
   );

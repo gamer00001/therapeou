@@ -81,6 +81,7 @@ export const parseTherapistAppointmentListing = (data) => {
   return data.map((item) => {
     return {
       appointmentCompleteInfo: { ...item },
+      noteList: item?.noteList,
       status: item.appointmentStatus,
       patientInfo: item.patientName,
       therapistInfo: item.therapistName,

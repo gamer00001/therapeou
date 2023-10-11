@@ -118,6 +118,10 @@ const TherapistRegistration = () => {
         ...userInfo,
         email: userInfo.email,
       },
+      professionalInitialValues: {
+        ...prev.professionalInitialValues,
+        ...userInfo,
+      },
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

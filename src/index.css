@@ -94,3 +94,7 @@ code {
 .searchTherapistField::after {
   border-bottom: none !important;
 }
+
+.float-right {
+  float: right;
+}

@@ -72,6 +72,18 @@ export const TherapistPersonalFields = [
     col: 12,
   },
   {
+    placeholder: "First Name",
+    fieldName: "firstName",
+    type: "text",
+    col: 12,
+  },
+  {
+    placeholder: "Last Name",
+    fieldName: "lastName",
+    type: "text",
+    col: 12,
+  },
+  {
     placeholder: "Email",
     fieldName: "email",
     disabled: true,

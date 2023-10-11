@@ -5,6 +5,8 @@ export const parseAppointmentListing = (data) => {
   return data.map((item) => {
     return {
       ...item,
+      noteList: item?.noteList,
+      date: moment(item?.date).format("MMMM-DD-yyyy"),
       status: item.appointmentStatus,
       appointmentCompleteInfo: { ...item },
       rating: item.therapistName?.rating,
