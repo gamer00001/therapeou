@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
 import AppointmentInfo from "../../components/AppointmentInfo";
-import { Grid, Modal, Tab, Tabs, Typography } from "@mui/material";
+import { Grid, Modal, Typography } from "@mui/material";
 import BlogRead from "../../components/BlogRead";
-import DoctorInfo from "../../components/DoctorInfo";
-import {
-  AppointmentColors,
-  AppointmentListMock,
-  AppointmentsOrderInfo,
-} from "../../constants/Appointments";
-import PatientAppointemntInfo from "../../components/PatientAppointmentInfo";
-import AppointmentOrderBlock from "../../components/AppointmentOrderBlock";
 
 import styles from "./styles.module.scss";
 import "./modal.scss";
@@ -51,7 +43,7 @@ const AppointmentsPage = ({ img }) => {
   // const [viewAllCheck, setViewAllCheck] = useState(false);
   const [state, setState] = useState({
     viewAllCheck: false,
-    isLoading: false,
+    isLoading: true,
     listing: [],
     ratingModalIsOpen: false,
   });
@@ -73,19 +65,16 @@ const AppointmentsPage = ({ img }) => {
   };
 
   const fetchAppointmentListing = async () => {
-    handleLoader();
-
     const userInfo = getUserInfoFromStorage();
 
     const resp = await fetchPatientAppointmentsApi(userInfo.id);
 
     const parseData = parseAppointmentListing(resp.data);
 
-    handleLoader();
-
     setState((prev) => ({
       ...prev,
       listing: parseData,
+      isLoading: false,
     }));
   };
 
@@ -147,6 +136,8 @@ const AppointmentsPage = ({ img }) => {
 
   return (
     <>
+      {state.isLoading && <Loader />}
+
       <AdminLayoutView>
         <Grid container>
           <Grid item className="w-100">
@@ -202,7 +193,6 @@ const AppointmentsPage = ({ img }) => {
           />
         </Modal>
       </AdminLayoutView>
-      {state.isLoading && <Loader />}
     </>
   );
 };

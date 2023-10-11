@@ -31,6 +31,7 @@ const AppointmentDetail = (props) => {
     isLoading: false,
     isNoteModalOpen: false,
     appointmentNote: "",
+    patientReports: [],
   });
 
   const handleLoader = () => {
@@ -201,6 +202,7 @@ const AppointmentDetail = (props) => {
           <Grid container className={styles.appointmentInfoContainer}>
             <Grid item sm={5}>
               <PatientAppointmentGeneralInfo
+                state={state}
                 parent={state.parent}
                 handleSubmit={handleSubmit}
                 appointmentInfo={state.appointmentInfo}

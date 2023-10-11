@@ -36,6 +36,7 @@ const AppointmentDetailsSection = ({
       {value === "1" &&
         listing
           .filter((item) => item.status === "pending")
+          .reverse()
           .map((item) => {
             return (
               <div style={{ padding: "35px 70px" }}>
@@ -56,6 +57,7 @@ const AppointmentDetailsSection = ({
           .filter((item) =>
             ["completed", "cancelled"].includes(item.appointmentStatus)
           )
+          .reverse()
           .map((item) => {
             return (
               <div style={{ padding: "35px 70px" }}>

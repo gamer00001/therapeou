@@ -17,6 +17,7 @@ const StatusOptions = [
 ];
 
 const PatientAppointmentGeneralInfo = ({
+  state,
   parent,
   appointmentInfo,
   handleSubmit,
@@ -29,6 +30,12 @@ const PatientAppointmentGeneralInfo = ({
   const handleOptionChange = (option) => {
     setOption(option.target.value);
   };
+
+  const { patientReports } = state;
+
+  let reports = !isEmpty(patientReports)
+    ? patientReports
+    : appointmentInfo?.appointmentDocs;
 
   return (
     <>
@@ -69,17 +76,17 @@ const PatientAppointmentGeneralInfo = ({
           onChange={handlePatientReports}
         />
       </div>
-      {isEmpty(appointmentInfo?.appointmentDocs) ? (
+      {isEmpty(reports) ? (
         <div className={`${styles.value}`}>No Reports Found</div>
       ) : (
-        appointmentInfo.appointmentDocs?.map((item) => (
+        reports?.map((item) => (
           <div
             className={`${styles.value} cursor-pointer`}
             onClick={() => {
               window.open(item?.url);
             }}
           >
-            {item.docName}
+            {item?.name ?? item?.docName}
           </div>
         ))
       )}
