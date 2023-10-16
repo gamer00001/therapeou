@@ -1,0 +1,42 @@
+.registerFields {
+  color: #bdadad !important;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+
+  width: 45%;
+  height: 40px;
+  border: none;
+  margin-top: 20px;
+  border-bottom: 1px solid #e4d9d9 !important;
+}
+
+.registerFields::placeholder {
+  color: #bdadad !important;
+}
+
+.registerFields::before {
+  border-bottom: 1px solid #e4d9d9 !important;
+}
+
+.registerFields:focus-visible {
+  outline: none;
+}
+
+.registerFields input {
+  font-size: 16px;
+  height: 2em !important;
+}
+
+.errorMessage {
+  color: red;
+  text-align: start;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.servicesActions {
+  display: flex;
+  align-items: baseline;
+}

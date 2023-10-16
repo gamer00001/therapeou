@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Fade, Grid, Input, Typography } from "@mui/material";
+import { Box, Fade, Grid, Typography } from "@mui/material";
 import styles from "./styles.module.scss";
 import CButton from "../CButton";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -34,6 +34,7 @@ const BookAppointment = ({
   handleClose,
   handleFieldChange,
   handleSubmit,
+  handleFilesChange,
   fetchAppointmentSlots,
 }) => {
   return (
@@ -135,6 +136,18 @@ const BookAppointment = ({
                           )}
                         </Grid>
                       ))}
+
+                      <div>
+                        <input
+                          id="patientReports"
+                          placeholder="Attach documents"
+                          className={`${styles.fileTextColor}`}
+                          type="file"
+                          accept=".pdf"
+                          multiple
+                          onChange={handleFilesChange}
+                        />
+                      </div>
                       <Grid
                         container
                         justifyContent="center"

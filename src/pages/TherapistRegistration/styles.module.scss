@@ -51,11 +51,6 @@
     color: #bdadad !important;
   }
 
-  .doubleField {
-    width: 90%;
-    // width: 211px;
-  }
-
   .registerFields::before {
     border-bottom: 1px solid #e4d9d9 !important;
   }
@@ -74,6 +69,11 @@
     text-align: start;
     padding-top: 10px;
     font-size: 14px;
+  }
+
+  .doubleField {
+    width: 90%;
+    // width: 211px;
   }
 
   .pageTitle {

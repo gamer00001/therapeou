@@ -76,7 +76,7 @@ const TherapistProfilePage = () => {
     const therapistId = location.state.therapistId;
     const slotsResp = await fetchTherapistAppointmentSlots(therapistId, day);
 
-    let parseSlots = makeTuplesOfSlots(slotsResp.data);
+    let parseSlots = makeTuplesOfSlots(slotsResp?.data || []);
 
     setState((prev) => ({
       ...prev,
@@ -104,6 +104,8 @@ const TherapistProfilePage = () => {
         console.log({ error });
       });
   };
+
+  const handleFilesChange = () => {};
 
   useEffect(() => {
     fetchAppointmentSlots();
@@ -142,6 +144,7 @@ const TherapistProfilePage = () => {
             handleClose={handleClose}
             handleSubmit={handleSubmit}
             formValues={state.formValues}
+            handleFilesChange={handleFilesChange}
             fetchAppointmentSlots={fetchAppointmentSlots}
           />
         </Modal>

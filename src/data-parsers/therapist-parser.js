@@ -15,6 +15,10 @@ export const WEEK_DAYS = [
 const WEEK_DAYS_SMALL = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 export const makeTuplesOfSlots = (slots) => {
+  if (isEmpty(slots)) {
+    return [];
+  }
+
   const timeTuples = [];
   for (let i = 0; i < slots.length - 1; i++) {
     timeTuples.push({

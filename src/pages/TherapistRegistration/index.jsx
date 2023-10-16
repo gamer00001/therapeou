@@ -12,6 +12,7 @@ import Loader from "../../components/Loader";
 
 import styles from "./styles.module.scss";
 import "./tabs.scss";
+import { toast } from "react-toastify";
 
 const TherapistRegistration = () => {
   const location = useLocation();
@@ -19,6 +20,14 @@ const TherapistRegistration = () => {
   const [state, setState] = useState({
     tabValue: 0,
     isLoading: false,
+    list: [
+      {
+        id: 1,
+        service: "",
+        price: "",
+      },
+    ],
+
     personalInitialValues: {
       profileTitle: "",
       fullName: "",
@@ -109,6 +118,78 @@ const TherapistRegistration = () => {
     }));
   };
 
+  const checkIfFormFilled = () => {
+    let { list } = state;
+    let emptyField = false;
+
+    list.forEach((serviceInfo) => {
+      if (!serviceInfo.service) {
+        emptyField = true;
+        return toast.error("Enter Service Name First.");
+      }
+
+      if (!serviceInfo.price) {
+        emptyField = true;
+        return toast.error("Enter Service Price First.");
+      }
+    });
+
+    return emptyField;
+  };
+
+  const handleAddService = async () => {
+    let { list } = state;
+
+    let isFormNotFilled = checkIfFormFilled();
+
+    console.log({ isFormNotFilled });
+
+    if (isFormNotFilled) {
+      return;
+    }
+
+    if (list.length > 4) {
+      return toast.info("You can only add 5 services.");
+    }
+    const length = list.length - 1;
+    list.push({
+      id: list[length].id + 1,
+      service: "",
+      price: "",
+    });
+
+    setState((prev) => ({
+      ...prev,
+      list,
+    }));
+  };
+
+  const removeServiceFromList = (listIndex) => {
+    const { list } = state;
+    const updatedArray = list.filter((ref) => ref.id !== listIndex);
+
+    console.log({ updatedArray, listIndex });
+    setState((prev) => ({
+      ...prev,
+      list: [...updatedArray],
+    }));
+  };
+
+  const handleFieldChange = (e, index = 0) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    const { list } = state;
+    console.log({ key, value, list, index });
+
+    list[index][key] = value;
+    console.log({ list });
+    setState((prev) => ({
+      ...prev,
+      list,
+    }));
+  };
+
   useEffect(() => {
     setState((prev) => ({
       ...prev,
@@ -162,9 +243,13 @@ const TherapistRegistration = () => {
               index={1}
             >
               <ProfessionalInformation
+                state={state}
                 isLoading={state.isLoading}
                 handleLoader={handleLoader}
                 handleTabChange={handleTabChange}
+                handleAddService={handleAddService}
+                handleFieldChange={handleFieldChange}
+                removeServiceFromList={removeServiceFromList}
                 handleSubmit={handleProfessionalInformationSubmit}
                 initialValues={state.professionalInitialValues}
               />

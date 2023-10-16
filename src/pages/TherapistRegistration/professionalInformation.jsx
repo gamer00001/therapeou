@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import CButton from "../../components/CButton";
 import FileUpload from "../../components/FileUpload";
 import { TherapistProfessionalFields } from "../../constants/LoginRegister";
+import AddServices from "../../components/AddServices";
 
 import styles from "./styles.module.scss";
 
@@ -22,11 +23,15 @@ const validationSchemaForProfessionalInformation = Yup.object({
 });
 
 const ProfessionalInformation = ({
+  state,
   isLoading,
   handleLoader,
   initialValues,
   handleSubmit,
   handleTabChange,
+  handleAddService,
+  handleFieldChange,
+  removeServiceFromList,
 }) => {
   return (
     <div>
@@ -40,6 +45,20 @@ const ProfessionalInformation = ({
             <Form>
               <div className={styles.pageTitle}>Professional Information</div>
               <Grid container padding="0px 25%" gap={2}>
+                {state.list.map((service, index) => (
+                  <React.Fragment key={service.id}>
+                    <AddServices
+                      state={state}
+                      serviceId={index}
+                      index={service.id}
+                      handleSubmit={handleAddService}
+                      handleAddService={handleAddService}
+                      size={state.list.length}
+                      handleFieldChange={handleFieldChange}
+                      removeServiceFromList={removeServiceFromList}
+                    />
+                  </React.Fragment>
+                ))}
                 {TherapistProfessionalFields.map((item, index) => {
                   return (
                     <>
