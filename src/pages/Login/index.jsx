@@ -9,6 +9,7 @@ import { therapistLoginApi } from "../../api/therapist-api";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import Navbar from "../../components/Navbar";
+import { logoutUser as emptyLocalStorage } from "../../utility/common-helper";
 // import { auth } from "../../firebase";
 
 const initialValues = {
@@ -70,6 +71,8 @@ const Login = () => {
     const loginResposne = await apiToHit(data);
 
     if (loginResposne?.status === 200) {
+      emptyLocalStorage();
+
       let userInfo = loginResposne?.data;
       userInfo = {
         ...userInfo,
@@ -99,11 +102,6 @@ const Login = () => {
       return toast.error("Invalid Email or Password.");
     }
   };
-
-  useEffect(() => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("userInfo");
-  }, []);
 
   return (
     <>
