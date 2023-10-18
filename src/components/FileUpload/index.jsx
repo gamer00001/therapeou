@@ -4,6 +4,7 @@ import { uploadTherapistDocumnetApi } from "../../api/therapist-api";
 import { getUserInfoFromStorage } from "../../utility/common-helper";
 
 import styles from "./styles.module.scss";
+import { toast } from "react-toastify";
 
 const FileUpload = ({
   setIsLoading,
@@ -27,22 +28,22 @@ const FileUpload = ({
       formData.append(`imageList`, files[i]);
     }
 
-    const data = {
-      formData,
-    };
+    if (currentUserInfo?.id) {
+      uploadTherapistDocumnetApi(currentUserInfo?.id, name, formData)
+        .then((fileResp) => {
+          const fileUrls = fileResp?.data?.map((item) => item.secure_url);
+          setFiles(imageList);
 
-    uploadTherapistDocumnetApi(currentUserInfo.id, name, data.formData)
-      .then((fileResp) => {
-        const fileUrls = fileResp.data.map((item) => item.secure_url);
-        setFiles(imageList);
-
-        fileUploadInputChange(fileUrls);
-        setIsLoading();
-      })
-      .catch((error) => {
-        console.log({ error });
-        setIsLoading();
-      });
+          fileUploadInputChange(fileUrls);
+          setIsLoading();
+        })
+        .catch((error) => {
+          console.log({ error });
+          setIsLoading();
+        });
+    } else {
+      return toast.error("User ID not found.");
+    }
   };
   return (
     <>

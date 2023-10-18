@@ -7,12 +7,18 @@ import PersonalInformation from "./personalInformation";
 import ProfessionalInformation from "./professionalInformation";
 import Subscriptions from "./subscriptions";
 
-import { therapistUpdateInfoApi } from "../../api/therapist-api";
+import {
+  addTherapistServiceApi,
+  deleteTherapistServiceApi,
+  fetchTherapistServiceApi,
+  therapistUpdateInfoApi,
+} from "../../api/therapist-api";
 import Loader from "../../components/Loader";
 
 import styles from "./styles.module.scss";
 import "./tabs.scss";
 import { toast } from "react-toastify";
+import { isEmpty } from "lodash";
 
 const TherapistRegistration = () => {
   const location = useLocation();
@@ -24,7 +30,7 @@ const TherapistRegistration = () => {
       {
         id: 1,
         service: "",
-        price: "",
+        cost: "",
       },
     ],
 
@@ -128,7 +134,7 @@ const TherapistRegistration = () => {
         return toast.error("Enter Service Name First.");
       }
 
-      if (!serviceInfo.price) {
+      if (!serviceInfo.cost) {
         emptyField = true;
         return toast.error("Enter Service Price First.");
       }
@@ -142,20 +148,18 @@ const TherapistRegistration = () => {
 
     let isFormNotFilled = checkIfFormFilled();
 
-    console.log({ isFormNotFilled });
-
     if (isFormNotFilled) {
       return;
     }
 
-    if (list.length > 4) {
-      return toast.info("You can only add 5 services.");
+    if (list.length > 9) {
+      return toast.info("You can only add 10 services.");
     }
     const length = list.length - 1;
     list.push({
       id: list[length].id + 1,
       service: "",
-      price: "",
+      cost: "",
     });
 
     setState((prev) => ({
@@ -164,11 +168,26 @@ const TherapistRegistration = () => {
     }));
   };
 
-  const removeServiceFromList = (listIndex) => {
+  const removeServiceFromList = (itemId, itemIndex = 0) => {
     const { list } = state;
-    const updatedArray = list.filter((ref) => ref.id !== listIndex);
+    const updatedArray = list.filter((ref) => ref.id !== itemId);
 
-    console.log({ updatedArray, listIndex });
+    if (list[itemIndex].hasOwnProperty("therapistId")) {
+      handleLoader();
+
+      deleteTherapistServiceApi(itemId)
+        .then((resp) => {
+          fetchTherapistServiceListing();
+          handleLoader();
+
+          return toast.success("Service deleted successfully.");
+        })
+        .catch((error) => {
+          console.log({ error });
+          handleLoader();
+        });
+    }
+
     setState((prev) => ({
       ...prev,
       list: [...updatedArray],
@@ -180,17 +199,60 @@ const TherapistRegistration = () => {
     const value = e.target.value;
 
     const { list } = state;
-    console.log({ key, value, list, index });
 
     list[index][key] = value;
-    console.log({ list });
+
     setState((prev) => ({
       ...prev,
       list,
     }));
   };
 
+  const handleSaveService = (index = 0) => {
+    const { list } = state;
+
+    if (isEmpty(list[index].service) || isEmpty(list[index].cost)) {
+      return toast.error("Filled the fields first.");
+    }
+
+    handleLoader();
+
+    let dataPayload = {
+      cost: list[index].cost,
+      service: list[index].service,
+      therapistId: userInfo?.id,
+    };
+
+    addTherapistServiceApi(dataPayload)
+      .then((resp) => {
+        handleLoader();
+
+        fetchTherapistServiceListing();
+
+        toast.success("Service Added Successfully.");
+      })
+      .catch((error) => {
+        handleLoader();
+        console.log({ error });
+      });
+  };
+
+  const fetchTherapistServiceListing = () => {
+    fetchTherapistServiceApi(userInfo.id)
+      .then((resp) => {
+        setState((prev) => ({
+          ...prev,
+          list: resp?.data,
+        }));
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+  };
+
   useEffect(() => {
+    fetchTherapistServiceListing();
+
     setState((prev) => ({
       ...prev,
       tabValue: location.state?.tabId || 0,
@@ -248,6 +310,7 @@ const TherapistRegistration = () => {
                 handleLoader={handleLoader}
                 handleTabChange={handleTabChange}
                 handleAddService={handleAddService}
+                handleSaveService={handleSaveService}
                 handleFieldChange={handleFieldChange}
                 removeServiceFromList={removeServiceFromList}
                 handleSubmit={handleProfessionalInformationSubmit}

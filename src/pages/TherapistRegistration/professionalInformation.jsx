@@ -30,6 +30,7 @@ const ProfessionalInformation = ({
   handleSubmit,
   handleTabChange,
   handleAddService,
+  handleSaveService,
   handleFieldChange,
   removeServiceFromList,
 }) => {
@@ -49,11 +50,13 @@ const ProfessionalInformation = ({
                   <React.Fragment key={service.id}>
                     <AddServices
                       state={state}
+                      service={service}
                       serviceId={index}
                       index={service.id}
+                      size={state.list.length}
                       handleSubmit={handleAddService}
                       handleAddService={handleAddService}
-                      size={state.list.length}
+                      handleSaveService={handleSaveService}
                       handleFieldChange={handleFieldChange}
                       removeServiceFromList={removeServiceFromList}
                     />

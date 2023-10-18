@@ -9,9 +9,12 @@ import {
   TherapistInfoGetAllApiUrl,
   TherapistInfoGetApiUrl,
   TherapistLoginApiUrl,
+  TherapistServicesBaseUrl,
   TherapistSignUpApiUrl,
   TherapistUpdateApiUrl,
   addAppointmentNoteeApiUrl,
+  addTherapistServiceApiUrl,
+  fetchTherapistServiceApiUrl,
   updateAppointmentNoteApiUrl,
   uploadDocumentApiUrl,
 } from "../config/apiRoutes";
@@ -183,6 +186,39 @@ export const therapistUpdateInfoApi = async (id, data) => {
 export const fetchTherapistInfoApi = async (id) => {
   return await axios
     .get(`${TherapistInfoGetApiUrl}/${id}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const addTherapistServiceApi = async (data) => {
+  return await axios
+    .post(`${addTherapistServiceApiUrl}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const fetchTherapistServiceApi = async (therapistId) => {
+  return await axios
+    .get(`${fetchTherapistServiceApiUrl}/${therapistId}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const deleteTherapistServiceApi = async (servieId) => {
+  return await axios
+    .delete(`${TherapistServicesBaseUrl}/${servieId}`)
     .then((result) => {
       return result;
     })
