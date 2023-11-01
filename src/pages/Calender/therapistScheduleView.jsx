@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.scss";
 // import { scheduleTiming } from "../../constants/Calender";
-import { Input } from "@mui/material";
+// import { Input } from "@mui/material";
 import CButton from "../../components/CButton";
 import TimePicker from "react-time-picker";
 import "./styles.scss";
@@ -15,7 +15,7 @@ const TherapistScheduleView = ({
   handleAddSchedule,
   handleFieldChange,
 }) => {
-  const [value, onChange] = useState("10:00");
+  // const [value, onChange] = useState("10:00");
   return (
     <div className={styles.scheduleContainer}>
       <div className={styles.mainTitle}>Set your availability</div>
@@ -42,12 +42,6 @@ const TherapistScheduleView = ({
                       }
                       value={item.startTime}
                     />
-                    {/* <Input
-                      name="startTime"
-                      className={styles.timeField}
-                      value={item.startTime}
-                      onChange={(e) => handleFieldChange(e, item)}
-                    /> */}
                     &nbsp;-&nbsp;
                     <TimePicker
                       format="HH:mm"
@@ -57,12 +51,6 @@ const TherapistScheduleView = ({
                         handleFieldChange("endTime", value, item)
                       }
                     />
-                    {/* <Input
-                      name="endTime"
-                      className={styles.timeField}
-                      value={item.endTime}
-                      onChange={(e) => handleFieldChange(e, item)}
-                    /> */}
                     <div>
                       <CButton
                         title="Save"

@@ -37,6 +37,8 @@ const TherapistRegistration = () => {
     personalInitialValues: {
       profileTitle: "",
       fullName: "",
+      firstName: "",
+      lastName: "",
       email: "",
       phone: "",
       country: "",

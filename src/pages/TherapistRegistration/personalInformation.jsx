@@ -1,11 +1,14 @@
 import { Grid } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
+import * as Yup from "yup";
+import Autocomplete from "react-google-autocomplete";
+
 import { TherapistPersonalFields } from "../../constants/LoginRegister";
 import CButton from "../../components/CButton";
-import * as Yup from "yup";
 
 import styles from "./styles.module.scss";
+import { getGoogleApiKey } from "../../utility/common-helper";
 
 const validationSchemaForPersonalInformation = Yup.object({
   profileTitle: Yup.string().required("Title is required"),
@@ -31,7 +34,7 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
         enableReinitialize
         validationSchema={validationSchemaForPersonalInformation}
       >
-        {({ errors, touched, values, handleChange }) => (
+        {({ errors, touched, values, handleChange, setFieldValue }) => (
           <>
             <Form>
               <div className={styles.pageTitle}>Personal Information</div>
@@ -49,21 +52,48 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
                         xs={12}
                       >
                         <>
-                          <Field
-                            name={item.fieldName}
-                            type={item.type}
-                            label={item.placeholder}
-                            onChange={handleChange}
-                            disabled={item?.disabled}
-                            placeholder={item.placeholder}
-                            className={`${styles.registerFields} ${
-                              item.col === 6 && `${styles.doubleField}`
-                            } form-control ${
-                              errors[item.fieldName] &&
-                              touched[item.fieldName] &&
-                              `${styles.isInvalid}`
-                            }`}
-                          />
+                          {item.fieldName === "address" ? (
+                            <Autocomplete
+                              // className={`${styles.profileFields} ${styles.mapAddressSearchField}`}
+                              placeholder="Address"
+                              className={`${styles.registerFields} ${
+                                item.col === 6 && `${styles.doubleField}`
+                              } form-control ${
+                                errors[item.fieldName] &&
+                                touched[item.fieldName] &&
+                                `${styles.isInvalid}`
+                              }`}
+                              componentRestrictions={{ country: "us" }}
+                              options={{
+                                types: ["geocode", "establishment"],
+                              }}
+                              defaultValue={values[item.fieldName]}
+                              apiKey={getGoogleApiKey()}
+                              onPlaceSelected={(place) => {
+                                console.log({ place });
+                                setFieldValue(
+                                  "address",
+                                  place?.formatted_address || ""
+                                );
+                              }}
+                            />
+                          ) : (
+                            <Field
+                              name={item.fieldName}
+                              type={item.type}
+                              label={item.placeholder}
+                              onChange={handleChange}
+                              disabled={item?.disabled}
+                              placeholder={item.placeholder}
+                              className={`${styles.registerFields} ${
+                                item.col === 6 && `${styles.doubleField}`
+                              } form-control ${
+                                errors[item.fieldName] &&
+                                touched[item.fieldName] &&
+                                `${styles.isInvalid}`
+                              }`}
+                            />
+                          )}
                           <ErrorMessage
                             name={item.fieldName}
                             component="div"

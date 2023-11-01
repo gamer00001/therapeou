@@ -1,18 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
 import { Grid, Input, Typography } from "@mui/material";
+import Autocomplete from "react-google-autocomplete";
+import { toast } from "react-toastify";
 
 import ImageUpload from "../../components/ImageUpload";
 import { SettingsFields } from "../../constants/LoginRegister";
 import CButton from "../../components/CButton";
 import ChangePassword from "../../components/ChangePassword";
-import { getUserInfoFromStorage } from "../../utility/common-helper";
+import {
+  getGoogleApiKey,
+  getUserInfoFromStorage,
+} from "../../utility/common-helper";
 import {
   patientUpdateInfoApi,
   uploadProfileImageApi,
 } from "../../api/patient-api";
 import Loader from "../../components/Loader";
-import { toast } from "react-toastify";
 import { therapistUpdateInfoApi } from "../../api/therapist-api";
 
 import styles from "./styles.module.scss";
@@ -21,6 +25,8 @@ const INITIAL_STATE = {
   image: null,
   fullName: "",
   email: "",
+  address: "",
+  medical: "",
 };
 
 const Settings = () => {
@@ -32,10 +38,10 @@ const Settings = () => {
   const inputReference = useRef(null);
 
   useEffect(() => {
-    setState({
-      ...state,
+    setState((prev) => ({
+      ...prev,
       ...userData?.apiUserInfo,
-    });
+    }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -51,8 +57,6 @@ const Settings = () => {
     const type = userData.userType === "patient" ? 1 : 2;
 
     const resp = await uploadProfileImageApi(userData.id, type, formData);
-
-    console.log({ resp });
 
     setState((prev) => ({ ...prev, image: resp?.data?.url }));
 
@@ -79,7 +83,11 @@ const Settings = () => {
 
       localStorage.setItem(
         "userInfo",
-        JSON.stringify({ ...userInfo, userType: userData?.userType })
+        JSON.stringify({
+          ...userInfo,
+          userType: userData?.userType,
+          apiUserInfo: userInfo,
+        })
       );
 
       return toast.success("Settings Updated Successfully.");
@@ -89,10 +97,10 @@ const Settings = () => {
   };
 
   const handleFieldChange = (e) => {
-    setState({
-      ...state,
+    setState((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   return (
@@ -136,14 +144,33 @@ const Settings = () => {
                       style={{ paddingTop: index === 0 ? "" : "40px" }}
                     >
                       <Grid item>
-                        <Input
-                          name={item.fieldName}
-                          value={state[item.fieldName]}
-                          placeholder={item.placeholder}
-                          className={styles.profileFields}
-                          onChange={handleFieldChange}
-                          disabled={item.fieldName === "email"}
-                        />
+                        {item.fieldName === "address" ? (
+                          <Autocomplete
+                            className={`${styles.profileFields} ${styles.mapAddressSearchField}`}
+                            componentRestrictions={{ country: "us" }}
+                            options={{
+                              types: ["geocode", "establishment"],
+                            }}
+                            defaultValue={state[item.fieldName]}
+                            apiKey={getGoogleApiKey()}
+                            onPlaceSelected={(place) => {
+                              console.log({ place });
+                              setState((prev) => ({
+                                ...prev,
+                                address: place?.formatted_address || "",
+                              }));
+                            }}
+                          />
+                        ) : (
+                          <Input
+                            name={item.fieldName}
+                            value={state[item.fieldName]}
+                            placeholder={item.placeholder}
+                            className={`${styles.profileFields} pl-12`}
+                            onChange={handleFieldChange}
+                            disabled={item.fieldName === "email"}
+                          />
+                        )}
                       </Grid>
                     </Grid>
                   );

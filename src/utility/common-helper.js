@@ -14,3 +14,7 @@ export const logoutUser = () => {
   localStorage.removeItem("userInfo");
   localStorage.removeItem("isLoggedIn");
 };
+
+export const getGoogleApiKey = () => {
+  return process.env.REACT_APP_GOOGLE_API_KEY;
+};

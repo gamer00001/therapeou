@@ -24,7 +24,7 @@
 .profileFields {
   width: 362px;
   height: 62px;
-  padding-left: 20px;
+  padding-left: 12px;
 
   background: #ffffff;
   border-bottom: none !important;
@@ -33,4 +33,20 @@
 
 .profileFields::before {
   border-bottom: none !important;
+}
+
+.profileFields::placeholder {
+  font-size: 16px;
+  color: #a3a3a3;
+}
+
+.profileFields:focus-visible {
+  // padding-left: 12px;
+  font-size: 16px;
+  outline: none !important;
+}
+
+.mapAddressSearchField {
+  width: 350px;
+  padding-left: 12px;
 }

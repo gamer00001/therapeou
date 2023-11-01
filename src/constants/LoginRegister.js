@@ -12,9 +12,19 @@ export const LoginFields = [
 ];
 
 export const RegisterFields = [
+  // {
+  //   placeholder: "Full Name",
+  //   fieldName: "fullName",
+  //   type: "text",
+  // },
   {
-    placeholder: "Full Name",
-    fieldName: "fullName",
+    placeholder: "First Name",
+    fieldName: "firstName",
+    type: "text",
+  },
+  {
+    placeholder: "Last Name",
+    fieldName: "lastName",
     type: "text",
   },
   {
@@ -97,6 +107,12 @@ export const TherapistPersonalFields = [
     col: 12,
   },
   {
+    placeholder: "Address",
+    fieldName: "address",
+    type: "text",
+    col: 12,
+  },
+  {
     placeholder: "Country",
     fieldName: "country",
     type: "text",
@@ -121,12 +137,6 @@ export const TherapistPersonalFields = [
     fieldName: "gender",
     type: "text",
     col: 6,
-  },
-  {
-    placeholder: "Address",
-    fieldName: "address",
-    type: "text",
-    col: 12,
   },
   {
     placeholder: "General Description",

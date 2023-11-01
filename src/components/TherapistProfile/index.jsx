@@ -8,11 +8,11 @@ import styles from "./styles.module.scss";
 import DoctorSpeciality from "../DoctorSpeciality";
 import { useNavigate } from "react-router-dom";
 
-const list = [
-  "Psychotherapy",
-  "Behavior therapy",
-  "Cognitive behavioral therapy",
-];
+// const list = [
+//   "Psychotherapy",
+//   "Behavior therapy",
+//   "Cognitive behavioral therapy",
+// ];
 
 const LeftSection = ({ therapistInfo }) => {
   return (

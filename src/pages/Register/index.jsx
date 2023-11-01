@@ -15,6 +15,8 @@ import { auth, db } from "../../firebase";
 
 const initialValues = {
   name: "",
+  firstName: "",
+  lastName: "",
   email: "",
   password: "",
   type: "patient",

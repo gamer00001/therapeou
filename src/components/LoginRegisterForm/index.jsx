@@ -19,7 +19,9 @@ import LoginImg from "../../assets/login-img.png";
 import styles from "./style.module.css";
 
 const validationSchemaForSignup = Yup.object({
-  fullName: Yup.string().required("Name is required"),
+  // fullName: Yup.string().required("Name is required"),
+  firstName: Yup.string().required("First Name is required"),
+  lastName: Yup.string().required("Last Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().min(8).required("Password is required"),
 });
