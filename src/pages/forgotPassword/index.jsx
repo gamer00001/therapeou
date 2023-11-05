@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Grid, Input, Typography } from "@mui/material";
+import {
+  Grid,
+  IconButton,
+  Input,
+  InputAdornment,
+  Typography,
+} from "@mui/material";
 import Loader from "../../components/Loader";
 import Navbar from "../../components/Navbar";
 
@@ -16,6 +22,7 @@ import {
 } from "../../api/patient-api";
 import { isNil } from "lodash";
 import { useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const ForgotPassword = () => {
   const [state, setState] = useState({
@@ -26,9 +33,18 @@ const ForgotPassword = () => {
     confirmPassword: "",
     isOtpSent: false,
     isOtpVerified: false,
+    showNewPassword: false,
+    showConfirmPassword: false,
   });
 
   const navigate = useNavigate();
+
+  const showPasswordHandler = (key) => {
+    setState((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   const showFieldBasedOnState = () => {
     const { isOtpSent, isOtpVerified } = state;
@@ -55,7 +71,18 @@ const ForgotPassword = () => {
             name="New Password"
             placeholder="New Password"
             id="filled-adornment-password"
-            type={"password"}
+            type={state.showNewPassword ? "text" : "password"}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => showPasswordHandler("showNewPassword")}
+                  edge="end"
+                >
+                  {state.showNewPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
             value={state.newPassword}
             className={`${styles.registerFields} form-control`}
             onChange={(e) =>
@@ -67,7 +94,22 @@ const ForgotPassword = () => {
             name="Confirm Password"
             placeholder="Confirm Password"
             id="filled-adornment-password"
-            type="password"
+            type={state.showConfirmPassword ? "text" : "password"}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => showPasswordHandler("showConfirmPassword")}
+                  edge="end"
+                >
+                  {state.showConfirmPassword ? (
+                    <Visibility />
+                  ) : (
+                    <VisibilityOff />
+                  )}
+                </IconButton>
+              </InputAdornment>
+            }
             value={state.confirmPassword}
             className={`${styles.registerFields} form-control`}
             onChange={(e) =>
@@ -167,7 +209,6 @@ const ForgotPassword = () => {
 
   const handleMatchOtp = () => {
     const { otp, email } = state;
-    handleLoader();
 
     let apiPayload = {
       email,
@@ -175,14 +216,18 @@ const ForgotPassword = () => {
     };
 
     if (!isNil(otp)) {
+      handleLoader();
+
       matchOtpApi(apiPayload)
         .then((resp) => {
+          handleLoader();
+
           if (resp.status === 200) {
             setState((prev) => ({
               ...prev,
               isOtpVerified: true,
               isOtpSent: false,
-              isLoading: !prev.isLoading,
+              isLoading: false,
             }));
 
             return toast.success(resp?.data);
@@ -201,20 +246,21 @@ const ForgotPassword = () => {
   const handleResetPasswordAction = () => {
     const { email } = state;
 
-    handleLoader();
-
     const isValidEmail = validateEmail(email);
 
     if (isValidEmail) {
+      handleLoader();
+
       // send reset password link here
       forgotPasswordApi(email)
         .then((resp) => {
           if (resp?.status === 200) {
             setState((prev) => ({
               ...prev,
-              isLoading: !prev.isLoading,
+              isLoading: false,
               isOtpSent: true,
             }));
+
             return toast.success(resp?.data);
           } else {
             handleLoader();

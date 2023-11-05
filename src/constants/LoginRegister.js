@@ -51,6 +51,16 @@ export const SettingsFields = [
     type: "text",
   },
   {
+    placeholder: "First Name",
+    fieldName: "firstName",
+    type: "text",
+  },
+  {
+    placeholder: "Last Name",
+    fieldName: "lastName",
+    type: "text",
+  },
+  {
     placeholder: "Email Address",
     fieldName: "email",
     type: "text",
@@ -147,11 +157,11 @@ export const TherapistPersonalFields = [
 ];
 
 export const TherapistProfessionalFields = [
-  {
-    placeholder: "Specialization",
-    fieldName: "specialization",
-    type: "text",
-  },
+  // {
+  //   placeholder: "Specialization",
+  //   fieldName: "specialization",
+  //   type: "text",
+  // },
   // {
   //   placeholder: "Experience",
   //   fieldName: "experience",

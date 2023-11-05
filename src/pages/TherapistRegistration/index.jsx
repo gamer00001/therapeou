@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Grid, Tab, Tabs } from "@mui/material";
 import RegistrationProcess from "./registrationProcess";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import { isEmpty } from "lodash";
 
 import PersonalInformation from "./personalInformation";
 import ProfessionalInformation from "./professionalInformation";
@@ -17,8 +19,12 @@ import Loader from "../../components/Loader";
 
 import styles from "./styles.module.scss";
 import "./tabs.scss";
-import { toast } from "react-toastify";
-import { isEmpty } from "lodash";
+
+const DEFAULT_SERVICE = {
+  id: 1,
+  service: "",
+  cost: "",
+};
 
 const TherapistRegistration = () => {
   const location = useLocation();
@@ -26,13 +32,7 @@ const TherapistRegistration = () => {
   const [state, setState] = useState({
     tabValue: 0,
     isLoading: false,
-    list: [
-      {
-        id: 1,
-        service: "",
-        cost: "",
-      },
-    ],
+    list: [DEFAULT_SERVICE],
 
     personalInitialValues: {
       profileTitle: "",
@@ -244,7 +244,7 @@ const TherapistRegistration = () => {
       .then((resp) => {
         setState((prev) => ({
           ...prev,
-          list: resp?.data,
+          list: isEmpty(resp?.data) ? prev.list : resp?.data,
         }));
       })
       .catch((error) => {
