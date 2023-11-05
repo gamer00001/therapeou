@@ -1,0 +1,63 @@
+.registerTitle {
+  font-family: "Poppins" !important;
+  font-style: normal;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 36px;
+  text-align: start;
+  color: #000000 !important;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+.imgBackStyles {
+  width: 100%;
+  height: 100%;
+}
+
+.subTitle {
+  all: unset;
+  color: #858585;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  padding-bottom: 50px;
+}
+
+.formGroupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+  padding-bottom: 30px;
+  gap: 40px;
+}
+
+.registerFields {
+  width: 457.73px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background-color: #fff;
+  border-bottom: 1px solid #e4d9d9 !important;
+}
+
+.registerFields::before {
+  border-bottom: 1px solid #e4d9d9 !important;
+}
+
+.registerFields:focus-visible {
+  outline: none;
+}
+
+.registerFields input {
+  font-size: 16px;
+  height: 3em !important;
+}
+
+.errorMessage {
+  color: red;
+  text-align: start;
+  padding-top: 10px;
+  font-size: 14px;
+}

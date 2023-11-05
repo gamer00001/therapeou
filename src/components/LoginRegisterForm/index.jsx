@@ -17,6 +17,7 @@ import SignupImg from "../../assets/signup-img.png";
 import LoginImg from "../../assets/login-img.png";
 
 import styles from "./style.module.css";
+import { useNavigate } from "react-router-dom";
 
 const validationSchemaForSignup = Yup.object({
   // fullName: Yup.string().required("Name is required"),
@@ -44,7 +45,7 @@ const LoginRegisterForm = ({
   initialValues,
   handleSubmit,
 }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [termsCheck, setTermsCheck] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -163,6 +164,16 @@ const LoginRegisterForm = ({
                       )}
                     </Grid>
                   ))}
+                  {formType === "Login" && (
+                    <>
+                      <div
+                        className="text-end cursor-pointer"
+                        onClick={() => navigate("/forgot-password")}
+                      >
+                        Forgot Password?
+                      </div>
+                    </>
+                  )}
                   {formType !== "Login" && (
                     <Grid>
                       <Checkbox

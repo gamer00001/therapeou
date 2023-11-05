@@ -12,6 +12,7 @@ import Navbar from "../../components/Navbar";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
+import { isStrongPassword } from "../../utility/common-helper";
 
 const initialValues = {
   name: "",
@@ -50,25 +51,6 @@ const Register = () => {
       return toast.error("Please accept terms and conditions first.");
     }
   };
-
-  function isStrongPassword(password) {
-    // Regular expressions to check for each condition
-    const capitalLetterRegex = /[A-Z]/;
-    const smallLetterRegex = /[a-z]/;
-    const numberRegex = /[0-9]/;
-    const specialCharacterRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
-
-    // Check if the password meets all the conditions
-    const hasCapitalLetter = capitalLetterRegex.test(password);
-    const hasSmallLetter = smallLetterRegex.test(password);
-    const hasNumber = numberRegex.test(password);
-    const hasSpecialCharacter = specialCharacterRegex.test(password);
-
-    // Return true if all conditions are met
-    return (
-      hasCapitalLetter && hasSmallLetter && hasNumber && hasSpecialCharacter
-    );
-  }
 
   const handleFirebaseAction = async (data) => {
     try {

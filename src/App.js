@@ -22,6 +22,7 @@ import OnGoingAppointments from "./pages/Reports/OnGoingAppointments";
 import AppointmentDetail from "./pages/Reports/AppointmentDetail";
 import TherapistRegistration from "./pages/TherapistRegistration";
 import Calender from "./pages/Calender";
+import ForgotPassword from "./pages/forgotPassword";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -52,6 +53,8 @@ const App = () => {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/get-in-touch" element={<GetInTouch />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
         <Route path="/register" element={<Register />} />
         <Route
           path="/therapist/registeration-process"

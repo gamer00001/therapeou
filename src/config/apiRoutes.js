@@ -12,6 +12,12 @@ const UploadImageBaseUrl = `${apiVersion}upload-image`;
 const AppointmentNotesBaseUrl = `${apiVersion}notes`;
 const AppointmentDocsBaseUrl = `${apiVersion}appointment-docs`;
 
+export const ForgotPasswordUrl = `${apiVersion}forgot-password`;
+
+export const OtpUrl = `${apiVersion}match-otp`;
+
+export const NewPasswordpUrl = `${apiVersion}new-password`;
+
 export const TherapistServicesBaseUrl = `${apiVersion}therapist-services`;
 
 export const updateAppointmentNoteApiUrl = `${AppointmentNotesBaseUrl}`;

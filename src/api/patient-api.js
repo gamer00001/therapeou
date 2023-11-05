@@ -9,6 +9,9 @@ import {
   uploadImageApiUrl,
   uploadPatientReportsApiUrl,
   addAppointmentDocsApiUrl,
+  ForgotPasswordUrl,
+  OtpUrl,
+  NewPasswordpUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -130,6 +133,39 @@ export const uploadPatientReportsDocumnetApi = async (
 export const addPatientReportsToAppointmentApi = async (data) => {
   return await axios
     .post(`${addAppointmentDocsApiUrl}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const forgotPasswordApi = async (email) => {
+  return await axios
+    .post(`${ForgotPasswordUrl}/${email}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const matchOtpApi = async (data) => {
+  return await axios
+    .post(`${OtpUrl}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const newPasswordApi = async (data, newPassword) => {
+  return await axios
+    .put(`${NewPasswordpUrl}?password=${newPassword}`, data)
     .then((result) => {
       return result;
     })
