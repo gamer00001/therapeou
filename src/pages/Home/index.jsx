@@ -18,6 +18,7 @@ import {
 // import styles from "./style.module.css";
 import HomePageWrapper from "../../hoc/HomePageWrapper";
 import { useNavigate } from "react-router-dom";
+import HomeImage from "../../assets/main-home.png"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const Home = () => {
             </Grid>
             <Grid item md={6}>
               <img
-                src={"/main-home.jpeg"}
+                src={HomeImage}
                 style={{
                   width: "-webkit-fill-available",
                   height: "430px",

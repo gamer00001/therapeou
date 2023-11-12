@@ -53,30 +53,34 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
                       >
                         <>
                           {item.fieldName === "address" ? (
-                            <Autocomplete
-                              // className={`${styles.profileFields} ${styles.mapAddressSearchField}`}
-                              placeholder="Address"
-                              className={`${styles.registerFields} ${
-                                item.col === 6 && `${styles.doubleField}`
-                              } form-control ${
-                                errors[item.fieldName] &&
-                                touched[item.fieldName] &&
-                                `${styles.isInvalid}`
-                              }`}
-                              componentRestrictions={{ country: "us" }}
-                              options={{
-                                types: ["geocode", "establishment"],
-                              }}
-                              defaultValue={values[item.fieldName]}
-                              apiKey={getGoogleApiKey()}
-                              onPlaceSelected={(place) => {
-                                console.log({ place });
-                                setFieldValue(
-                                  "address",
-                                  place?.formatted_address || ""
-                                );
-                              }}
-                            />
+                            <> 
+                              <Autocomplete
+                                // className={`${styles.profileFields} ${styles.mapAddressSearchField}`}
+                                placeholder="Address"
+                                className={`${styles.registerFields} ${
+                                  item.col === 6 && `${styles.doubleField}`
+                                } form-control ${
+                                  errors[item.fieldName] &&
+                                  touched[item.fieldName] &&
+                                  `${styles.isInvalid}`
+                                }`}
+                                componentRestrictions={{ country: "us" }}
+                                options={{
+                                  types: ["geocode", "establishment"],
+                                }}
+                                defaultValue={values[item.fieldName]}
+                                apiKey={getGoogleApiKey()}
+                                onPlaceSelected={(place) => {
+                                  console.log({ place });
+                                  setFieldValue(
+                                    "address",
+                                    place?.formatted_address || ""
+                                  );
+                                }}
+                                style={{marginBottom: 10}}
+                              />
+                              <span style={{color: "#bdadad"}}>Format (House/flat number, street name) </span>
+                            </>
                           ) : (
                             <Field
                               name={item.fieldName}

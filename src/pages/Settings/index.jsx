@@ -145,22 +145,26 @@ const Settings = () => {
                     >
                       <Grid item>
                         {item.fieldName === "address" ? (
-                          <Autocomplete
-                            className={`${styles.profileFields} ${styles.mapAddressSearchField}`}
-                            componentRestrictions={{ country: "us" }}
-                            options={{
-                              types: ["geocode", "establishment"],
-                            }}
-                            defaultValue={state[item.fieldName]}
-                            apiKey={getGoogleApiKey()}
-                            onPlaceSelected={(place) => {
-                              console.log({ place });
-                              setState((prev) => ({
-                                ...prev,
-                                address: place?.formatted_address || "",
-                              }));
-                            }}
-                          />
+                          <>
+                            <Autocomplete
+                              className={`${styles.profileFields} ${styles.mapAddressSearchField}`}
+                              componentRestrictions={{ country: "us" }}
+                              options={{
+                                types: ["geocode", "establishment"],
+                              }}
+                              defaultValue={state[item.fieldName]}
+                              apiKey={getGoogleApiKey()}
+                              onPlaceSelected={(place) => {
+                                console.log({ place });
+                                setState((prev) => ({
+                                  ...prev,
+                                  address: place?.formatted_address || "",
+                                }));
+                              }}
+                            />
+                            <p style={{color: "#bdadad"}}>Format (House/flat number, street name) </p>
+
+                          </>
                         ) : (
                           <Input
                             name={item.fieldName}
