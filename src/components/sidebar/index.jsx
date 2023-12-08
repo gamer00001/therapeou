@@ -14,6 +14,7 @@ import {
   getUserInfoFromStorage,
   logoutUser,
 } from "../../utility/common-helper";
+import { SafetyDivider } from "@mui/icons-material";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -34,6 +35,14 @@ const Sidebar = () => {
           onClick={() => navigate("/")}
         />
       </Typography>
+
+      {currentUserInfo?.userType && (
+        <>
+          <AdminProfileView />
+
+          <hr className="w-100 mb-12" />
+        </>
+      )}
 
       {dynamicMenu &&
         dynamicMenu?.map((item, index) => (
@@ -72,3 +81,16 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+const AdminProfileView = () => {
+  const currentUserInfo = getUserInfoFromStorage();
+
+  return (
+    <div className={styles.profileViewBlock}>
+      <img src="/user-logo.png" alt="profile-logo" />
+
+      <div className={styles.adminName}>{currentUserInfo.fullName}</div>
+      <div className={styles.adminEmail}>{currentUserInfo.email}</div>
+    </div>
+  );
+};

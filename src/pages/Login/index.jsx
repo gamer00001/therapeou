@@ -76,7 +76,7 @@ const Login = () => {
       let userInfo = loginResposne?.data;
       userInfo = {
         ...userInfo,
-        userType: type,
+        userType: "superAdmin",
         apiUserInfo: loginResposne?.data,
       };
 

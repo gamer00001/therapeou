@@ -1,3 +1,26 @@
+export const TherapistListingHeaders = [
+  {
+    columnName: "Therapist",
+    columnKey: "tharapist",
+  },
+  {
+    columnName: "Status",
+    columnKey: "status",
+  },
+  {
+    columnName: "Rating",
+    columnKey: "rating",
+  },
+  {
+    columnName: "Fee",
+    columnKey: "fee",
+  },
+  {
+    columnName: "Action",
+    columnKey: "action",
+  },
+];
+
 export const DoctorsListingMock = [
   {
     columnName: "Therapist",

@@ -5,6 +5,34 @@ import AppointmentIcon from "../assets/appointment-side-icon.png";
 import LearningIcon from "../assets/learning-side-icon.png";
 
 const panelSideBar = () => ({
+  superAdmin: [
+    {
+      text: "Dashboard",
+      icon: (fill, width, height) => <img src={OverviewIcon} alt="icon" />,
+      path: "/admin/dashboard",
+    },
+    {
+      text: "Manage Users",
+      icon: (fill, width, height) => <img src={AppointmentIcon} alt="icon" />,
+
+      path: "/admin/manage-users",
+    },
+    {
+      text: "Manage Therapists",
+      icon: (fill, width, height) => <img src={LearningIcon} alt="icon" />,
+      path: "/admin/manage-therapist",
+    },
+    {
+      text: "Subscription Plans",
+      icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
+      path: "/admin/subscripiton-plans",
+    },
+    {
+      text: "Patient Documents/Notes",
+      icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
+      path: "/admin/settings",
+    },
+  ],
   patient: [
     {
       text: "Overview",

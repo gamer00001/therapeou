@@ -1,0 +1,21 @@
+.usersContainer {
+  padding: 40px;
+
+    .searchField {
+    width: 607.41px;
+    height: 50.32px;
+    padding-left: 15px;
+
+    background: #e5e5e5;
+    border-radius: 16.3861px;
+  }
+
+  .searchField::before {
+    border-bottom: none !important;
+  }
+
+  .searchField::after {
+    border-bottom: none !important;
+  }
+
+}

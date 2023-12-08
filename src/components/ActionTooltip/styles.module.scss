@@ -1,0 +1,30 @@
+.tooltipContainer {
+  width: 220px;
+  //   height: 180px;
+  border-radius: 10px;
+  background: #e7e7e7;
+  padding: 20px;
+  position: absolute;
+  right: 90px;
+
+  .actionRow {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+
+    // &:hover {
+    //   background: rgba(0, 0, 255, 0.15);
+    //   border-radius: 10px;
+    //   align-items: center;
+    //   display: flex;
+    // }
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -23,6 +23,10 @@ import AppointmentDetail from "./pages/Reports/AppointmentDetail";
 import TherapistRegistration from "./pages/TherapistRegistration";
 import Calender from "./pages/Calender";
 import ForgotPassword from "./pages/forgotPassword";
+import Dashboard from "./pages/Dashboard";
+import ManageUsers from "./pages/ManageUsers";
+import ManageTherapists from "./pages/ManageTherapists";
+import SubscriptionsPlans from "./pages/SubscriptionsPlans";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -96,6 +100,18 @@ const App = () => {
             <Route
               path="/admin/reports/appointments-detail"
               element={<AppointmentDetail />}
+            />
+
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+
+            <Route path="/admin/manage-users" element={<ManageUsers />} />
+            <Route
+              path="/admin/manage-therapist"
+              element={<ManageTherapists />}
+            />
+            <Route
+              path="/admin/subscripiton-plans"
+              element={<SubscriptionsPlans />}
             />
           </>
         )}

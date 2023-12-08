@@ -1,0 +1,37 @@
+.ratingIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.profileIconBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profileIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.viewBtn {
+  font-family: "Poppins" !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px !important;
+  line-height: 26px;
+  text-decoration-line: underline;
+  color: #3a526e !important;
+  width: 80px;
+}
+
+.ratingImg {
+  display: flex !important;
+  align-items: center;
+  //   margin-top: 15px;
+  color: #ffc000 !important;
+  font-weight: 600 !important;
+  //   padding-bottom: 30px !important;
+}

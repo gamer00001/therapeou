@@ -18,6 +18,10 @@ import Loader from "../../components/Loader";
 import NotificationIcon2 from "../../assets/notification-icon-1.svg";
 import ChatIcon from "../../assets/chat-icon.svg";
 import SearchField from "../../components/SearchFIeld";
+import {
+  DoctorsListingMock,
+  TherapistListingHeaders,
+} from "../../constants/Overview";
 
 const Overview = () => {
   const [state, setState] = useState({
@@ -33,7 +37,7 @@ const Overview = () => {
   const fetchTherapistListing = async () => {
     const data = await fetchAllTherapistApi();
     if (data?.status === 200) {
-      let parsedData = parseTherapistListing(data?.data);
+      let parsedData = parseTherapistListing(data?.data, handleViewBtn);
 
       setState({ ...state, listing: parsedData, loading: false });
     } else {
@@ -73,10 +77,8 @@ const Overview = () => {
       `?latitude=${latitude}&longitude=${longitude}&radius=0&searchData=${searchValue}`
     );
 
-    console.log({ searchValue, searchResp });
-
     if (searchResp.status === 200) {
-      let parsedData = parseTherapistListing(searchResp?.data);
+      let parsedData = parseTherapistListing(searchResp?.data, handleViewBtn);
       setState({ ...state, listing: parsedData, loading: false });
     } else {
       toast.error("Some Error Occured While Fetching Therapist Lisitng.");
@@ -144,6 +146,7 @@ const Overview = () => {
 
                   {state?.listing?.length > 0 ? (
                     <BasicTable
+                      headers={TherapistListingHeaders}
                       listing={state?.listing}
                       handleViewBtn={handleViewBtn}
                     />

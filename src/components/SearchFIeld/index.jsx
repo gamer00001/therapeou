@@ -49,7 +49,7 @@ const SearchField = (props) => {
   };
 
   useEffect(() => {
-    const checkIfClickedOutside = (e: MouseEvent) => {
+    const checkIfClickedOutside = (e) => {
       if (state.open && ref.current && !ref.current.contains(e.target)) {
         handleFilters();
       }
