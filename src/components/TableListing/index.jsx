@@ -7,12 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { DoctorsListingMock } from "../../constants/Overview";
-import CButton from "../CButton";
-
-import RatingIcon from "../../assets/rating-star.png";
-import ProfileIcon from "../../assets/aboutUs.png";
-
 import styles from "./styles.module.scss";
 import "./table.scss";
 

@@ -18,10 +18,7 @@ import Loader from "../../components/Loader";
 import NotificationIcon2 from "../../assets/notification-icon-1.svg";
 import ChatIcon from "../../assets/chat-icon.svg";
 import SearchField from "../../components/SearchFIeld";
-import {
-  DoctorsListingMock,
-  TherapistListingHeaders,
-} from "../../constants/Overview";
+import { TherapistListingHeaders } from "../../constants/Overview";
 
 const Overview = () => {
   const [state, setState] = useState({

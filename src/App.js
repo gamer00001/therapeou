@@ -101,20 +101,16 @@ const App = () => {
               path="/admin/reports/appointments-detail"
               element={<AppointmentDetail />}
             />
-
-            <Route path="/admin/dashboard" element={<Dashboard />} />
-
-            <Route path="/admin/manage-users" element={<ManageUsers />} />
-            <Route
-              path="/admin/manage-therapist"
-              element={<ManageTherapists />}
-            />
-            <Route
-              path="/admin/subscripiton-plans"
-              element={<SubscriptionsPlans />}
-            />
           </>
         )}
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+
+        <Route path="/admin/manage-users" element={<ManageUsers />} />
+        <Route path="/admin/manage-therapist" element={<ManageTherapists />} />
+        <Route
+          path="/admin/subscripiton-plans"
+          element={<SubscriptionsPlans />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

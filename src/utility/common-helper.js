@@ -24,21 +24,20 @@ export const validateEmail = (email = "") => {
   return re.test(email);
 };
 
- export function isStrongPassword(password) {
-    // Regular expressions to check for each condition
-    const capitalLetterRegex = /[A-Z]/;
-    const smallLetterRegex = /[a-z]/;
-    const numberRegex = /[0-9]/;
-    const specialCharacterRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+export function isStrongPassword(password) {
+  // Regular expressions to check for each condition
+  const capitalLetterRegex = /[A-Z]/;
+  const smallLetterRegex = /[a-z]/;
+  const numberRegex = /[0-9]/;
+  // eslint-disable-next-line no-useless-escape
+  const specialCharacterRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
 
-    // Check if the password meets all the conditions
-    const hasCapitalLetter = capitalLetterRegex.test(password);
-    const hasSmallLetter = smallLetterRegex.test(password);
-    const hasNumber = numberRegex.test(password);
-    const hasSpecialCharacter = specialCharacterRegex.test(password);
+  // Check if the password meets all the conditions
+  const hasCapitalLetter = capitalLetterRegex.test(password);
+  const hasSmallLetter = smallLetterRegex.test(password);
+  const hasNumber = numberRegex.test(password);
+  const hasSpecialCharacter = specialCharacterRegex.test(password);
 
-    // Return true if all conditions are met
-    return (
-      hasCapitalLetter && hasSmallLetter && hasNumber && hasSpecialCharacter
-    );
-  }
+  // Return true if all conditions are met
+  return hasCapitalLetter && hasSmallLetter && hasNumber && hasSpecialCharacter;
+}

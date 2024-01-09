@@ -14,14 +14,15 @@ import {
   getUserInfoFromStorage,
   logoutUser,
 } from "../../utility/common-helper";
-import { SafetyDivider } from "@mui/icons-material";
+// import { SafetyDivider } from "@mui/icons-material";
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
   const currentUserInfo = getUserInfoFromStorage();
 
-  const sideBarContent = panelSideBar()[currentUserInfo?.userType];
+  const sideBarContent =
+    panelSideBar()[currentUserInfo?.userType || "superAdmin"];
 
   const dynamicMenu = sideBarContent;
 

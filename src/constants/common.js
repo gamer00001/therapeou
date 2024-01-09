@@ -200,3 +200,81 @@ export const therapistData = () => {
     },
   ];
 };
+
+export const PatientStatsCardList = [
+  {
+    title: "Total Revenue",
+    value: "$11,334",
+    percentValue: "+6.35",
+    isHighlighted: true,
+  },
+  {
+    title: "Total Patients",
+    value: "$24,500",
+    percentValue: "+6.35",
+    isHighlighted: false,
+  },
+  {
+    title: "New Patients",
+    value: "$350",
+    percentValue: "+6.35",
+    isHighlighted: false,
+  },
+];
+
+export const TherapistStatsCardList = [
+  {
+    title: "Total Revenue",
+    value: "$11,334",
+    percentValue: "+6.35",
+    isHighlighted: true,
+  },
+  {
+    title: "Total Therapist",
+    value: "$24,500",
+    percentValue: "+6.35",
+    isHighlighted: false,
+  },
+  {
+    title: "New Therapist",
+    value: "$350",
+    percentValue: "+6.35",
+    isHighlighted: false,
+  },
+];
+
+export const SubscriptionUsersInfo = [
+  {
+    id: 1,
+    title: "Subscription",
+    value: "Users",
+  },
+  {
+    id: 2,
+    title: "Standard",
+    value: "1209",
+  },
+  {
+    id: 3,
+    title: "Premium",
+    value: "780",
+  },
+];
+
+export const SubscriptionRevenueInfo = [
+  {
+    id: 1,
+    title: "Subscription",
+    value: "Revenue",
+  },
+  {
+    id: 2,
+    title: "Standard",
+    value: "$1209",
+  },
+  {
+    id: 3,
+    title: "Premium",
+    value: "$780",
+  },
+];

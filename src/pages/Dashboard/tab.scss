@@ -1,0 +1,9 @@
+.MuiTab-root.Mui-selected {
+  border-radius: 16px;
+  margin: 7px 0px 7px 7px;
+  background: #fff !important;
+}
+
+.MuiTab-root[aria-selected="false"] {
+  background: #d9d9d9 !important;
+}
