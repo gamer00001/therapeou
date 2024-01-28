@@ -9,9 +9,11 @@ import {
   uploadImageApiUrl,
   uploadPatientReportsApiUrl,
   addAppointmentDocsApiUrl,
+  PatientInfoGetApiUrl,
   ForgotPasswordUrl,
   OtpUrl,
   NewPasswordpUrl,
+  PatientInfoGetAllApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -166,6 +168,28 @@ export const matchOtpApi = async (data) => {
 export const newPasswordApi = async (data, newPassword) => {
   return await axios
     .put(`${NewPasswordpUrl}?password=${newPassword}`, data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const fetchAllPatientsListingApi = async () => {
+  return await axios
+    .get(`${PatientInfoGetAllApiUrl}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const fetchPatientInfoByIdApi = async (id) => {
+  return await axios
+    .get(`${PatientInfoGetApiUrl}/${id}`)
     .then((result) => {
       return result;
     })

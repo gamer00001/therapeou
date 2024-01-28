@@ -1,5 +1,37 @@
 import moment from "moment";
 import Logo from "../assets/aboutUs.png";
+import UserInfoBlock from "../components/UserInfoBlock";
+import ActionTooltip from "../components/ActionTooltip";
+
+export const parsePatientListing = (data, handleUserStatus) => {
+  return data.map((item) => {
+    return {
+      apiData: { ...item },
+      id: item?.id,
+      patientInfo: (
+        <>
+          <UserInfoBlock name={item.fullName || "N/A"} />
+        </>
+      ),
+      // eslint-disable-next-line eqeqeq
+      status: item?.active == "true" ? "Active" : "Inactive",
+      username: item.fullName || "N/A",
+      subtitle: "Weekly Visit",
+      email: item.email || "N/A",
+      logo: "/user-logo.png",
+      action: (
+        <div className="position-relative">
+          <ActionTooltip
+            data={item}
+            forPatient={true}
+            status={item?.active == "true" ? "Active" : "Inactive"}
+            handleUserStatus={() => handleUserStatus(item)}
+          />
+        </div>
+      ),
+    };
+  });
+};
 
 export const parseAppointmentListing = (data) => {
   return data.map((item) => {
@@ -40,4 +72,49 @@ export const parseReviewData = (
     rating: data.rating,
     date: moment(new Date()).toISOString(),
   };
+};
+
+export const parsePatientOverviewInfo = (data) => {
+  return [
+    {
+      id: 1,
+      title: "Gender",
+      value: data?.gender || "N/A",
+    },
+    {
+      id: 2,
+      title: "Birthday",
+      value: "28 feb, 2002",
+    },
+    {
+      id: 3,
+      title: "Phone number",
+      value: data?.phone || "N/A",
+    },
+    {
+      id: 4,
+      title: "Address",
+      value: data?.address || "N/A",
+    },
+    {
+      id: 5,
+      title: "City",
+      value: data?.city || "N/A",
+    },
+    {
+      id: 6,
+      title: "Zip Code",
+      value: data?.postCode || "N/A",
+    },
+    {
+      id: 7,
+      title: "Registration Date",
+      value: data?.registrationDate || "N/A",
+    },
+    {
+      id: 8,
+      title: "Member Status",
+      value: "Active",
+    },
+  ];
 };

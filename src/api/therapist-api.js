@@ -45,7 +45,7 @@ export const therapistLoginApi = async (loginData) => {
     });
 };
 
-export const fetchAllTherapistApi = async (loginData) => {
+export const fetchAllTherapistApi = async () => {
   return await axios
     .get(`${TherapistInfoGetAllApiUrl}`)
     .then((result) => {

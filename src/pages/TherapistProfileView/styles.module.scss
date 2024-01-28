@@ -1,0 +1,191 @@
+.therapistProfileContainer {
+  padding: 30px;
+  //   height: 100%;
+  background-color: #ebebeae5;
+
+  .leftGrid {
+    border-right: 2px solid #e7e7e7;
+  }
+
+  .searchField {
+    width: 607.41px;
+    height: 50.32px;
+    padding-left: 15px;
+    background: #fff;
+    border-radius: 16.3861px;
+  }
+
+  .searchField::before {
+    border-bottom: none !important;
+  }
+
+  .searchField::after {
+    border-bottom: none !important;
+  }
+
+  .profileInfoBlock {
+    padding: 20px;
+    border-radius: 16px;
+    background: #fff;
+
+    .infoBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img {
+      width: 138.964px;
+      height: 144.675px;
+      border-radius: 50%;
+    }
+
+    .title {
+      color: #000;
+      font-family: Poppins;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      color: #000;
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 1.36px;
+    }
+
+    .fieldTitle {
+      color: #a2a3a4;
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .overviewRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 30px;
+    }
+
+    .editProfileBtn {
+      color: #3c5671;
+      font-family: Poppins;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 0px; /* 0% */
+      letter-spacing: 1.36px;
+      text-transform: capitalize;
+      text-decoration-line: underline;
+    }
+
+    .overviewTitle {
+      color: #000;
+      font-family: Poppins;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .fieldValue {
+      color: #000;
+      font-family: Poppins;
+      font-size: 16.386px;
+      font-weight: 500;
+      padding-bottom: 20px;
+    }
+
+    .appointmentTitle {
+      color: #00214e;
+      font-family: Poppins;
+      font-size: 20px;
+      font-weight: 600;
+      padding-top: 15px;
+      text-align: center;
+    }
+
+    .appointmentInfo {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 15px;
+
+      .title {
+        color: #000;
+        font-family: Poppins;
+        font-size: 35px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        color: #a2a3a4;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .verticalLine {
+        background: #979ca580;
+        width: 2px;
+        border: none;
+      }
+    }
+  }
+
+  .heading {
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .seeAll {
+    color: #6878b1;
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .expertiseBlock {
+    min-width: 60px;
+    width: fit-content;
+    padding: 15px;
+    text-align: center;
+    border-radius: 24px;
+    color: #a2a3a4;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    background: rgba(217, 217, 217, 0.49);
+  }
+
+  .aboutSection {
+    padding: 20px 50px;
+    border-radius: 16px;
+    background: #fff;
+    width: 350px;
+
+    li {
+      color: #000;
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 500;
+      padding-left: 0;
+    }
+  }
+
+  .appointmentBlock {
+    padding: 20px 50px;
+    border-radius: 16px;
+    background: #fff;
+    // width: 350px;
+
+    .title {
+      color: #a2a3a4;
+      font-family: Poppins;
+      font-size: 16.386px;
+      font-weight: 600;
+    }
+  }
+}

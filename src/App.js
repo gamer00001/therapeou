@@ -27,6 +27,8 @@ import Dashboard from "./pages/Dashboard";
 import ManageUsers from "./pages/ManageUsers";
 import ManageTherapists from "./pages/ManageTherapists";
 import SubscriptionsPlans from "./pages/SubscriptionsPlans";
+import PatientProfile from "./pages/PatientProfile";
+import TherapistProfileView from "./pages/TherapistProfileView";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -104,6 +106,11 @@ const App = () => {
           </>
         )}
         <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/patient-profile/:id" element={<PatientProfile />} />
+        <Route
+          path="/admin/therapist-profile/:id"
+          element={<TherapistProfileView />}
+        />
 
         <Route path="/admin/manage-users" element={<ManageUsers />} />
         <Route path="/admin/manage-therapist" element={<ManageTherapists />} />

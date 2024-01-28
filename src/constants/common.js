@@ -11,6 +11,10 @@ export const usersColumns = [
     columnKey: "email",
   },
   {
+    columnName: "Status",
+    columnKey: "status",
+  },
+  {
     columnName: "",
     columnKey: "action",
   },
@@ -109,6 +113,10 @@ export const therapistColumns = [
   {
     columnName: "Email",
     columnKey: "email",
+  },
+  {
+    columnName: "Status",
+    columnKey: "status",
   },
   {
     columnName: "",
@@ -276,5 +284,48 @@ export const SubscriptionRevenueInfo = [
     id: 3,
     title: "Premium",
     value: "$780",
+  },
+];
+
+export const UserProfieInfo = [
+  {
+    id: 1,
+    title: "Gender",
+    value: "Female",
+  },
+  {
+    id: 2,
+    title: "Birthday",
+    value: "28 feb, 2002",
+  },
+  {
+    id: 3,
+    title: "Phone number",
+    value: "03019105983",
+  },
+  {
+    id: 4,
+    title: "Address",
+    value: "Street 25 house 45, F8 Islamabad",
+  },
+  {
+    id: 5,
+    title: "City",
+    value: "Islamabad",
+  },
+  {
+    id: 6,
+    title: "Zip Code",
+    value: "54432",
+  },
+  {
+    id: 7,
+    title: "Registration Date",
+    value: "24 feb, 2022",
+  },
+  {
+    id: 8,
+    title: "Member Status",
+    value: "Active",
   },
 ];

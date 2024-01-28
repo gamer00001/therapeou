@@ -44,8 +44,6 @@ export default function BasicTable({
                     // Exclude the last cell from having the click function
                     const cellContent = row[headerValue.columnKey];
 
-                    console.log({ row, headerValue });
-
                     return (
                       <TableCell
                         key={headerKey}

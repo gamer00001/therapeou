@@ -1,6 +1,8 @@
 import moment from "moment";
 import { isEmpty } from "lodash";
 import { scheduleTiming } from "../constants/Calender";
+import UserInfoBlock from "../components/UserInfoBlock";
+import ActionTooltip from "../components/ActionTooltip";
 
 export const WEEK_DAYS = [
   "Sunday",
@@ -94,6 +96,35 @@ export const parseTherapistAppointmentListing = (data) => {
       rating: 4.4,
       appointmentId: item.id,
       date: moment(item.date).format("MMMM-DD-yyyy"),
+    };
+  });
+};
+
+export const parseTherapistListing = (data, handleUserStatus) => {
+  return data.map((item) => {
+    return {
+      apiData: { ...item },
+      id: item.id,
+      therapistInfo: (
+        <>
+          <UserInfoBlock name={item.fullName || "N/A"} />
+        </>
+      ),
+      // eslint-disable-next-line eqeqeq
+      status: item?.active == "true" ? "Active" : "Inactive",
+      username: item.fullName || "N/A",
+      subtitle: "Weekly Visit",
+      email: item.email || "N/A",
+      logo: "/user-logo.png",
+      action: (
+        <div className="position-relative">
+          <ActionTooltip
+            data={item}
+            status={item?.active == "true" ? "Active" : "Inactive"}
+            handleUserStatus={() => handleUserStatus(item)}
+          />
+        </div>
+      ),
     };
   });
 };
