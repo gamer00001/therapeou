@@ -12,8 +12,12 @@ import ProfileOverview from "./ProfileOverview";
 import styles from "./styles.module.scss";
 import AboutSection from "./AboutSection";
 import AppointmentTimes from "./AppointmentTimes";
-import { fetchTherapistInfoApi } from "../../api/therapist-api";
+import {
+  fetchTherapistInfoApi,
+  fetchTherapistScheduleApi,
+} from "../../api/therapist-api";
 import Loader from "../../components/Loader";
+import { mapToDesiredFormat } from "../../data-parsers/therapist-parser";
 
 const TherapistProfileView = () => {
   const [state, setState] = useState({
@@ -23,21 +27,49 @@ const TherapistProfileView = () => {
   });
   const location = useLocation();
 
+  const handleLoader = () => {
+    setState((prev) => ({
+      ...prev,
+      isLoading: !prev.isLoading,
+    }));
+  };
+
   const fetchPatientProfile = () => {
     const loc = location.pathname.split("/");
+
     fetchTherapistInfoApi(loc.at(-1)).then((res) => {
-      // let overviewInfo = parsePatientOverviewInfo(res.data);
       setState((prev) => ({
         ...prev,
-        // overviewInfo,
         isLoading: false,
         userInfo: res.data,
       }));
     });
   };
 
+  const fetchTherapistSchedule = () => {
+    const loc = location.pathname.split("/");
+
+    fetchTherapistScheduleApi(loc.at(-1))
+      .then((res) => {
+        const parseData = mapToDesiredFormat(res.data);
+
+        handleLoader();
+
+        setState((prev) => ({
+          ...prev,
+          schedule: parseData,
+        }));
+      })
+      .catch((error) => {
+        handleLoader();
+        console.log({ error });
+      });
+  };
+
   useEffect(() => {
     fetchPatientProfile();
+
+    fetchTherapistSchedule();
   }, []);
 
   return (
@@ -63,11 +95,11 @@ const TherapistProfileView = () => {
 
           <Grid container className="pt-20 d-flex">
             <Grid item md={5} lg={5}>
-              <AboutSection />
+              <AboutSection userInfo={state.userInfo} />
             </Grid>
 
             <Grid item md={7} lg={7}>
-              <AppointmentTimes />
+              <AppointmentTimes schedule={state.schedule} />
             </Grid>
           </Grid>
         </div>

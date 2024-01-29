@@ -35,6 +35,7 @@ const ActionsList = [
 ];
 
 const ActionTooltip = ({
+  id,
   data,
   forPatient = false,
   status,
@@ -68,11 +69,13 @@ const ActionTooltip = ({
   };
 
   useEffect(() => {
-    let list = state.actionsList.map((item) => {
-      if (item.name === "Deactivate") {
+    const { actionsList } = state;
+
+    let list = actionsList.map((item) => {
+      if (["Activate", "Deactivate"].includes(item.name)) {
         return {
           ...item,
-          name: status === "Active" ? "Deactivate" : "Activate",
+          name: status === "active" ? "Deactivate" : "Activate",
         };
       } else if (item.name === "View Profile") {
         return {
@@ -88,13 +91,12 @@ const ActionTooltip = ({
       }
     });
 
-    console.log({ list }, data, data.id);
     setState((prev) => ({
       ...prev,
       actionsList: list,
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -111,7 +113,7 @@ const ActionTooltip = ({
   }, [state.open]);
 
   return (
-    <div className="p-relative tooltipContainer">
+    <div className="p-relative tooltipContainer" id={id}>
       <img
         className="cursor-pointer"
         onClick={handleOpen}
@@ -121,9 +123,9 @@ const ActionTooltip = ({
 
       {state.open && (
         <div className={styles.tooltipContainer} ref={ref}>
-          {state.actionsList.map((action) => (
+          {state.actionsList?.map((action, index) => (
             <div
-              key={action.name}
+              key={index}
               className={styles.actionRow}
               onClick={() => handleAction(action)}
             >

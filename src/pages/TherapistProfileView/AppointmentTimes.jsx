@@ -28,17 +28,19 @@ const APPOINTMENTS_TIME = [
   },
 ];
 
-const AppointmentTimes = () => {
+const AppointmentTimes = ({ schedule = [] }) => {
   return (
     <div className={styles.appointmentBlock}>
       <div className="d-flex justify-between align-center pb-16">
         <span className={styles.heading}>Appointment Times</span>
       </div>
 
-      {APPOINTMENTS_TIME.map((item, key) => (
+      {schedule.map((item, key) => (
         <div key={key} className="d-flex justify-between pb-8">
-          <span className={styles.title}>{item.name}</span>
-          <span className={styles.title}>{item.time}</span>
+          <span className={styles.title}>{item.day}</span>
+          <span
+            className={styles.title}
+          >{`${item.startDate} - ${item.endDate}`}</span>
         </div>
       ))}
     </div>

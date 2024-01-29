@@ -120,11 +120,38 @@ export const parseTherapistListing = (data, handleUserStatus) => {
         <div className="position-relative">
           <ActionTooltip
             data={item}
-            status={item?.active == "true" ? "Active" : "Inactive"}
+            id={item.id}
+            status={item?.active == "true" ? "active" : "inactive"}
             handleUserStatus={() => handleUserStatus(item)}
           />
         </div>
       ),
+    };
+  });
+};
+
+export const mapToDesiredFormat = (apiResponse) => {
+  const daysMapping = {
+    mon: "Monday",
+    tue: "Tuesday",
+    wed: "Wednesday",
+    thu: "Thursday",
+    fri: "Friday",
+    sat: "Saturday",
+    sun: "Sunday",
+  };
+
+  return apiResponse.map((item) => {
+    const startDate = `${item.startTime} AM`;
+    const endDate = new Date(`2000-01-01 ${item.endTime}`).toLocaleTimeString(
+      "en-US",
+      { hour: "numeric", minute: "numeric", hour12: true }
+    );
+
+    return {
+      day: daysMapping[item.day.toLowerCase()],
+      startDate,
+      endDate,
     };
   });
 };

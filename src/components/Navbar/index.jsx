@@ -34,6 +34,7 @@ const Navbar = ({ showLogin = true, showRegister = true }) => {
           <img
             className="cursor-pointer"
             src={Logo}
+            style={{ height: "100px" }}
             alt="logo"
             onClick={() => navigate("/")}
           />

@@ -23,9 +23,10 @@ export const parsePatientListing = (data, handleUserStatus) => {
         <div className="position-relative">
           <ActionTooltip
             data={item}
+            id={item.id}
             forPatient={true}
-            status={item?.active == "true" ? "Active" : "Inactive"}
             handleUserStatus={() => handleUserStatus(item)}
+            status={item?.active == "true" ? "active" : "inactive"}
           />
         </div>
       ),

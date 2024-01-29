@@ -85,9 +85,9 @@ const ManageUsers = () => {
 
           <div className="pt-20">
             <BasicTable
+              showBorderBottom
               listing={state.listing}
               headers={usersColumns}
-              showBorderBottom
             />
           </div>
         </div>
