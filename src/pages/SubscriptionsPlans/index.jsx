@@ -4,7 +4,7 @@ import AdminLayoutView from "../../components/layout/AdminView";
 const SubscriptionsPlans = () => {
   return (
     <AdminLayoutView>
-      <div>SubscriptionsPlans</div>
+      <div className="p-20">SubscriptionsPlans</div>
     </AdminLayoutView>
   );
 };

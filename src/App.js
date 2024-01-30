@@ -29,6 +29,7 @@ import ManageTherapists from "./pages/ManageTherapists";
 import SubscriptionsPlans from "./pages/SubscriptionsPlans";
 import PatientProfile from "./pages/PatientProfile";
 import TherapistProfileView from "./pages/TherapistProfileView";
+import EditPatientProfile from "./pages/PatientProfile/EditPatient";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -59,16 +60,14 @@ const App = () => {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/get-in-touch" element={<GetInTouch />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin-login" element={<Login />} />
+        <Route path="/admin-login" element={<Login adminLogin={true} />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-
         <Route path="/register" element={<Register />} />
         <Route
           path="/therapist/registeration-process"
           element={<TherapistRegistration />}
         />
         <Route path="/admin/chat" element={<Chat />} />
-
         {/* Admin Routes */}
         {isLoggedIn && (
           <>
@@ -108,18 +107,25 @@ const App = () => {
         )}
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/patient-profile/:id" element={<PatientProfile />} />
+
+        <Route
+          path="/admin/edit-patient/:id"
+          element={<EditPatientProfile />}
+        />
+        <Route
+          path="/admin/edit-therapist/:id"
+          element={<TherapistRegistration />}
+        />
         <Route
           path="/admin/therapist-profile/:id"
           element={<TherapistProfileView />}
         />
-
         <Route path="/admin/manage-users" element={<ManageUsers />} />
         <Route path="/admin/manage-therapist" element={<ManageTherapists />} />
         <Route
           path="/admin/subscripiton-plans"
           element={<SubscriptionsPlans />}
         />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

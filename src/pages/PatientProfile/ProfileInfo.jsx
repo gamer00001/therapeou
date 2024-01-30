@@ -1,9 +1,12 @@
 import React from "react";
 import { Grid, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 
-const ProfileInfo = ({ userInfo, overviewInfo }) => {
+const ProfileInfo = ({ userId, userInfo, overviewInfo, appointmentInfo }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.profileInfoBlock}>
       <Grid container>
@@ -19,14 +22,16 @@ const ProfileInfo = ({ userInfo, overviewInfo }) => {
 
           <div className={styles.appointmentInfo}>
             <div className="text-center">
-              <div className={styles.title}>5</div>
+              <div className={styles.title}>{appointmentInfo?.past || "0"}</div>
               <div className={styles.subtitle}>Past</div>
             </div>
 
             <hr className={styles.verticalLine} />
 
             <div className="text-center">
-              <div className={styles.title}>2</div>
+              <div className={styles.title}>
+                {appointmentInfo?.upcoming || "0"}
+              </div>
               <div className={styles.subtitle}>Upcoming</div>
             </div>
           </div>
@@ -36,7 +41,12 @@ const ProfileInfo = ({ userInfo, overviewInfo }) => {
           <div className={styles.overviewRow}>
             <div className={styles.overviewTitle}>Overview</div>
 
-            <Button className={styles.editProfileBtn}>Edit Profile</Button>
+            <Button
+              className={styles.editProfileBtn}
+              onClick={() => navigate(`/admin/edit-patient/${userId}`)}
+            >
+              Edit Profile
+            </Button>
           </div>
 
           <Grid container padding="35px 32px">

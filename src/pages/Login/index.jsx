@@ -18,7 +18,7 @@ const initialValues = {
   type: "patient",
 };
 
-const Login = () => {
+const Login = (props) => {
   const [state, setState] = useState({
     initialValues,
     isLoading: false,
@@ -54,6 +54,12 @@ const Login = () => {
   };
 
   const handleUserLogin = async (data) => {
+    const { adminLogin } = props;
+
+    if (adminLogin) {
+      return navigate("/admin/dashboard");
+    }
+
     let apiToHit;
 
     setState((prev) => ({

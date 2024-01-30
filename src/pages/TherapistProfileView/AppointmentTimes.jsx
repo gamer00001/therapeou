@@ -1,33 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-const APPOINTMENTS_TIME = [
-  {
-    name: "Monday",
-    time: "9am - 5pm",
-  },
-  {
-    name: "Tuesday",
-    time: "9am - 5pm",
-  },
-  {
-    name: "Wednesday",
-    time: "9am - 5pm",
-  },
-  {
-    name: "Thursday",
-    time: "9am - 5pm",
-  },
-  {
-    name: "Friday",
-    time: "9am - 5pm",
-  },
-  {
-    name: "Saturday",
-    time: "9am - 5pm",
-  },
-];
-
 const AppointmentTimes = ({ schedule = [] }) => {
   return (
     <div className={styles.appointmentBlock}>

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import styles from "./styles.module.scss";
 
 import BasicTable from "../../components/TableListing";
-import { therapistColumns, therapistData } from "../../constants/common";
+import { therapistColumns } from "../../constants/common";
 import {
   fetchAllTherapistApi,
   therapistUpdateInfoApi,

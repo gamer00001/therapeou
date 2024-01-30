@@ -150,7 +150,8 @@
     padding: 20px 50px;
     border-radius: 16px;
     background: #fff;
-    width: 350px;
+    // width: 350px;
+    margin: 0px 20px 0px 0px;
     // height: 323px;
 
     .notesListingBlock {
@@ -195,4 +196,40 @@
       }
     }
   }
+}
+
+.profileFields {
+  width: 362px;
+  height: 62px;
+  padding-left: 12px;
+
+  background: #ffffff;
+  border-bottom: none !important;
+  border: 1px solid #f0f0f0 !important;
+}
+
+.profileFields::before {
+  border-bottom: none !important;
+}
+
+.profileFields::placeholder {
+  font-size: 16px;
+  color: #a3a3a3;
+}
+
+.profileFields:focus-visible {
+  // padding-left: 12px;
+  font-size: 16px;
+  outline: none !important;
+}
+
+.mapAddressSearchField {
+  width: 350px;
+  padding-left: 12px;
+}
+
+.editPatientTitle {
+  padding: 30px 50px;
+  font-weight: bold;
+  font-size: 34px;
 }

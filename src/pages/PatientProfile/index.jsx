@@ -11,9 +11,15 @@ import styles from "./styles.module.scss";
 import ProfileInfo from "./ProfileInfo";
 import NotesSection from "./NotesSection";
 import DocumentSection from "./DocumentSection";
-import { fetchPatientInfoByIdApi } from "../../api/patient-api";
+import {
+  fetchPatientAppointmentsApi,
+  fetchPatientInfoByIdApi,
+} from "../../api/patient-api";
 import { UserProfieInfo } from "../../constants/common";
-import { parsePatientOverviewInfo } from "../../data-parsers/patient-parser";
+import {
+  parseAppointmetStats,
+  parsePatientOverviewInfo,
+} from "../../data-parsers/patient-parser";
 import Loader from "../../components/Loader";
 
 const PatientProfile = () => {
@@ -24,8 +30,9 @@ const PatientProfile = () => {
   });
   const location = useLocation();
 
+  const loc = location.pathname.split("/");
+
   const fetchPatientProfile = () => {
-    const loc = location.pathname.split("/");
     fetchPatientInfoByIdApi(loc.at(-1)).then((res) => {
       let overviewInfo = parsePatientOverviewInfo(res.data);
       setState((prev) => ({
@@ -37,8 +44,20 @@ const PatientProfile = () => {
     });
   };
 
+  const fetchSpecificPatientAppointments = () => {
+    fetchPatientAppointmentsApi(loc.at(-1)).then((res) => {
+      const stats = parseAppointmetStats(res.data);
+      setState((prev) => ({
+        ...prev,
+        appointmentInfo: stats,
+      }));
+    });
+  };
+
   useEffect(() => {
     fetchPatientProfile();
+    fetchSpecificPatientAppointments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -60,17 +79,19 @@ const PatientProfile = () => {
 
           <div className="pt-20">
             <ProfileInfo
+              userId={loc.at(-1)}
               userInfo={state.userInfo}
               overviewInfo={state.overviewInfo}
+              appointmentInfo={state.appointmentInfo}
             />
           </div>
 
           <Grid container className="pt-20 d-flex">
-            <Grid item md={5} lg={5}>
+            <Grid item md={5} lg={5} xl={5}>
               <NotesSection />
             </Grid>
 
-            <Grid item md={7} lg={7}>
+            <Grid item md={7} lg={7} xl={7}>
               <DocumentSection />
             </Grid>
           </Grid>

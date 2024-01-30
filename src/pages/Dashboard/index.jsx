@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   return (
     <AdminLayoutView>
-      <div className="p-28">
+      <div className="p-28 statsContainer">
         <h1 className="pt-20">Stats</h1>
         <div className="d-flex justify-center pt-8">
           <UsersTab state={state} handleChange={handleChange} />
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
         <div className="pt-20 d-flex gap-28">
           {state.statsList.map((card, index) => (
-            <StatsCard {...card} />
+            <StatsCard key={index} {...card} />
           ))}
         </div>
 

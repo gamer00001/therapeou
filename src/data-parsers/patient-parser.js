@@ -119,3 +119,21 @@ export const parsePatientOverviewInfo = (data) => {
     },
   ];
 };
+
+export const parseAppointmetStats = (data) => {
+  let upcoming = 0,
+    past = 0;
+
+  data.forEach((item) => {
+    if (["ongoing", "pending"].includes(item.appointmentStatus)) {
+      upcoming += 1;
+    } else {
+      past += 1;
+    }
+  });
+
+  return {
+    upcoming,
+    past,
+  };
+};

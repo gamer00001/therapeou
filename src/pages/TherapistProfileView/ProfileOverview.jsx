@@ -1,10 +1,17 @@
 import React from "react";
 import { Grid, Button } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 // import { UserProfieInfo } from "../../constants/common";
 
 const ProfileOverview = ({ userInfo }) => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const loc = location.pathname.split("/");
+
   return (
     <div className={styles.profileInfoBlock}>
       <Grid container>
@@ -25,11 +32,23 @@ const ProfileOverview = ({ userInfo }) => {
           <div className={styles.overviewRow}>
             <div className={styles.overviewTitle}>Overview</div>
 
-            <Button className={styles.editProfileBtn}>Edit Profile</Button>
+            <Button
+              className={styles.editProfileBtn}
+              onClick={() =>
+                navigate(`/admin/edit-therapist/${loc.at(-1)}`, {
+                  state: {
+                    tabId: 0,
+                    userInfo: userInfo,
+                  },
+                })
+              }
+            >
+              Edit Profile
+            </Button>
           </div>
 
           <Grid container padding="35px 32px">
-            <Grid item md={7} lineHeight={2.5}>
+            <Grid item md={7} lg={7} lineHeight={2.5}>
               <div>
                 <span className={styles.overviewTitle}>Information</span>
               </div>
@@ -42,7 +61,7 @@ const ProfileOverview = ({ userInfo }) => {
               <div className={styles.fieldTitle}>Response Within 24 hours</div>
             </Grid>
 
-            <Grid item md={5}>
+            <Grid item md={5} lg={5}>
               <div>
                 <span className={styles.overviewTitle}>Expertise</span>
               </div>

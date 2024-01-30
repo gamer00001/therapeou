@@ -78,6 +78,44 @@ export const SettingsFields = [
   },
 ];
 
+export const PatientFields = [
+  {
+    placeholder: "Full Name",
+    fieldName: "fullName",
+    type: "text",
+  },
+  {
+    placeholder: "First Name",
+    fieldName: "firstName",
+    type: "text",
+  },
+  {
+    placeholder: "Last Name",
+    fieldName: "lastName",
+    type: "text",
+  },
+  {
+    placeholder: "Phone Number",
+    fieldName: "phone",
+    type: "text",
+  },
+  {
+    placeholder: "City",
+    fieldName: "city",
+    type: "text",
+  },
+  {
+    placeholder: "Zip Code",
+    fieldName: "postCode",
+    type: "text",
+  },
+  {
+    placeholder: "Address",
+    fieldName: "address",
+    type: "text",
+  },
+];
+
 export const TherapistPersonalFields = [
   {
     placeholder: "Title",

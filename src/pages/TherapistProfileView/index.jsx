@@ -94,11 +94,11 @@ const TherapistProfileView = () => {
           </div>
 
           <Grid container className="pt-20 d-flex">
-            <Grid item md={5} lg={5}>
+            <Grid item md={5} lg={5} xl={5}>
               <AboutSection userInfo={state.userInfo} />
             </Grid>
 
-            <Grid item md={7} lg={7}>
+            <Grid item md={7} lg={7} xl={7}>
               <AppointmentTimes schedule={state.schedule} />
             </Grid>
           </Grid>
