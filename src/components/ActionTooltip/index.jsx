@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import Paper from "@mui/material/Paper";
@@ -57,14 +56,29 @@ const ActionTooltip = ({
   };
 
   const handleAction = (action) => {
-    console.log({ action });
     if (action.name === "View Profile") {
       return navigate(`${action.action}/${data.id}`);
     }
 
-    if (["Activate", "Deactivate"].includes(action.name)) {
-      handleUserStatus();
-      handleOpen();
+    switch (action.name) {
+      case "View Profile":
+        return navigate(`${action.action}/${data.id}`);
+
+      case "Activate":
+      case "Deactivate":
+        handleUserStatus();
+        handleOpen();
+        return;
+
+      case "Edit":
+        return navigate(`${action.action}/${data.id}`, {
+          state: {
+            userInfo: data,
+          },
+        });
+
+      default:
+        return;
     }
   };
 
@@ -72,22 +86,34 @@ const ActionTooltip = ({
     const { actionsList } = state;
 
     let list = actionsList.map((item) => {
-      if (["Activate", "Deactivate"].includes(item.name)) {
-        return {
-          ...item,
-          name: status === "active" ? "Deactivate" : "Activate",
-        };
-      } else if (item.name === "View Profile") {
-        return {
-          ...item,
-          action: forPatient
-            ? "/admin/patient-profile"
-            : "/admin/therapist-profile",
-        };
-      } else {
-        return {
-          ...item,
-        };
+      switch (item.name) {
+        case "View Profile":
+          return {
+            ...item,
+            action: forPatient
+              ? "/admin/patient-profile"
+              : "/admin/therapist-profile",
+          };
+
+        case "Activate":
+        case "Deactivate":
+          return {
+            ...item,
+            name: status === "active" ? "Deactivate" : "Activate",
+          };
+
+        case "Edit":
+          return {
+            ...item,
+            action: forPatient
+              ? `/admin/edit-patient`
+              : "/admin/edit-therapist",
+          };
+
+        default:
+          return {
+            ...item,
+          };
       }
     });
 
