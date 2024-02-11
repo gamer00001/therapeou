@@ -15,6 +15,7 @@ import {
   addAppointmentNoteeApiUrl,
   addTherapistServiceApiUrl,
   fetchTherapistServiceApiUrl,
+  searchTherapistApiUrl,
   updateAppointmentNoteApiUrl,
   uploadDocumentApiUrl,
 } from "../config/apiRoutes";
@@ -219,6 +220,17 @@ export const fetchTherapistServiceApi = async (therapistId) => {
 export const deleteTherapistServiceApi = async (servieId) => {
   return await axios
     .delete(`${TherapistServicesBaseUrl}/${servieId}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const searchTherapistForAdminApi = async (searchQuery) => {
+  return await axios
+    .get(`${searchTherapistApiUrl}/${searchQuery}`)
     .then((result) => {
       return result;
     })

@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
-
-import { Input } from "@mui/material";
-
+import { isEmpty } from "lodash";
 import { toast } from "react-toastify";
 
-import styles from "./styles.module.scss";
 import BasicTable from "../../components/TableListing";
 import { usersColumns } from "../../constants/common";
 import {
   fetchAllPatientsListingApi,
   patientUpdateInfoApi,
+  searchPatientForAdminApi,
 } from "../../api/patient-api";
 import { parsePatientListing } from "../../data-parsers/patient-parser";
 import Loader from "../../components/Loader";
+import SearchField from "../../components/SearchFIeld";
+
+import styles from "./styles.module.scss";
 
 const ManageUsers = () => {
   const [state, setState] = useState({
     listing: [],
     isLoading: true,
     actions: [],
+    search: "",
   });
 
   const handleLoader = () => {
@@ -71,17 +73,56 @@ const ManageUsers = () => {
       });
   };
 
+  const handlePatientSearch = async (e) => {
+    const searchValue = e.target?.value || "";
+
+    handleLoader();
+
+    if (!isEmpty(searchValue)) {
+      const searchResp = await searchPatientForAdminApi(searchValue);
+
+      if (searchResp.status === 200) {
+        const parsedData = parsePatientListing(
+          searchResp.data,
+          handleUserStatus
+        );
+
+        setState({ ...state, listing: parsedData, isLoading: false });
+      } else {
+        toast.error("Some Error Occured While Fetching Therapist Lisitng.");
+      }
+    } else {
+      fetchPatientsListing();
+    }
+
+    setState((prev) => ({
+      ...prev,
+      search: searchValue,
+    }));
+  };
+
   useEffect(() => {
     fetchPatientsListing();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <AdminLayoutView>
         <div className={styles.usersContainer}>
-          {/* <div>ManageUsers</div> */}
-
-          <Input placeholder="Search Patients" className={styles.searchField} />
+          <SearchField
+            showIcon={false}
+            name="search-patient"
+            placeholder="Search Patients"
+            className={styles.searchField}
+            onChange={handlePatientSearch}
+            setSearchType={(type) =>
+              setState((prev) => ({
+                ...prev,
+                search: type,
+              }))
+            }
+          />
 
           <div className="pt-20">
             <BasicTable

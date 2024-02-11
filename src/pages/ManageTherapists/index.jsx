@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import AdminLayoutView from "../../components/layout/AdminView";
-import { Input } from "@mui/material";
 import { toast } from "react-toastify";
-
-import styles from "./styles.module.scss";
+import { isEmpty } from "lodash";
 
 import BasicTable from "../../components/TableListing";
 import { therapistColumns } from "../../constants/common";
 import {
   fetchAllTherapistApi,
+  searchTherapistForAdminApi,
   therapistUpdateInfoApi,
 } from "../../api/therapist-api";
 import { parseTherapistListing } from "../../data-parsers/therapist-parser";
 import Loader from "../../components/Loader";
+import SearchField from "../../components/SearchFIeld";
+
+import styles from "./styles.module.scss";
 
 const ManageTherapists = () => {
   const [state, setState] = useState({
@@ -40,7 +42,7 @@ const ManageTherapists = () => {
         toast.success("User Status Updated Successfully.");
 
         setTimeout(() => {
-          fetchPatientsListing();
+          fetchTherapistListing();
         }, 500);
       })
       .catch((error) => {
@@ -52,7 +54,7 @@ const ManageTherapists = () => {
       });
   };
 
-  const fetchPatientsListing = () => {
+  const fetchTherapistListing = () => {
     fetchAllTherapistApi()
       .then((res) => {
         const parseListing = parseTherapistListing(res.data, handleUserStatus);
@@ -69,8 +71,37 @@ const ManageTherapists = () => {
       });
   };
 
+  const handleTherapistSearch = async (e) => {
+    const searchValue = e.target?.value || "";
+
+    handleLoader();
+
+    if (!isEmpty(searchValue)) {
+      const searchResp = await searchTherapistForAdminApi(searchValue);
+
+      if (searchResp.status === 200) {
+        const parsedData = parseTherapistListing(
+          searchResp.data,
+          handleUserStatus
+        );
+
+        setState({ ...state, listing: parsedData, isLoading: false });
+      } else {
+        toast.error("Some Error Occured While Fetching Therapist Lisitng.");
+      }
+    } else {
+      fetchTherapistListing();
+    }
+
+    setState((prev) => ({
+      ...prev,
+      search: searchValue,
+    }));
+  };
+
   useEffect(() => {
-    fetchPatientsListing();
+    fetchTherapistListing();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -79,9 +110,18 @@ const ManageTherapists = () => {
 
       <AdminLayoutView>
         <div className={styles.usersContainer}>
-          <Input
+          <SearchField
+            showIcon={false}
+            name="search-therapist"
             placeholder="Search Therapist"
             className={styles.searchField}
+            onChange={handleTherapistSearch}
+            setSearchType={(type) =>
+              setState((prev) => ({
+                ...prev,
+                search: type,
+              }))
+            }
           />
 
           <div className="pt-20">

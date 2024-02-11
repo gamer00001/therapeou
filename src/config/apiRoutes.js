@@ -11,6 +11,7 @@ const UploadFileBaseUrl = `${apiVersion}upload-doc`;
 const UploadImageBaseUrl = `${apiVersion}upload-image`;
 const AppointmentNotesBaseUrl = `${apiVersion}notes`;
 const AppointmentDocsBaseUrl = `${apiVersion}appointment-docs`;
+const AdminRoutesBaseUrl = `${apiVersion}admin`;
 
 export const ForgotPasswordUrl = `${apiVersion}forgot-password`;
 
@@ -58,3 +59,6 @@ export const addAppointmentDocsApiUrl = `${AppointmentDocsBaseUrl}/add`;
 
 export const addTherapistServiceApiUrl = `${TherapistServicesBaseUrl}/add`;
 export const fetchTherapistServiceApiUrl = `${TherapistServicesBaseUrl}/therapist`;
+
+export const searchPatientApiUrl = `${AdminRoutesBaseUrl}/search-patient`;
+export const searchTherapistApiUrl = `${AdminRoutesBaseUrl}/search-therapist`;

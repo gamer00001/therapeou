@@ -13,6 +13,7 @@ import CButton from "../CButton";
 
 const SearchField = (props) => {
   const ref = useRef();
+  const { className, showIcon = true } = props;
 
   const [state, setState] = useState({
     open: false,
@@ -67,14 +68,18 @@ const SearchField = (props) => {
       <Input
         {...props}
         endAdornment={
-          <img
-            alt="icon"
-            src="/fiters-icon.svg"
-            onClick={handleFilters}
-            className="pr-20 cursor-pointer"
-          />
+          <>
+            {showIcon && (
+              <img
+                alt="icon"
+                src="/fiters-icon.svg"
+                onClick={handleFilters}
+                className="pr-20 cursor-pointer"
+              />
+            )}
+          </>
         }
-        className="searchTherapistField"
+        className={`searchTherapistField ${className}`}
         onChange={debounceSearch}
       />
 

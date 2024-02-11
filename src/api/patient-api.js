@@ -14,6 +14,7 @@ import {
   OtpUrl,
   NewPasswordpUrl,
   PatientInfoGetAllApiUrl,
+  searchPatientApiUrl,
 } from "../config/apiRoutes";
 import axios from "../utility/axiosWrapper";
 
@@ -190,6 +191,17 @@ export const fetchAllPatientsListingApi = async () => {
 export const fetchPatientInfoByIdApi = async (id) => {
   return await axios
     .get(`${PatientInfoGetApiUrl}/${id}`)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err?.response;
+    });
+};
+
+export const searchPatientForAdminApi = async (searchQuery) => {
+  return await axios
+    .get(`${searchPatientApiUrl}/${searchQuery}`)
     .then((result) => {
       return result;
     })
