@@ -27,11 +27,11 @@ const panelSideBar = () => ({
       icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
       path: "/admin/subscripiton-plans",
     },
-    {
-      text: "Patient Documents/Notes",
-      icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
-      path: "/admin/settings",
-    },
+    // {
+    //   text: "Patient Documents/Notes",
+    //   icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,
+    //   path: "/admin/settings",
+    // },
   ],
   patient: [
     {

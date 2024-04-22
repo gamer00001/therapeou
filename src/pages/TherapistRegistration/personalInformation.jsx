@@ -21,7 +21,7 @@ const validationSchemaForPersonalInformation = Yup.object({
   city: Yup.string().required("City is required"),
   postCode: Yup.string().required("Postal Code is required"),
   gender: Yup.string().required("Gender is required"),
-  address: Yup.string().required("Address is required"),
+  // address: Yup.string().required("Address is required"),
   profileDescription: Yup.string().required("Profile Description is required"),
 });
 
@@ -53,7 +53,7 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
                       >
                         <>
                           {item.fieldName === "address" ? (
-                            <> 
+                            <>
                               <Autocomplete
                                 // className={`${styles.profileFields} ${styles.mapAddressSearchField}`}
                                 placeholder="Address"
@@ -77,9 +77,11 @@ const PersonalInformation = ({ initialValues, handleChange, handleSubmit }) => {
                                     place?.formatted_address || ""
                                   );
                                 }}
-                                style={{marginBottom: 10}}
+                                style={{ marginBottom: 10 }}
                               />
-                              <span style={{color: "#bdadad"}}>Format (House/flat number, street name) </span>
+                              <span style={{ color: "#bdadad" }}>
+                                Format (House/flat number, street name){" "}
+                              </span>
                             </>
                           ) : (
                             <Field

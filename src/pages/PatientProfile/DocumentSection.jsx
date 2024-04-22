@@ -26,7 +26,7 @@ const DocumentSection = () => {
       <div className="d-flex justify-between align-center pb-16">
         <span className={styles.heading}>Files/ Documents</span>
 
-        <span className={styles.seeAll}>Add Files</span>
+        {/* <span className={styles.seeAll}>Add Files</span> */}
       </div>
 
       <div className={styles.fileBlockContainer}>

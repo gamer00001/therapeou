@@ -4,6 +4,7 @@
   border-radius: 25px;
   background: #fff;
   cursor: pointer;
+  position: relative;
   box-shadow: 3px 4px 8px 0px rgba(0, 0, 0, 0.17);
 
   .packageInfo {
@@ -18,5 +19,10 @@
     color: #fff;
     border-radius: 25px 25px 0px 0px;
     background: linear-gradient(300deg, #adb5bd 0%, #3c5671 100%);
+  }
+
+  .tickMark {
+    position: absolute;
+    inset: 40%;
   }
 }

@@ -21,6 +21,7 @@ import {
   parsePatientOverviewInfo,
 } from "../../data-parsers/patient-parser";
 import Loader from "../../components/Loader";
+import { fetchDocumentsByPatientId } from "../../api/admin-api";
 
 const PatientProfile = () => {
   const [state, setState] = useState({
@@ -54,9 +55,20 @@ const PatientProfile = () => {
     });
   };
 
+  const fetchDocumentsOfPatient = () => {
+    fetchDocumentsByPatientId(loc.at(-1)).then((res) => {
+      const stats = parseAppointmetStats(res.data);
+      setState((prev) => ({
+        ...prev,
+        appointmentInfo: stats,
+      }));
+    });
+  };
+
   useEffect(() => {
     fetchPatientProfile();
     fetchSpecificPatientAppointments();
+    fetchDocumentsOfPatient();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

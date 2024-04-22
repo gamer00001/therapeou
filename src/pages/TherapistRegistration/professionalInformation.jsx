@@ -11,7 +11,7 @@ import AddServices from "../../components/AddServices";
 import styles from "./styles.module.scss";
 
 const validationSchemaForProfessionalInformation = Yup.object({
-  specialization: Yup.string().required("Specialization is required"),
+  // specialization: Yup.string().required("Specialization is required"),
   // experience: Yup.number().required("Experience is required"),
   fee: Yup.string().required("Fee is required"),
   education: Yup.array()
