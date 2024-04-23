@@ -146,7 +146,20 @@
     font-weight: 500;
   }
 
+  .appointmentListTitle {
+    font-family: "Poppins" !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24.5792px;
+    line-height: 37px;
+    color: #000000;
+
+    padding-left: 70px;
+    padding-top: 25px;
+  }
+
   .notesSection {
+    // margin-top: 30px;
     padding: 20px 50px;
     border-radius: 16px;
     background: #fff;

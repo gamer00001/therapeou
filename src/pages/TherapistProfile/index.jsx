@@ -10,6 +10,7 @@ import { getUserInfoFromStorage } from "../../utility/common-helper";
 
 const TherapistProfile = () => {
   const userInfo = getUserInfoFromStorage();
+
   return (
     <AdminLayoutView>
       <Grid container>

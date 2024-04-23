@@ -53,7 +53,7 @@ const Overview = () => {
   const handleViewBtn = (data) => {
     navigate("/admin/therapist-profile", {
       state: {
-        therapistId: data.therapistId,
+        therapistId: data?.id,
       },
     });
   };

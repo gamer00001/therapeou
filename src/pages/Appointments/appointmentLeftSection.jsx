@@ -32,11 +32,13 @@ const AppointmentLeftSection = ({
             View All
           </span>
           <div>
-            {isEmpty(listing.filter((item) => item.status === "pending")) ? (
+            {isEmpty(
+              listing.filter((item) => item.status?.toLowerCase() === "pending")
+            ) ? (
               <div style={{ fontSize: "16px" }}>No Appointments Found.</div>
             ) : (
               listing
-                .filter((item) => item.status === "pending")
+                .filter((item) => item.status?.toLowerCase() === "pending")
                 .map((item, index) => {
                   return (
                     <div>

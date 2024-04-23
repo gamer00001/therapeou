@@ -35,7 +35,7 @@ const AppointmentDetailsSection = ({
 
       {value === "1" &&
         listing
-          .filter((item) => item.status === "pending")
+          .filter((item) => item.status?.toLowerCase() === "pending")
           .reverse()
           .map((item) => {
             return (

@@ -68,6 +68,7 @@ const App = () => {
           element={<TherapistRegistration />}
         />
         <Route path="/admin/chat" element={<Chat />} />
+
         {/* Admin Routes */}
         {isLoggedIn && (
           <>
@@ -90,21 +91,17 @@ const App = () => {
             <Route path="/admin/reports" element={<Reports />} />
 
             <Route
-              path="/admin/reports/ongoing-appointments"
-              element={<OnGoingAppointments />}
-            />
-
-            <Route
               path="/admin/reports/past-appointments"
               element={<OnGoingAppointments />}
             />
-
-            <Route
-              path="/admin/reports/appointments-detail"
-              element={<AppointmentDetail />}
-            />
           </>
         )}
+
+        <Route
+          path="/admin/reports/appointments-detail"
+          element={<AppointmentDetail />}
+        />
+
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/patient-profile/:id" element={<PatientProfile />} />
 

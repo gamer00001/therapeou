@@ -26,7 +26,7 @@ const TherapistProfilePage = () => {
 
   const [state, setState] = useState({
     isOpen: false,
-    isLoading: false,
+    isLoading: true,
     therapistInfo: {},
     timeSlots: [],
     formValues: {
@@ -45,10 +45,10 @@ const TherapistProfilePage = () => {
     }));
   };
 
-  const handleLoader = () => {
+  const handleLoader = (loading) => {
     setState((prev) => ({
       ...prev,
-      isLoading: !prev.isLoading,
+      isLoading: loading ?? !prev.isLoading,
     }));
   };
 
@@ -69,7 +69,7 @@ const TherapistProfilePage = () => {
     } else {
       toast.error("Something went wrong.");
     }
-    handleLoader();
+    handleLoader(false);
   };
 
   const fetchAppointmentSlots = async (day = "Monday") => {
@@ -85,22 +85,22 @@ const TherapistProfilePage = () => {
   };
 
   const fetchTherapistInfo = () => {
-    handleLoader();
+    // handleLoader();
 
     const therapistId = location.state.therapistId;
 
     fetchTherapistInfoApi(therapistId)
       .then((res) => {
-        handleLoader();
+        // handleLoader(false);
 
         setState((prev) => ({
           ...prev,
+          isLoading: false,
           therapistInfo: res.data,
         }));
       })
       .catch((error) => {
-        handleLoader();
-
+        handleLoader(false);
         console.log({ error });
       });
   };

@@ -7,7 +7,7 @@ export const getUserInfoFromStorage = () => {
 export const isCurrentUserPatient = () => {
   const data = localStorage.getItem("userInfo");
 
-  return JSON.parse(data).userType === "patient";
+  return JSON.parse(data)?.userType === "patient";
 };
 
 export const logoutUser = () => {

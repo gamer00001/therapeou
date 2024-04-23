@@ -35,7 +35,7 @@ export const parsePatientListing = (data, handleUserStatus) => {
 };
 
 export const parseAppointmentListing = (data) => {
-  return data.map((item) => {
+  return data?.map((item) => {
     return {
       ...item,
       noteList: item?.noteList,
@@ -125,7 +125,9 @@ export const parseAppointmetStats = (data) => {
     past = 0;
 
   data.forEach((item) => {
-    if (["ongoing", "pending"].includes(item.appointmentStatus)) {
+    if (
+      ["ongoing", "pending"].includes(item.appointmentStatus?.toLowerCase())
+    ) {
       upcoming += 1;
     } else {
       past += 1;
