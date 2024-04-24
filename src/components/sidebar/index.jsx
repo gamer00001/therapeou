@@ -37,7 +37,7 @@ const Sidebar = () => {
         />
       </Typography>
 
-      {currentUserInfo?.userType && (
+      {currentUserInfo?.userType === "admin" && (
         <>
           <AdminProfileView />
 

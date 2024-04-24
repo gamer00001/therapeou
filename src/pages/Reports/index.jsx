@@ -16,16 +16,16 @@ const List = [
     title: "Appointment History",
     link: "/admin/reports/past-appointments",
   },
-  {
-    id: "",
-    title: "Patient details",
-    link: "",
-  },
-  {
-    id: "",
-    title: "Total Earnings",
-    link: "",
-  },
+  // {
+  //   id: "",
+  //   title: "Patient details",
+  //   link: "",
+  // },
+  // {
+  //   id: "",
+  //   title: "Total Earnings",
+  //   link: "",
+  // },
 ];
 
 const Reports = () => {

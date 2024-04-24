@@ -45,12 +45,12 @@ const panelSideBar = () => ({
 
       path: "/admin/appointments",
     },
-    {
-      text: "Learning Materials",
-      icon: (fill, width, height) => <img src={LearningIcon} alt="icon" />,
+    // {
+    //   text: "Learning Materials",
+    //   icon: (fill, width, height) => <img src={LearningIcon} alt="icon" />,
 
-      path: "/admin/learning-courses",
-    },
+    //   path: "/admin/learning-courses",
+    // },
     {
       text: "Settings",
       icon: (fill, width, height) => <img src={SettingsIcon} alt="icon" />,

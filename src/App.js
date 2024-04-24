@@ -95,6 +95,10 @@ const App = () => {
               path="/admin/reports/past-appointments"
               element={<OnGoingAppointments />}
             />
+            <Route
+              path="/admin/reports/ongoing-appointments"
+              element={<OnGoingAppointments />}
+            />
           </>
         )}
 
