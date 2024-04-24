@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import CButton from "../CButton";
 
-const SubscriptionPlan = ({ title, packagePrice, perksList = [] }) => {
+const SubscriptionPlan = ({
+  title,
+  packagePrice,
+  perksList = [],
+  onEditAction,
+}) => {
   return (
     <div className={styles.container}>
       <div className={styles.titleRow}>
@@ -16,6 +22,10 @@ const SubscriptionPlan = ({ title, packagePrice, perksList = [] }) => {
           <hr />
         </div>
       ))}
+
+      <div className={styles.editBtnBlock}>
+        <CButton type="submit" title="Edit" onClick={onEditAction} />
+      </div>
     </div>
   );
 };

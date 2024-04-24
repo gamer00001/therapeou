@@ -2,7 +2,7 @@
   //   padding: 20px;
   border-radius: 20px;
   width: 400px;
-  height: 400px;
+  height: 350px;
   cursor: pointer;
   border: 1px solid #575757;
 
@@ -17,7 +17,13 @@
       font-weight: 600;
       line-height: 30px;
       text-align: left;
+      text-transform: capitalize;
     }
+  }
+
+  .editBtnBlock {
+    text-align: center;
+    padding-top: 30px;
   }
 
   span {

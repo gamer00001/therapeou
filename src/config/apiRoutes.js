@@ -66,6 +66,10 @@ export const searchPatientApiUrl = `${AdminRoutesBaseUrl}/search-patient`;
 export const searchTherapistApiUrl = `${AdminRoutesBaseUrl}/search-therapist`;
 
 export const adminDashboardStatsApiUrl = `${AdminRoutesBaseUrl}/get-dashboard`;
+export const adminLoginApiUrl = `${AdminRoutesBaseUrl}/login`;
 
 export const subPackagesApiUrl = `${SubscriptionBaseUrl}/add`;
+export const getSubPackagesApiUrl = `${SubscriptionBaseUrl}/get`;
+export const editSubPackagesApiUrl = `${SubscriptionBaseUrl}/update`;
+
 export const fetchDocumentListing = `${DocumentsBaseUrl}`;

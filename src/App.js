@@ -30,6 +30,7 @@ import SubscriptionsPlans from "./pages/SubscriptionsPlans";
 import PatientProfile from "./pages/PatientProfile";
 import TherapistProfileView from "./pages/TherapistProfileView";
 import EditPatientProfile from "./pages/PatientProfile/EditPatient";
+import EditSubscriptionPlans from "./pages/SubscriptionsPlans/EditSubscriptionsPlans";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -123,6 +124,12 @@ const App = () => {
           path="/admin/subscripiton-plans"
           element={<SubscriptionsPlans />}
         />
+
+        <Route
+          path="/admin/subscription-plans/edit/:id"
+          element={<EditSubscriptionPlans />}
+        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -18,3 +18,33 @@
   letter-spacing: 0.065em;
   text-align: left;
 }
+
+.registerFields {
+  width: 457.73px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background-color: #fff;
+  border-bottom: 1px solid #e4d9d9 !important;
+}
+
+.registerFields::before {
+  border-bottom: 1px solid #e4d9d9 !important;
+}
+
+.registerFields:focus-visible {
+  outline: none;
+}
+
+.registerFields input {
+  font-size: 16px;
+  height: 2em !important;
+}
+
+.inputsBlock {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  align-items: center;
+}

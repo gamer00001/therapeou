@@ -71,9 +71,12 @@ const Login = (props) => {
 
     if (type === "patient") {
       apiToHit = patientLoginApi;
+    } else if (adminLogin) {
+      apiToHit = patientLoginApi;
     } else {
       apiToHit = therapistLoginApi;
     }
+
     const loginResposne = await apiToHit(data);
 
     if (loginResposne?.status === 200) {
@@ -82,7 +85,7 @@ const Login = (props) => {
       let userInfo = loginResposne?.data;
       userInfo = {
         ...userInfo,
-        userType: type,
+        userType: adminLogin ? "admin" : type,
         apiUserInfo: loginResposne?.data,
       };
 
