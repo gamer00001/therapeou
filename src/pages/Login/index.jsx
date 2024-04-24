@@ -57,10 +57,6 @@ const Login = (props) => {
   const handleUserLogin = async (data) => {
     const { adminLogin } = props;
 
-    if (adminLogin) {
-      return navigate("/admin/dashboard");
-    }
-
     let apiToHit;
 
     setState((prev) => ({
@@ -99,7 +95,10 @@ const Login = (props) => {
       // } catch (err) {
       //   console.log(err);
       // }
-      if (type === "therapist") {
+
+      if (adminLogin) {
+        return navigate("/admin/dashboard");
+      } else if (type === "therapist") {
         return checkForRegistration(loginResposne?.data);
       } else {
         navigate("/admin/overview");
