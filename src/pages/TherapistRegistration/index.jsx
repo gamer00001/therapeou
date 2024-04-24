@@ -266,6 +266,7 @@ const TherapistRegistration = () => {
       professionalInitialValues: {
         ...prev.professionalInitialValues,
         ...userInfo,
+        fee: userInfo.fee,
       },
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps

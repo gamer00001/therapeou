@@ -89,6 +89,7 @@ const Calender = () => {
       .catch((error) => {
         console.log({ error });
         handleLoader();
+        return toast.error("Error Addming Therapist Schedule");
       });
   };
 
@@ -123,6 +124,7 @@ const Calender = () => {
       .catch((error) => {
         handleLoader();
         console.log({ error });
+        return toast.error("Error fetching Therapist Schedule");
       });
   };
 

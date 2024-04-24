@@ -38,6 +38,7 @@ const ProfessionalInformation = ({
     <div>
       <Formik
         onSubmit={handleSubmit}
+        enableReinitialize
         initialValues={initialValues}
         validationSchema={validationSchemaForProfessionalInformation}
       >
@@ -63,6 +64,7 @@ const ProfessionalInformation = ({
                   </React.Fragment>
                 ))}
                 {TherapistProfessionalFields.map((item, index) => {
+                  console.log({ values });
                   return (
                     <>
                       <Grid
@@ -75,7 +77,7 @@ const ProfessionalInformation = ({
                           <Field
                             name={item.fieldName}
                             type={item.type}
-                            value={undefined}
+                            // value={values[item.fieldName]}
                             label={item.placeholder}
                             onChange={handleChange}
                             placeholder={item.placeholder}

@@ -76,12 +76,16 @@ const TherapistProfilePage = () => {
     const therapistId = location.state.therapistId;
     const slotsResp = await fetchTherapistAppointmentSlots(therapistId, day);
 
-    let parseSlots = makeTuplesOfSlots(slotsResp?.data || []);
+    if (slotsResp.status === 200) {
+      let parseSlots = makeTuplesOfSlots(slotsResp?.data || []);
 
-    setState((prev) => ({
-      ...prev,
-      timeSlots: parseSlots,
-    }));
+      setState((prev) => ({
+        ...prev,
+        timeSlots: parseSlots,
+      }));
+    } else {
+      return toast.error("Failed to fetch appointment Slots.");
+    }
   };
 
   const fetchTherapistInfo = () => {

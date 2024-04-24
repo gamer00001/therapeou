@@ -64,7 +64,7 @@ const Login = (props) => {
       isLoading: !prev.isLoading,
     }));
 
-    const type = location?.state?.selectedType || "patient";
+    const type = location?.state?.selectedType || "admin";
 
     if (type === "patient") {
       apiToHit = patientLoginApi;
