@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import Navbar from "../../components/Navbar";
 import { logoutUser as emptyLocalStorage } from "../../utility/common-helper";
+import { adminLoginApi } from "../../api/admin-api";
 // import { auth } from "../../firebase";
 
 const initialValues = {
@@ -72,7 +73,7 @@ const Login = (props) => {
     if (type === "patient") {
       apiToHit = patientLoginApi;
     } else if (adminLogin) {
-      apiToHit = patientLoginApi;
+      apiToHit = adminLoginApi;
     } else {
       apiToHit = therapistLoginApi;
     }
