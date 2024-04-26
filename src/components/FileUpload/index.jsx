@@ -52,13 +52,13 @@ const FileUpload = ({
         onClick={() => inputRef.current.click()}
       >
         <input
-          id="fileInput"
-          name={name}
           hidden
-          ref={inputRef}
+          multiple
+          name={name}
           type="file"
           accept=".pdf"
-          multiple
+          id="fileInput"
+          ref={inputRef}
           onChange={uploadFile}
         />
         <div>

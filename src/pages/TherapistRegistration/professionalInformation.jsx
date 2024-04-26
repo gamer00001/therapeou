@@ -13,7 +13,7 @@ import styles from "./styles.module.scss";
 const validationSchemaForProfessionalInformation = Yup.object({
   // specialization: Yup.string().required("Specialization is required"),
   // experience: Yup.number().required("Experience is required"),
-  fee: Yup.string().required("Fee is required"),
+  fee: Yup.number().required("Fee is required"),
   education: Yup.array()
     .of(Yup.string())
     .min(1)
@@ -37,8 +37,8 @@ const ProfessionalInformation = ({
   return (
     <div>
       <Formik
-        onSubmit={handleSubmit}
         enableReinitialize
+        onSubmit={handleSubmit}
         initialValues={initialValues}
         validationSchema={validationSchemaForProfessionalInformation}
       >
@@ -47,7 +47,7 @@ const ProfessionalInformation = ({
             <Form>
               <div className={styles.pageTitle}>Professional Information</div>
               <Grid container padding="0px 25%" gap={2}>
-                {state.list.map((service, index) => (
+                {state.list?.map((service, index) => (
                   <React.Fragment key={service.id}>
                     <AddServices
                       state={state}
@@ -63,8 +63,8 @@ const ProfessionalInformation = ({
                     />
                   </React.Fragment>
                 ))}
+
                 {TherapistProfessionalFields.map((item, index) => {
-                  console.log({ values });
                   return (
                     <>
                       <Grid
@@ -74,28 +74,10 @@ const ProfessionalInformation = ({
                         xs={12}
                       >
                         <>
-                          <Field
-                            name={item.fieldName}
-                            type={item.type}
-                            // value={values[item.fieldName]}
-                            label={item.placeholder}
-                            onChange={handleChange}
-                            placeholder={item.placeholder}
-                            className={`${styles.registerFields} ${
-                              item.type === "file" && "d-none"
-                            } ${
-                              item.col === 6 && `${styles.doubleField}`
-                            } form-control ${
-                              errors[item.fieldName] &&
-                              touched[item.fieldName] &&
-                              `${styles.isInvalid}`
-                            }`}
-                          />
-
-                          {item.type === "file" && (
+                          {item.type === "file" ? (
                             <>
                               <label className={styles.fieldLabel}>
-                                {item.placeholder}
+                                {item?.placeholder}
                               </label>
                               <FileUpload
                                 isLoading={isLoading}
@@ -103,13 +85,32 @@ const ProfessionalInformation = ({
                                 name={item.fieldName}
                                 title={item.title}
                                 fileUploadInputChange={(filesList) => {
-                                  setFieldValue(item.fieldName, filesList, {
+                                  setFieldValue(item?.fieldName, filesList, {
                                     shouldValidate: true,
                                   });
                                 }}
                               />
                               <div className={styles.hrLine} />
                             </>
+                          ) : (
+                            <Field
+                              name={item.fieldName}
+                              type={item.type}
+                              // value={undefined}
+                              // value={values[item?.fieldName] ?? ""}
+                              label={item.placeholder}
+                              onChange={handleChange}
+                              placeholder={item.placeholder}
+                              className={`${styles.registerFields} ${
+                                item.type === "file" && "d-none"
+                              } ${
+                                item.col === 6 && `${styles.doubleField}`
+                              } form-control ${
+                                errors[item.fieldName] &&
+                                touched[item.fieldName] &&
+                                `${styles.isInvalid}`
+                              }`}
+                            />
                           )}
 
                           <ErrorMessage

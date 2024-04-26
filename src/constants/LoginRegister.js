@@ -208,7 +208,7 @@ export const TherapistProfessionalFields = [
   {
     placeholder: "Fee",
     fieldName: "fee",
-    type: "text",
+    type: "number",
   },
   {
     type: "file",

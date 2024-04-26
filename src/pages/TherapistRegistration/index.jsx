@@ -51,10 +51,10 @@ const TherapistRegistration = () => {
     professionalInitialValues: {
       specialization: "",
       // experience: "",
-      fee: "",
-      education: "",
-      insurance: "",
-      dbsCheck: "",
+      fee: 0,
+      education: [],
+      insurance: [],
+      dbsCheck: [],
     },
   });
 
@@ -266,7 +266,7 @@ const TherapistRegistration = () => {
       professionalInitialValues: {
         ...prev.professionalInitialValues,
         ...userInfo,
-        fee: userInfo.fee,
+        // fee: userInfo.fee,
       },
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
