@@ -45,7 +45,7 @@ const TherapistRegistration = () => {
       city: "",
       postCode: "",
       gender: "",
-      address: "dummy address",
+      address: "",
       profileDescription: "",
     },
     professionalInitialValues: {
